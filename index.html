@@ -76,7 +76,7 @@
     }
     .hero-bg {
       position: absolute; inset: 0; z-index: 1;
-      background: url('images/performance.png') center 30% / cover no-repeat;
+      background: url('images/performance.png') 25% 30% / cover no-repeat;
     }
     .hero-overlay {
       position: absolute; inset: 0; z-index: 2;
@@ -425,18 +425,23 @@
       .email-wrap { max-width: 100%; }
       .email-form {
         flex-direction: column;
-        border-radius: 1rem;
-        overflow: hidden;
+        gap: 0.6rem;
+        border: none;
+        background: transparent;
+        backdrop-filter: none;
       }
       .email-form input[type="email"] {
         padding: 0.9rem 1.2rem;
         font-size: 1rem;
-        border-bottom: 1px solid rgba(201,168,76,0.2);
+        border: 1px solid rgba(201,168,76,0.35);
+        border-radius: 3rem;
+        background: rgba(255,255,255,0.07);
+        width: 100%;
       }
       .email-form button {
-        border-radius: 0 0 1rem 1rem;
+        border-radius: 3rem;
         padding: 0.9rem;
-        font-size: 0.85rem;
+        font-size: 0.9rem;
         width: 100%;
       }
 
@@ -688,10 +693,6 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">太極 · Feng Yanbo</div>
-  <div class="footer-links">
-    <a href="https://wa.me/6597539120">WhatsApp</a>
-    <a href="https://cccsingapore.org/2026/01/11200/">Singapore CCC</a>
-  </div>
   <div class="footer-copy">© 2026 Master Feng Yanbo · Singapore China Cultural Centre, 217 Queen St</div>
 </footer>
 

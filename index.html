@@ -710,14 +710,34 @@
   });
 
   // ── Email form ──
-  function handleSubmit(e, id) {
+  async function handleSubmit(e, id) {
     e.preventDefault();
     const form = e.target;
     const email = form.querySelector('input[type="email"]').value;
-    console.log('Email:', email);
-    // TODO: POST to Mailchimp / ConvertKit / your backend
-    form.style.display = 'none';
-    document.getElementById(id + '-success').style.display = 'block';
+    const btn = form.querySelector('button');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('https://taichi-email-collector.liurowen7.workers.dev', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+      const data = await res.json();
+      if (data.success) {
+        form.style.display = 'none';
+        document.getElementById(id + '-success').style.display = 'block';
+      } else {
+        btn.textContent = 'Try Again';
+        btn.disabled = false;
+        alert('Something went wrong, please try again.');
+      }
+    } catch (err) {
+      btn.textContent = 'Try Again';
+      btn.disabled = false;
+      alert('Network error, please try again.');
+    }
   }
 
   // ── Particle system ──

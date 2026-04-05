@@ -761,6 +761,53 @@
 </footer>
 
 <script>
+  // ── Geo detection ──
+  (async function() {
+    try {
+      const res = await fetch('https://ipapi.co/json/');
+      const data = await res.json();
+      const isSG = data.country_code === 'SG';
+
+      // Hero副标题
+      const heroSub = document.querySelector('.hero-sub');
+      if (heroSub) {
+        heroSub.textContent = isSG
+          ? 'Master Feng Yanbo teaches Chen-style Tai Chi at Singapore China Cultural Centre. In-person classes now open — limited spots available.'
+          : 'Master Feng Yanbo carries a tradition 700 years in the making. Learn authentic Chen-style Tai Chi — a moving meditation that transforms body, mind, and spirit.';
+      }
+
+      // Hero表单提示
+      const formNote = document.querySelector('.form-note');
+      if (formNote) {
+        formNote.textContent = isSG
+          ? 'Enquire about in-person classes in Singapore. We\'ll reply within 24 hours.'
+          : 'Be first to know when online classes open. No spam, ever.';
+      }
+
+      // Hero成功消息
+      const heroSuccess = document.getElementById('hero-success');
+      if (heroSuccess) {
+        heroSuccess.textContent = isSG
+          ? '✓ Got it! We\'ll be in touch about upcoming Singapore classes.'
+          : '✓ You\'re in. We\'ll reach out when online classes launch.';
+      }
+
+      // tracks区块：新加坡突出线下，海外突出线上
+      const trackInperson = document.querySelector('.track-inperson');
+      const trackOnline = document.querySelector('.track-online');
+      if (isSG && trackInperson && trackOnline) {
+        trackInperson.style.borderColor = 'rgba(201,168,76,0.6)';
+        trackInperson.style.background = 'rgba(201,168,76,0.12)';
+      } else if (!isSG && trackOnline) {
+        trackOnline.style.borderColor = 'rgba(42,140,110,0.6)';
+        trackOnline.style.background = 'rgba(42,140,110,0.12)';
+      }
+
+    } catch(e) {
+      // 检测失败不影响页面
+    }
+  })();
+
   // ── Navbar scroll ──
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {

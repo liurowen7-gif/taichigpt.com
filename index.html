@@ -303,6 +303,37 @@
     }
     .gallery-strip img:hover { filter: brightness(1) saturate(1.1); }
 
+    /* ─── TRACKS ─── */
+    .tracks {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem; margin: 2.5rem 0 2.5rem;
+    }
+    .track {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 1.2rem 1.5rem;
+      border-radius: 4px;
+    }
+    .track-inperson {
+      background: rgba(201,168,76,0.07);
+      border: 1px solid rgba(201,168,76,0.2);
+    }
+    .track-online {
+      background: rgba(42,140,110,0.07);
+      border: 1px solid rgba(42,140,110,0.25);
+    }
+    .track-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .track-title { font-size: 0.9rem; font-weight: 500; margin-bottom: 0.3rem; }
+    .track-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+    .coming-soon {
+      font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
+      background: rgba(42,140,110,0.3); color: #7dd4a8;
+      padding: 0.15rem 0.5rem; border-radius: 2rem; margin-left: 0.4rem;
+      vertical-align: middle;
+    }
+    @media (max-width: 768px) {
+      .tracks { grid-template-columns: 1fr; }
+    }
+
     /* ─── VIDEO ─── */
     .video-section { background: var(--ink); }
     .video-sub {
@@ -645,6 +676,25 @@
   <div class="container">
     <div class="section-eyebrow">The Curriculum</div>
     <h2 class="section-title">Three Levels,<br>One <em>Journey</em></h2>
+
+    <!-- Two tracks -->
+    <div class="tracks">
+      <div class="track track-inperson">
+        <span class="track-icon">📍</span>
+        <div>
+          <div class="track-title">In-Person · Singapore</div>
+          <div class="track-desc">Small-group classes at Singapore China Cultural Centre. Limited spots per cohort.</div>
+        </div>
+      </div>
+      <div class="track track-online">
+        <span class="track-icon">🌐</span>
+        <div>
+          <div class="track-title">Online · Worldwide <span class="coming-soon">Coming Soon</span></div>
+          <div class="track-desc">Learn from anywhere. Live sessions and recorded courses for global students.</div>
+        </div>
+      </div>
+    </div>
+
     <div class="courses-grid">
       <div class="course-card">
         <div class="course-num">01</div>
@@ -654,7 +704,7 @@
         <div class="course-meta">
           <div class="course-meta-item"><span>→</span> Chen-style 13 forms</div>
           <div class="course-meta-item"><span>→</span> Internal Qi cultivation basics</div>
-          <div class="course-meta-item"><span>→</span> 10 sessions · SGD $580</div>
+          <div class="course-meta-item"><span>→</span> 10 sessions per cohort</div>
         </div>
       </div>
       <div class="course-card">
@@ -665,7 +715,7 @@
         <div class="course-meta">
           <div class="course-meta-item"><span>→</span> 24-form Chen-style sequence</div>
           <div class="course-meta-item"><span>→</span> Eight Methods & Five Steps</div>
-          <div class="course-meta-item"><span>→</span> 10 sessions · SGD $580</div>
+          <div class="course-meta-item"><span>→</span> 10 sessions per cohort</div>
         </div>
       </div>
       <div class="course-card">
@@ -676,7 +726,7 @@
         <div class="course-meta">
           <div class="course-meta-item"><span>→</span> 20+ Chen-style sword methods</div>
           <div class="course-meta-item"><span>→</span> Taoist sword philosophy</div>
-          <div class="course-meta-item"><span>→</span> 10 sessions · SGD $580</div>
+          <div class="course-meta-item"><span>→</span> 10 sessions per cohort</div>
         </div>
       </div>
     </div>
@@ -694,7 +744,7 @@
 <!-- CTA -->
 <section class="cta-section" id="cta">
   <h2 class="section-title">Begin Your<br><em>Practice</em></h2>
-  <p>Online classes are coming. Join the list and be first to know.</p>
+  <p>In Singapore or anywhere in the world — leave your email and we'll be in touch.</p>
   <div class="cta-form-wrap">
     <form class="email-form" onsubmit="handleSubmit(event,'cta')">
       <input type="email" placeholder="Your email address" required />

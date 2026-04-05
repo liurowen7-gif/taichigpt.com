@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Master Feng Yanbo · Chen-Style Tai Chi</title>
+  <meta name="description" content="Learn authentic Chen-style Tai Chi from Master Feng Yanbo, 12th-generation lineage holder. Classes in Singapore and online worldwide." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:    #c9a84c;
+      --gold-dim: rgba(201,168,76,0.15);
+      --ink:     #050a07;
+      --deep:    #0a100c;
+      --mid:     #111a14;
+      --text:    rgba(255,255,255,0.82);
+      --muted:   rgba(255,255,255,0.45);
+      --white:   #ffffff;
+      --teal:    #2a8c6e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--ink);
+      color: var(--white);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* ─── CANVAS PARTICLES ─── */
+    #particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.35; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.4rem 3rem;
+      transition: background 0.4s, backdrop-filter 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(5,10,7,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.9rem;
+    }
+    .nav-logo-chinese {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; color: var(--gold); line-height: 1;
+    }
+    .nav-logo-divider { width: 1px; height: 22px; background: rgba(201,168,76,0.4); }
+    .nav-logo-en {
+      font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted); line-height: 1.3;
+    }
+    .nav-cta {
+      padding: 0.55rem 1.5rem; border-radius: 2rem;
+      border: 1px solid var(--gold); color: var(--gold);
+      text-decoration: none; font-size: 0.78rem; letter-spacing: 0.1em;
+      text-transform: uppercase; font-weight: 500;
+      transition: all 0.25s;
+    }
+    .nav-cta:hover { background: var(--gold); color: var(--ink); }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 1;
+      background: url('images/performance.png') center 30% / cover no-repeat;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 2;
+      background: linear-gradient(
+        105deg,
+        rgba(5,10,7,0.92) 0%,
+        rgba(5,10,7,0.70) 45%,
+        rgba(5,10,7,0.30) 100%
+      );
+    }
+    /* ink-wash bleed at bottom */
+    .hero-ink {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 220px; z-index: 3;
+      background: linear-gradient(to top, var(--ink) 0%, transparent 100%);
+    }
+    /* tech grid lines */
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 2; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content {
+      position: relative; z-index: 10;
+      padding: 10rem 3rem 6rem;
+      max-width: 680px;
+    }
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 0.8rem;
+      font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.8rem;
+    }
+    .hero-eyebrow::before {
+      content: ''; width: 28px; height: 1px; background: var(--gold);
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 6vw, 5.5rem);
+      font-weight: 300; line-height: 1.08;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero-sub {
+      font-size: 1rem; color: var(--text); font-weight: 300;
+      max-width: 480px; margin-bottom: 2.8rem; line-height: 1.75;
+    }
+    /* Chinese calligraphy accent */
+    .hero-calligraphy {
+      position: absolute; right: 6%; top: 50%; transform: translateY(-50%);
+      z-index: 10; font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(5rem, 10vw, 9rem); font-weight: 300;
+      color: rgba(201,168,76,0.08);
+      writing-mode: vertical-rl; letter-spacing: 0.1em;
+      pointer-events: none; user-select: none;
+      text-shadow: 0 0 80px rgba(201,168,76,0.15);
+    }
+
+    /* ─── EMAIL FORM ─── */
+    .email-wrap { max-width: 460px; }
+    .email-form {
+      display: flex; gap: 0;
+      border: 1px solid rgba(201,168,76,0.35);
+      border-radius: 3rem; overflow: hidden;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(8px);
+    }
+    .email-form input[type="email"] {
+      flex: 1; padding: 0.9rem 1.4rem;
+      background: transparent; border: none;
+      color: var(--white); font-size: 0.9rem; outline: none;
+    }
+    .email-form input::placeholder { color: var(--muted); }
+    .email-form button {
+      padding: 0.9rem 1.6rem;
+      background: var(--gold); color: var(--ink);
+      border: none; font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      cursor: pointer; transition: background 0.2s; white-space: nowrap;
+      border-radius: 0 3rem 3rem 0;
+    }
+    .email-form button:hover { background: #e0bc5a; }
+    .form-note { font-size: 0.72rem; color: var(--muted); margin-top: 0.7rem; padding-left: 0.2rem; }
+    .success-msg {
+      display: none;
+      padding: 0.9rem 1.4rem;
+      border: 1px solid rgba(74,180,120,0.4);
+      border-radius: 3rem; background: rgba(74,180,120,0.1);
+      color: #7dd4a8; font-size: 0.9rem;
+    }
+
+    /* ─── SCROLL INDICATOR ─── */
+    .scroll-indicator {
+      position: absolute; bottom: 2.5rem; left: 3rem; z-index: 10;
+      display: flex; align-items: center; gap: 0.8rem;
+      color: var(--muted); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 40px; height: 1px; background: var(--muted);
+      position: relative; overflow: hidden;
+    }
+    .scroll-line::after {
+      content: ''; position: absolute; top: 0; left: -100%;
+      width: 100%; height: 100%; background: var(--gold);
+      animation: scanline 2s ease-in-out infinite;
+    }
+    @keyframes scanline { 0% { left: -100%; } 100% { left: 100%; } }
+
+    /* ─── STATS BAR ─── */
+    .stats-bar {
+      position: relative; z-index: 10;
+      background: rgba(10,16,12,0.9);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(201,168,76,0.15);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+      padding: 2rem 3rem;
+    }
+    .stats-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 1rem; text-align: center;
+    }
+    .stat-item { padding: 0.5rem; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem; font-weight: 300; color: var(--gold); line-height: 1;
+    }
+    .stat-label { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 0.3rem; }
+
+    /* ─── SECTIONS ─── */
+    section { position: relative; z-index: 10; padding: 7rem 3rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-eyebrow {
+      display: flex; align-items: center; gap: 0.8rem;
+      font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .section-eyebrow::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 300; line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+
+    /* ─── ABOUT / PHILOSOPHY ─── */
+    .philosophy { background: var(--deep); }
+    .philosophy-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+    .philosophy-text p { color: var(--text); font-weight: 300; margin-bottom: 1.1rem; font-size: 0.95rem; }
+    .philosophy-image {
+      position: relative; border-radius: 2px; overflow: hidden;
+    }
+    .philosophy-image img {
+      width: 100%; display: block; border-radius: 2px;
+      filter: brightness(0.88) contrast(1.05);
+    }
+    /* glowing border effect */
+    .philosophy-image::before {
+      content: ''; position: absolute; inset: -1px; z-index: 1;
+      border: 1px solid rgba(201,168,76,0.3); border-radius: 2px; pointer-events: none;
+    }
+    .philosophy-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to bottom, transparent 60%, rgba(5,10,7,0.6) 100%);
+    }
+    .image-caption {
+      position: absolute; bottom: 1.2rem; left: 1.5rem; z-index: 2;
+      font-family: 'Cormorant Garamond', serif; font-size: 0.9rem;
+      color: rgba(255,255,255,0.6); font-style: italic;
+    }
+
+    /* ─── INSTRUCTOR ─── */
+    .instructor { background: var(--mid); overflow: hidden; }
+    .instructor-inner {
+      display: grid; grid-template-columns: 5fr 4fr; gap: 4rem; align-items: start;
+    }
+    .instructor-photo-stack { position: relative; }
+    .photo-main {
+      width: 100%; border-radius: 2px;
+      filter: brightness(0.9) contrast(1.05);
+    }
+    .photo-secondary {
+      position: absolute; bottom: -2rem; right: -2rem;
+      width: 48%; border-radius: 2px;
+      border: 3px solid var(--mid);
+      filter: brightness(0.88);
+    }
+    .instructor-text { padding-top: 1rem; }
+    .instructor-text p { color: var(--text); font-weight: 300; font-size: 0.95rem; margin-bottom: 1rem; }
+    .credentials { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.8rem; }
+    .cred {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 0.9rem 1.1rem;
+      background: rgba(201,168,76,0.05);
+      border: 1px solid rgba(201,168,76,0.12); border-radius: 4px;
+      transition: border-color 0.2s;
+    }
+    .cred:hover { border-color: rgba(201,168,76,0.3); }
+    .cred-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .cred p { font-size: 0.85rem; color: var(--text); margin: 0; }
+
+    /* ─── GALLERY ─── */
+    .gallery { background: var(--deep); padding: 5rem 0; }
+    .gallery-header { padding: 0 3rem; margin-bottom: 3rem; }
+    .gallery-strip {
+      display: grid;
+      grid-template-columns: 3fr 2fr 2fr;
+      gap: 3px;
+    }
+    .gallery-strip img {
+      width: 100%; height: 340px; object-fit: cover;
+      filter: brightness(0.85) saturate(0.85);
+      transition: filter 0.4s;
+    }
+    .gallery-strip img:hover { filter: brightness(1) saturate(1.1); }
+
+    /* ─── VIDEO ─── */
+    .video-section { background: var(--ink); }
+    .video-sub {
+      color: var(--muted); font-size: 0.95rem; font-weight: 300;
+      margin-bottom: 2.5rem; max-width: 520px;
+    }
+    .video-wrapper {
+      position: relative; padding-bottom: 56.25%; height: 0;
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 4px; overflow: hidden;
+      box-shadow: 0 0 80px rgba(201,168,76,0.08);
+    }
+    .video-wrapper iframe {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+    }
+
+    /* ─── COURSES ─── */
+    .courses { background: var(--mid); }
+    .courses-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; margin-top: 3.5rem;
+      border: 1px solid rgba(201,168,76,0.12);
+    }
+    .course-card {
+      padding: 2.5rem 2rem;
+      background: rgba(5,10,7,0.6);
+      border-right: 1px solid rgba(201,168,76,0.1);
+      transition: background 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .course-card:last-child { border-right: none; }
+    .course-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .course-card:hover { background: rgba(201,168,76,0.06); }
+    .course-card:hover::before { opacity: 1; }
+    .course-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem; font-weight: 300; line-height: 1;
+      color: rgba(201,168,76,0.15); margin-bottom: 1.2rem;
+    }
+    .course-level {
+      font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.4rem;
+    }
+    .course-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem; font-weight: 300; margin-bottom: 1rem;
+    }
+    .course-desc { font-size: 0.87rem; color: var(--text); line-height: 1.7; margin-bottom: 1.5rem; }
+    .course-meta {
+      display: flex; flex-direction: column; gap: 0.4rem;
+      padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .course-meta-item { font-size: 0.78rem; color: var(--muted); display: flex; gap: 0.5rem; }
+
+    /* ─── QUOTE ─── */
+    .quote-section {
+      background: var(--ink); padding: 6rem 3rem; text-align: center;
+    }
+    blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 300;
+      font-style: italic; line-height: 1.5;
+      color: var(--text); max-width: 760px; margin: 0 auto 1.5rem;
+    }
+    blockquote::before { content: '\201C'; color: var(--gold); }
+    blockquote::after  { content: '\201D'; color: var(--gold); }
+    .quote-attr { font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); }
+
+    /* ─── CTA ─── */
+    .cta-section {
+      background: var(--deep);
+      padding: 7rem 3rem; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: '太極'; position: absolute;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28rem; font-weight: 300;
+      color: rgba(201,168,76,0.03); line-height: 1;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      pointer-events: none; white-space: nowrap;
+    }
+    .cta-section .section-title { position: relative; z-index: 1; margin-bottom: 1rem; }
+    .cta-section p { color: var(--text); font-size: 1rem; margin-bottom: 2.5rem; position: relative; z-index: 1; }
+    .cta-form-wrap { position: relative; z-index: 1; max-width: 460px; margin: 0 auto; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid rgba(201,168,76,0.12);
+      padding: 2.5rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; color: var(--gold);
+    }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.2); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.4rem; }
+      section { padding: 5rem 1.4rem; }
+      .hero-content { padding: 8rem 1.4rem 5rem; }
+      .hero-calligraphy { display: none; }
+      .philosophy-inner, .instructor-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .photo-secondary { display: none; }
+      .gallery-strip { grid-template-columns: 1fr; }
+      .gallery-strip img { height: 240px; }
+      .courses-grid { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: repeat(2,1fr); }
+      footer { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">
+    <span class="nav-logo-chinese">太極</span>
+    <div class="nav-logo-divider"></div>
+    <span class="nav-logo-en">Master Feng Yanbo<br>Chen-Style Tai Chi</span>
+  </div>
+  <a href="#subscribe" class="nav-cta">Get Early Access</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-ink"></div>
+  <div class="hero-calligraphy">天人合一</div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">12th-Generation Lineage · Singapore</div>
+    <h1>Ancient Art.<br><em>Living</em> Wisdom.</h1>
+    <p class="hero-sub">
+      Master Feng Yanbo carries a tradition 700 years in the making.
+      Learn authentic Chen-style Tai Chi — a moving meditation that
+      transforms body, mind, and spirit.
+    </p>
+    <div class="email-wrap" id="subscribe">
+      <form class="email-form" onsubmit="handleSubmit(event,'hero')">
+        <input type="email" placeholder="Enter your email" required />
+        <button type="submit">Join the List</button>
+      </form>
+      <div class="success-msg" id="hero-success">✓ You're in. We'll reach out when online classes launch.</div>
+      <p class="form-note">Be first to know when online classes open. No spam, ever.</p>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">700<small style="font-size:1.2rem">+</small></div>
+      <div class="stat-label">Years of Tradition</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">12<small style="font-size:1.2rem">th</small></div>
+      <div class="stat-label">Generation Lineage</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Levels of Mastery</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">7<small style="font-size:1.2rem">段</small></div>
+      <div class="stat-label">Black Belt Rank</div>
+    </div>
+  </div>
+</div>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy">
+  <div class="container">
+    <div class="philosophy-inner">
+      <div class="philosophy-text">
+        <div class="section-eyebrow">The Art</div>
+        <h2 class="section-title">Where <em>Ancient</em><br>Meets the Present</h2>
+        <p>Tai Chi is not exercise. It is a conversation between your body and the universe — a practice that has shaped Chinese culture, medicine, and philosophy for centuries.</p>
+        <p>Chen-style Tai Chi, the oldest and most original form, is a living art: fluid and fierce, meditative and martial. Once experienced, it cannot be unfelt.</p>
+        <p>Modern science now confirms what ancient masters intuited: regular practice reduces cortisol, improves neuroplasticity, enhances balance, and cultivates the kind of calm that no app can manufacture.</p>
+      </div>
+      <div class="philosophy-image">
+        <img src="images/class-practice.png" alt="Tai Chi class in session" />
+        <div class="image-caption">太極非遺工作坊 · Singapore</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUCTOR -->
+<section class="instructor">
+  <div class="container">
+    <div class="instructor-inner">
+      <div class="instructor-photo-stack">
+        <img src="images/master-teaching.png" alt="Master Feng teaching" class="photo-main" />
+        <img src="images/master-students.png" alt="Master Feng with students" class="photo-secondary" />
+      </div>
+      <div class="instructor-text">
+        <div class="section-eyebrow">Your Instructor</div>
+        <h2 class="section-title">Master<br><em>Feng Yanbo</em><br>冯彦博</h2>
+        <p>Born into one of China's most revered martial arts families, Master Feng grew up training under his grandfather — the legendary Grandmaster Feng Zhiqiang, founder of Hun Yuan Tai Chi and 11th-generation Chen lineage master.</p>
+        <p>He is not teaching a syllabus. He is transmitting a living inheritance.</p>
+        <div class="credentials">
+          <div class="cred">
+            <span class="cred-icon">⚡</span>
+            <p>12th-generation Chen-style lineage holder — direct grandson of Grandmaster Feng Zhiqiang</p>
+          </div>
+          <div class="cred">
+            <span class="cred-icon">🏅</span>
+            <p>7th-degree black belt · National certified martial arts examiner</p>
+          </div>
+          <div class="cred">
+            <span class="cred-icon">📍</span>
+            <p>Resident instructor · Singapore China Cultural Centre</p>
+          </div>
+          <div class="cred">
+            <span class="cred-icon">🌐</span>
+            <p>Teaches in English & Mandarin · Online courses launching soon</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<div class="gallery">
+  <div class="gallery-header">
+    <div class="section-eyebrow">In the Studio</div>
+    <h2 class="section-title">The <em>Practice</em> in Motion</h2>
+  </div>
+  <div class="gallery-strip">
+    <img src="images/performance.png" alt="Master Feng performing on stage" />
+    <img src="images/class-group.png" alt="Group class photo" />
+    <img src="images/master-students.png" alt="Master with students" />
+  </div>
+</div>
+
+<!-- VIDEO -->
+<section class="video-section">
+  <div class="container">
+    <div class="section-eyebrow">Watch the Form</div>
+    <h2 class="section-title">Chen-Style 24 Form —<br><em>Full Demonstration</em></h2>
+    <p class="video-sub">Uninterrupted. Unedited. The authentic form as passed down through 12 generations.</p>
+    <div class="video-wrapper">
+      <iframe
+        src="https://www.youtube.com/embed/nwYKP6xJy6g?rel=0&color=white&modestbranding=1"
+        title="Chen-Style Tai Chi 24 Form — Master Feng Yanbo"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section class="courses">
+  <div class="container">
+    <div class="section-eyebrow">The Curriculum</div>
+    <h2 class="section-title">Three Levels,<br>One <em>Journey</em></h2>
+    <div class="courses-grid">
+      <div class="course-card">
+        <div class="course-num">01</div>
+        <div class="course-level">Foundation</div>
+        <div class="course-name">Beginner</div>
+        <p class="course-desc">Build your foundation in internal energy cultivation and learn the Chen-style 13-form sequence. No prior experience necessary — only curiosity.</p>
+        <div class="course-meta">
+          <div class="course-meta-item"><span>→</span> Chen-style 13 forms</div>
+          <div class="course-meta-item"><span>→</span> Internal Qi cultivation basics</div>
+          <div class="course-meta-item"><span>→</span> 10 sessions · SGD $580</div>
+        </div>
+      </div>
+      <div class="course-card">
+        <div class="course-num">02</div>
+        <div class="course-level">Intermediate</div>
+        <div class="course-name">Development</div>
+        <p class="course-desc">Deepen your understanding with the Eight Methods & Five Steps, and master the full 24-form Chen-style sequence — the cornerstone of classical practice.</p>
+        <div class="course-meta">
+          <div class="course-meta-item"><span>→</span> 24-form Chen-style sequence</div>
+          <div class="course-meta-item"><span>→</span> Eight Methods & Five Steps</div>
+          <div class="course-meta-item"><span>→</span> 10 sessions · SGD $580</div>
+        </div>
+      </div>
+      <div class="course-card">
+        <div class="course-num">03</div>
+        <div class="course-level">Advanced</div>
+        <div class="course-name">Mastery</div>
+        <p class="course-desc">Enter the world of Chen-style sword forms — 20+ classical sword techniques rooted in Taoist philosophy, where precision meets flowing power.</p>
+        <div class="course-meta">
+          <div class="course-meta-item"><span>→</span> 20+ Chen-style sword methods</div>
+          <div class="course-meta-item"><span>→</span> Taoist sword philosophy</div>
+          <div class="course-meta-item"><span>→</span> 10 sessions · SGD $580</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-section">
+  <blockquote>
+    The body follows the mind. The mind follows the breath.<br>The breath follows the Tao.
+  </blockquote>
+  <div class="quote-attr">— Chen-style Tai Chi principle</div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section" id="cta">
+  <h2 class="section-title">Begin Your<br><em>Practice</em></h2>
+  <p>Online classes are coming. Join the list and be first to know.</p>
+  <div class="cta-form-wrap">
+    <form class="email-form" onsubmit="handleSubmit(event,'cta')">
+      <input type="email" placeholder="Your email address" required />
+      <button type="submit">Join the List</button>
+    </form>
+    <div class="success-msg" id="cta-success">✓ You're on the list. See you on the mat.</div>
+    <p class="form-note" style="text-align:center;">
+      Questions? WhatsApp Master Feng:
+      <a href="https://wa.me/6597539120" style="color:var(--gold);text-decoration:none;">+65 9753 9120</a>
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">太極 · Feng Yanbo</div>
+  <div class="footer-links">
+    <a href="https://wa.me/6597539120">WhatsApp</a>
+    <a href="https://cccsingapore.org/2026/01/11200/">Singapore CCC</a>
+  </div>
+  <div class="footer-copy">© 2026 Master Feng Yanbo · Singapore China Cultural Centre, 217 Queen St</div>
+</footer>
+
+<script>
+  // ── Navbar scroll ──
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ── Email form ──
+  function handleSubmit(e, id) {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.querySelector('input[type="email"]').value;
+    console.log('Email:', email);
+    // TODO: POST to Mailchimp / ConvertKit / your backend
+    form.style.display = 'none';
+    document.getElementById(id + '-success').style.display = 'block';
+  }
+
+  // ── Particle system ──
+  (function() {
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [];
+
+    function resize() {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    for (let i = 0; i < 55; i++) {
+      particles.push({
+        x: Math.random() * W, y: Math.random() * H,
+        r: Math.random() * 1.2 + 0.2,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+        a: Math.random() * 0.5 + 0.15
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(201,168,76,${p.a})`;
+        ctx.fill();
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+        if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+      });
+      // draw faint connecting lines
+      particles.forEach((a, i) => {
+        particles.slice(i + 1).forEach(b => {
+          const d = Math.hypot(a.x - b.x, a.y - b.y);
+          if (d < 120) {
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+            ctx.strokeStyle = `rgba(201,168,76,${0.06 * (1 - d / 120)})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        });
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+</script>
+
+</body>
+</html>

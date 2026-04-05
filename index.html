@@ -424,27 +424,31 @@
       /* EMAIL FORM: 上下排列 */
       .email-wrap { max-width: 100%; }
       .email-form {
-        flex-direction: column;
-        gap: 0.5rem;
+        display: block;
         border: none;
         background: transparent;
         backdrop-filter: none;
         border-radius: 0;
         overflow: visible;
       }
-      .email-form input[type="email"] {
-        padding: 1rem 1.4rem;
-        font-size: 1rem;
-        border: none;
-        border-radius: 3rem;
-        background: rgba(255,255,255,0.1);
+      .email-form input[type="email"],
+      .email-form button {
+        display: block;
         width: 100%;
+        box-sizing: border-box;
+        padding: 1rem 1.4rem;
+        font-size: 0.95rem;
+        border-radius: 3rem;
+        margin-bottom: 0.5rem;
+      }
+      .email-form input[type="email"] {
+        border: none;
+        background: rgba(255,255,255,0.1);
+        color: var(--white);
       }
       .email-form button {
         border-radius: 3rem;
-        padding: 1rem;
-        font-size: 0.9rem;
-        width: 100%;
+        margin-bottom: 0;
       }
 
       /* SECTIONS */

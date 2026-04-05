@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Master Feng Yanbo · Chen-Style Tai Chi</title>
-  <meta name="description" content="Learn authentic Chen-style Tai Chi from Master Feng Yanbo, 12th-generation lineage holder. Classes in Singapore and online worldwide." />
+  <title>Master Feng Yanbo · Chen-Style Xin Yi Hun Yuan Tai Chi</title>
+  <meta name="description" content="Learn authentic Chen-style Xin Yi Hun Yuan Tai Chi from Master Feng Yanbo, 12th-generation lineage holder. Classes in Singapore and online worldwide." />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XEHV8DR3HM"></script>
   <script>
@@ -75,6 +75,19 @@
       transition: all 0.25s;
     }
     .nav-cta:hover { background: var(--gold); color: var(--ink); }
+
+    /* ─── LANG TOGGLE ─── */
+    .nav-right { display: flex; align-items: center; gap: 1.2rem; }
+    .lang-toggle { display: flex; align-items: center; gap: 0.2rem; }
+    .lang-btn {
+      background: none; border: none; color: var(--muted);
+      cursor: pointer; font-size: 0.72rem; letter-spacing: 0.05em;
+      padding: 0.2rem 0.4rem; transition: color 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+    .lang-btn.active { color: var(--gold); font-weight: 600; }
+    .lang-sep { color: rgba(255,255,255,0.15); font-size: 0.7rem; }
+
 
     /* ─── HERO ─── */
     .hero {
@@ -528,9 +541,16 @@
   <div class="nav-logo">
     <span class="nav-logo-chinese">太極</span>
     <div class="nav-logo-divider"></div>
-    <span class="nav-logo-en">Master Feng Yanbo<br>Chen-Style Tai Chi</span>
+    <span class="nav-logo-en">Master Feng Yanbo<br>Chen-Style Xin Yi Hun Yuan Tai Chi</span>
   </div>
-  <a href="#subscribe" class="nav-cta">Get Early Access</a>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="en" onclick="switchLang('en')">EN</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" data-lang="zh" onclick="switchLang('zh')">中文</button>
+    </div>
+    <a href="#subscribe" class="nav-cta" data-i18n="nav_cta">Get Early Access</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -542,10 +562,10 @@
   <div class="hero-calligraphy">天人合一</div>
   <div class="hero-content">
     <div class="hero-eyebrow">12th-Generation Lineage · Singapore</div>
-    <h1>Ancient Art.<br><em>Living</em> Wisdom.</h1>
+    <h1 data-i18n="hero_h1">Ancient Art.<br><em>Living</em> Wisdom.</h1>
     <p class="hero-sub">
       Master Feng Yanbo carries a tradition 700 years in the making.
-      Learn authentic Chen-style Tai Chi — a moving meditation that
+      Learn authentic Chen-style Xin Yi Hun Yuan Tai Chi — a moving meditation that
       transforms body, mind, and spirit.
     </p>
     <div class="email-wrap" id="subscribe">
@@ -559,7 +579,7 @@
   </div>
   <div class="scroll-indicator">
     <div class="scroll-line"></div>
-    Scroll
+    <span data-i18n="scroll_label">Scroll</span>
   </div>
 </section>
 
@@ -568,19 +588,19 @@
   <div class="stats-inner">
     <div class="stat-item">
       <div class="stat-num">700<small style="font-size:1.2rem">+</small></div>
-      <div class="stat-label">Years of Tradition</div>
+      <div class="stat-label" data-i18n="stat_years_label">Years of Tradition</div>
     </div>
     <div class="stat-item">
       <div class="stat-num">12<small style="font-size:1.2rem">th</small></div>
-      <div class="stat-label">Generation Lineage</div>
+      <div class="stat-label" data-i18n="stat_gen_label">Generation Lineage</div>
     </div>
     <div class="stat-item">
       <div class="stat-num">3</div>
-      <div class="stat-label">Levels of Mastery</div>
+      <div class="stat-label" data-i18n="stat_levels_label">Levels of Mastery</div>
     </div>
     <div class="stat-item">
       <div class="stat-num">7<small style="font-size:1.2rem">段</small></div>
-      <div class="stat-label">Black Belt Rank</div>
+      <div class="stat-label" data-i18n="stat_rank_label">Black Belt Rank</div>
     </div>
   </div>
 </div>
@@ -590,15 +610,15 @@
   <div class="container">
     <div class="philosophy-inner">
       <div class="philosophy-text">
-        <div class="section-eyebrow">The Art</div>
-        <h2 class="section-title">Where <em>Ancient</em><br>Meets the Present</h2>
-        <p>Tai Chi is not exercise. It is a conversation between your body and the universe — a practice that has shaped Chinese culture, medicine, and philosophy for centuries.</p>
-        <p>Chen-style Tai Chi, the oldest and most original form, is a living art: fluid and fierce, meditative and martial. Once experienced, it cannot be unfelt.</p>
-        <p>Modern science now confirms what ancient masters intuited: regular practice reduces cortisol, improves neuroplasticity, enhances balance, and cultivates the kind of calm that no app can manufacture.</p>
+        <div class="section-eyebrow" data-i18n="phil_eyebrow">The Art</div>
+        <h2 class="section-title" data-i18n="phil_title">Where <em>Ancient</em><br>Meets the Present</h2>
+        <p data-i18n="phil_p1">Tai Chi is not exercise. It is a conversation between your body and the universe — a practice that has shaped Chinese culture, medicine, and philosophy for centuries.</p>
+        <p data-i18n="phil_p2">Chen-style Xin Yi Hun Yuan Tai Chi, the oldest and most original form, is a living art: fluid and fierce, meditative and martial. Once experienced, it cannot be unfelt.</p>
+        <p data-i18n="phil_p3">Modern science now confirms what ancient masters intuited: regular practice reduces cortisol, improves neuroplasticity, enhances balance, and cultivates the kind of calm that no app can manufacture.</p>
       </div>
       <div class="philosophy-image">
         <img src="images/class-practice.png" alt="Tai Chi class in session" />
-        <div class="image-caption">太極非遺工作坊 · Singapore</div>
+        <div class="image-caption" data-i18n="phil_caption">太極非遺工作坊 · Singapore</div>
       </div>
     </div>
   </div>
@@ -613,26 +633,26 @@
         <img src="images/master-students.png" alt="Master Feng with students" class="photo-secondary" />
       </div>
       <div class="instructor-text">
-        <div class="section-eyebrow">Your Instructor</div>
-        <h2 class="section-title">Master<br><em>Feng Yanbo</em><br>冯彦博</h2>
-        <p>Born into one of China's most revered martial arts families, Master Feng grew up training under his grandfather — the legendary Grandmaster Feng Zhiqiang, founder of Hun Yuan Tai Chi and 11th-generation Chen lineage master.</p>
-        <p>He is not teaching a syllabus. He is transmitting a living inheritance.</p>
+        <div class="section-eyebrow" data-i18n="instr_eyebrow">Your Instructor</div>
+        <h2 class="section-title" data-i18n="instr_title">Master<br><em>Feng Yanbo</em><br>冯彦博</h2>
+        <p data-i18n="instr_p1">Born into one of China's most revered martial arts families, Master Feng grew up training under his grandfather — the legendary Grandmaster Feng Zhiqiang, founder of Hun Yuan Tai Chi and 11th-generation Chen lineage master.</p>
+        <p data-i18n="instr_p2">He is not teaching a syllabus. He is transmitting a living inheritance.</p>
         <div class="credentials">
           <div class="cred">
             <span class="cred-icon">⚡</span>
-            <p>12th-generation Chen-style lineage holder — direct grandson of Grandmaster Feng Zhiqiang</p>
+            <p data-i18n="cred_1">12th-generation Chen-style lineage holder — direct grandson of Grandmaster Feng Zhiqiang</p>
           </div>
           <div class="cred">
             <span class="cred-icon">🏅</span>
-            <p>7th-degree black belt · National certified martial arts examiner</p>
+            <p data-i18n="cred_2">7th-degree black belt · National certified martial arts examiner</p>
           </div>
           <div class="cred">
             <span class="cred-icon">📍</span>
-            <p>Resident instructor · Singapore China Cultural Centre</p>
+            <p data-i18n="cred_3">Resident instructor · Singapore China Cultural Centre</p>
           </div>
           <div class="cred">
             <span class="cred-icon">🌐</span>
-            <p>Teaches in English & Mandarin · Online courses launching soon</p>
+            <p data-i18n="cred_4">Teaches in English & Mandarin · Online courses launching soon</p>
           </div>
         </div>
       </div>
@@ -643,8 +663,8 @@
 <!-- GALLERY -->
 <div class="gallery">
   <div class="gallery-header">
-    <div class="section-eyebrow">In the Studio</div>
-    <h2 class="section-title">The <em>Practice</em> in Motion</h2>
+    <div class="section-eyebrow" data-i18n="gal_eyebrow">In the Studio</div>
+    <h2 class="section-title" data-i18n="gal_title">The <em>Practice</em> in Motion</h2>
   </div>
   <div class="gallery-strip">
     <img src="images/performance.png" alt="Master Feng performing on stage" />
@@ -656,13 +676,13 @@
 <!-- VIDEO -->
 <section class="video-section">
   <div class="container">
-    <div class="section-eyebrow">Watch the Form</div>
-    <h2 class="section-title">Chen-Style 24 Form —<br><em>Full Demonstration</em></h2>
-    <p class="video-sub">Uninterrupted. Unedited. The authentic form as passed down through 12 generations.</p>
+    <div class="section-eyebrow" data-i18n="vid_eyebrow">Watch the Form</div>
+    <h2 class="section-title" data-i18n="vid_title">Chen-Style 24 Form —<br><em>Full Demonstration</em></h2>
+    <p class="video-sub" data-i18n="vid_sub">Uninterrupted. Unedited. The authentic form as passed down through 12 generations.</p>
     <div class="video-wrapper">
       <iframe
         src="https://www.youtube.com/embed/nwYKP6xJy6g?rel=0&color=white&modestbranding=1"
-        title="Chen-Style Tai Chi 24 Form — Master Feng Yanbo"
+        title="Chen-Style Xin Yi Hun Yuan Tai Chi 24 Form — Master Feng Yanbo"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
@@ -674,8 +694,8 @@
 <!-- COURSES -->
 <section class="courses">
   <div class="container">
-    <div class="section-eyebrow">The Curriculum</div>
-    <h2 class="section-title">Three Levels,<br>One <em>Journey</em></h2>
+    <div class="section-eyebrow" data-i18n="course_eyebrow">The Curriculum</div>
+    <h2 class="section-title" data-i18n="course_title">Three Levels,<br>One <em>Journey</em></h2>
 
     <!-- Two tracks -->
     <div class="tracks">
@@ -698,35 +718,35 @@
     <div class="courses-grid">
       <div class="course-card">
         <div class="course-num">01</div>
-        <div class="course-level">Foundation</div>
-        <div class="course-name">Beginner</div>
-        <p class="course-desc">Build your foundation in internal energy cultivation and learn the Chen-style 13-form sequence. No prior experience necessary — only curiosity.</p>
+        <div class="course-level" data-i18n="c1_level">Foundation</div>
+        <div class="course-name" data-i18n="c1_name">Beginner</div>
+        <p class="course-desc" data-i18n="c1_desc">Build your foundation in internal energy cultivation and learn the Chen-style 13-form sequence. No prior experience necessary — only curiosity.</p>
         <div class="course-meta">
-          <div class="course-meta-item"><span>→</span> Chen-style 13 forms</div>
-          <div class="course-meta-item"><span>→</span> Internal Qi cultivation basics</div>
-          <div class="course-meta-item"><span>→</span> 10 sessions per cohort</div>
+          <div class="course-meta-item" data-i18n="c1_m1"><span>→</span> Chen-style 13 forms</div>
+          <div class="course-meta-item" data-i18n="c1_m2"><span>→</span> Internal Qi cultivation basics</div>
+          <div class="course-meta-item course-sessions" data-i18n="sessions_base"><span>→</span> 10 sessions per cohort</div>
         </div>
       </div>
       <div class="course-card">
         <div class="course-num">02</div>
-        <div class="course-level">Intermediate</div>
-        <div class="course-name">Development</div>
-        <p class="course-desc">Deepen your understanding with the Eight Methods & Five Steps, and master the full 24-form Chen-style sequence — the cornerstone of classical practice.</p>
+        <div class="course-level" data-i18n="c2_level">Intermediate</div>
+        <div class="course-name" data-i18n="c2_name">Development</div>
+        <p class="course-desc" data-i18n="c2_desc">Deepen your understanding with the Eight Methods & Five Steps, and master the full 24-form Chen-style sequence — the cornerstone of classical practice.</p>
         <div class="course-meta">
-          <div class="course-meta-item"><span>→</span> 24-form Chen-style sequence</div>
-          <div class="course-meta-item"><span>→</span> Eight Methods & Five Steps</div>
-          <div class="course-meta-item"><span>→</span> 10 sessions per cohort</div>
+          <div class="course-meta-item" data-i18n="c2_m1"><span>→</span> 24-form Chen-style sequence</div>
+          <div class="course-meta-item" data-i18n="c2_m2"><span>→</span> Eight Methods & Five Steps</div>
+          <div class="course-meta-item course-sessions" data-i18n="sessions_base"><span>→</span> 10 sessions per cohort</div>
         </div>
       </div>
       <div class="course-card">
         <div class="course-num">03</div>
-        <div class="course-level">Advanced</div>
-        <div class="course-name">Mastery</div>
-        <p class="course-desc">Enter the world of Chen-style sword forms — 20+ classical sword techniques rooted in Taoist philosophy, where precision meets flowing power.</p>
+        <div class="course-level" data-i18n="c3_level">Advanced</div>
+        <div class="course-name" data-i18n="c3_name">Mastery</div>
+        <p class="course-desc" data-i18n="c3_desc">Enter the world of Chen-style sword forms — 20+ classical sword techniques rooted in Taoist philosophy, where precision meets flowing power.</p>
         <div class="course-meta">
-          <div class="course-meta-item"><span>→</span> 20+ Chen-style sword methods</div>
-          <div class="course-meta-item"><span>→</span> Taoist sword philosophy</div>
-          <div class="course-meta-item"><span>→</span> 10 sessions per cohort</div>
+          <div class="course-meta-item" data-i18n="c3_m1"><span>→</span> 20+ Chen-style sword methods</div>
+          <div class="course-meta-item" data-i18n="c3_m2"><span>→</span> Taoist sword philosophy</div>
+          <div class="course-meta-item course-sessions" data-i18n="sessions_base"><span>→</span> 10 sessions per cohort</div>
         </div>
       </div>
     </div>
@@ -735,15 +755,15 @@
 
 <!-- QUOTE -->
 <div class="quote-section">
-  <blockquote>
+  <blockquote data-i18n="quote_text">
     The body follows the mind. The mind follows the breath.<br>The breath follows the Tao.
   </blockquote>
-  <div class="quote-attr">— Chen-style Tai Chi principle</div>
+  <div class="quote-attr" data-i18n="quote_attr">— Chen-style Xin Yi Hun Yuan Tai Chi principle</div>
 </div>
 
 <!-- CTA -->
 <section class="cta-section" id="cta">
-  <h2 class="section-title">Begin Your<br><em>Practice</em></h2>
+  <h2 class="section-title" data-i18n="cta_title">Begin Your<br><em>Practice</em></h2>
   <p>In Singapore or anywhere in the world — leave your email and we'll be in touch.</p>
   <div class="cta-form-wrap">
     <form class="email-form" onsubmit="handleSubmit(event,'cta')">
@@ -757,55 +777,261 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">太極 · Feng Yanbo</div>
-  <div class="footer-copy">© 2026 Master Feng Yanbo · Singapore China Cultural Centre, 217 Queen St</div>
+  <div class="footer-copy" data-i18n="footer_copy">© 2026 Master Feng Yanbo · Singapore China Cultural Centre, 217 Queen St</div>
 </footer>
 
 <script>
-  // ── Geo detection ──
+  // ── Bilingual strings ──
+  const STRINGS = {
+    en: {
+      nav_cta: 'Get Early Access',
+      hero_h1: 'Ancient Art.<br><em>Living</em> Wisdom.',
+      scroll_label: 'Scroll',
+      stat_years_label: 'Years of Tradition',
+      stat_gen_label: 'Generation Lineage',
+      stat_levels_label: 'Levels of Mastery',
+      stat_rank_label: 'Black Belt Rank',
+      phil_eyebrow: 'The Art',
+      phil_title: 'Where <em>Ancient</em><br>Meets the Present',
+      phil_p1: 'Tai Chi is not exercise. It is a conversation between your body and the universe — a practice that has shaped Chinese culture, medicine, and philosophy for centuries.',
+      phil_p2: 'Chen-style Xin Yi Hun Yuan Tai Chi, the oldest and most original form, is a living art: fluid and fierce, meditative and martial. Once experienced, it cannot be unfelt.',
+      phil_p3: 'Modern science now confirms what ancient masters intuited: regular practice reduces cortisol, improves neuroplasticity, enhances balance, and cultivates the kind of calm that no app can manufacture.',
+      phil_caption: '太極非遺工作坊 · Singapore',
+      instr_eyebrow: 'Your Instructor',
+      instr_title: 'Master<br><em>Feng Yanbo</em><br>冯彦博',
+      instr_p1: "Born into one of China's most revered martial arts families, Master Feng grew up training under his grandfather — the legendary Grandmaster Feng Zhiqiang, founder of Hun Yuan Tai Chi and 11th-generation Chen lineage master.",
+      instr_p2: 'He is not teaching a syllabus. He is transmitting a living inheritance.',
+      cred_1: '12th-generation Chen-style lineage holder — direct grandson of Grandmaster Feng Zhiqiang',
+      cred_2: '7th-degree black belt · National certified martial arts examiner',
+      cred_3: 'Resident instructor · Singapore China Cultural Centre',
+      cred_4: 'Teaches in English & Mandarin · Online courses launching soon',
+      gal_eyebrow: 'In the Studio',
+      gal_title: 'The <em>Practice</em> in Motion',
+      vid_eyebrow: 'Watch the Form',
+      vid_title: 'Chen-Style 24 Form —<br><em>Full Demonstration</em>',
+      vid_sub: 'Uninterrupted. Unedited. The authentic form as passed down through 12 generations.',
+      course_eyebrow: 'The Curriculum',
+      course_title: 'Three Levels,<br>One <em>Journey</em>',
+      c1_level: 'Foundation', c1_name: 'Beginner',
+      c1_desc: 'Build your foundation in internal energy cultivation and learn the Chen-style 13-form sequence. No prior experience necessary — only curiosity.',
+      c1_m1: '<span>→</span> Chen-style 13 forms',
+      c1_m2: '<span>→</span> Internal Qi cultivation basics',
+      c2_level: 'Intermediate', c2_name: 'Development',
+      c2_desc: 'Deepen your understanding with the Eight Methods & Five Steps, and master the full 24-form Chen-style sequence — the cornerstone of classical practice.',
+      c2_m1: '<span>→</span> 24-form Chen-style sequence',
+      c2_m2: '<span>→</span> Eight Methods & Five Steps',
+      c3_level: 'Advanced', c3_name: 'Mastery',
+      c3_desc: 'Enter the world of Chen-style sword forms — 20+ classical sword techniques rooted in Taoist philosophy, where precision meets flowing power.',
+      c3_m1: '<span>→</span> 20+ Chen-style sword methods',
+      c3_m2: '<span>→</span> Taoist sword philosophy',
+      quote_text: 'The body follows the mind. The mind follows the breath.<br>The breath follows the Tao.',
+      quote_attr: '— Chen-style Xin Yi Hun Yuan Tai Chi principle',
+      cta_title: 'Begin Your<br><em>Practice</em>',
+      footer_copy: '© 2026 Master Feng Yanbo · Singapore China Cultural Centre, 217 Queen St',
+      // geo-dependent
+      eyebrow_sg: '📍 In-Person Classes · Singapore',
+      eyebrow_intl: '🌐 Online Classes · Coming Soon',
+      sub_sg: 'Master Feng Yanbo teaches authentic Chen-style Xin Yi Hun Yuan Tai Chi at Singapore China Cultural Centre. Small-group classes now open — limited spots per cohort.',
+      sub_intl: 'Master Feng Yanbo carries a tradition 700 years in the making. Learn authentic Chen-style Xin Yi Hun Yuan Tai Chi — a moving meditation that transforms body, mind, and spirit.',
+      btn_sg: 'Enquire Now', btn_intl: 'Join Waitlist',
+      note_sg: "Leave your email and we'll reply within 24 hours about upcoming classes.",
+      note_intl: 'Be first to know when online classes open worldwide. No spam, ever.',
+      ok_sg: "✓ Got it! We'll be in touch about Singapore classes shortly.",
+      ok_intl: "✓ You're on the list. We'll reach out when online classes launch.",
+      ok_cta_intl: "✓ You're on the list. See you on the mat.",
+      track_ip_title_sg: 'In-Person · Singapore',
+      track_ip_badge_sg: 'Now Open',
+      track_ip_desc_sg: 'Small-group classes · Singapore China Cultural Centre, 217 Queen St · 3 levels available · SGD $580 / 10 sessions',
+      track_ol_title: 'Online · Worldwide',
+      track_ol_badge: 'Coming Soon',
+      track_ol_desc: 'Live sessions & recorded courses — learn from anywhere in the world, at your own pace.',
+      sessions_base: '<span>→</span> 10 sessions per cohort',
+      sessions_sg: '<span>→</span> 10 sessions · SGD $580',
+      cta_p_sg: "Interested in joining a class in Singapore? Leave your email and we'll be in touch.",
+      cta_p_intl: 'Online classes are coming. Join the waitlist and be first to know.',
+      input_ph1: 'Enter your email',
+      input_ph2: 'Your email address',
+    },
+    zh: {
+      nav_cta: '立即订阅',
+      hero_h1: '千年古艺<br><em>活的智慧</em>',
+      scroll_label: '向下滚动',
+      stat_years_label: '年传承历史',
+      stat_gen_label: '代传承',
+      stat_levels_label: '修炼层次',
+      stat_rank_label: '武术段位',
+      phil_eyebrow: '武术之道',
+      phil_title: '古法今传<br><em>生生不息</em>',
+      phil_p1: '太极拳不是运动。它是身体与宇宙之间的对话——一门塑造了中国文化、医学与哲学数百年的修炼之道。',
+      phil_p2: '陈式心意混元太极拳，最古老也最原始的拳种，是一门活着的艺术：刚柔并济，动静相宜。一经体会，无可忘怀。',
+      phil_p3: '现代科学印证了古代宗师的直觉：长期练习可降低皮质醇、提升神经可塑性、改善平衡感，并培养一种任何应用程序都无法复制的内在宁静。',
+      phil_caption: '太極非遺工作坊 · 新加坡',
+      instr_eyebrow: '授课老师',
+      instr_title: '冯彦博<br><em>老师</em>',
+      instr_p1: '冯彦博老师出身于中国最受尊崇的武术世家，自幼随祖父——混元太极创始人、陈式十一代传人冯志强大师——刻苦修炼。',
+      instr_p2: '他传授的不是课程大纲，而是一脉相承的活的武学遗产。',
+      cred_1: '陈式心意混元太极拳第十二代传人，冯志强大师嫡孙',
+      cred_2: '武术七段 · 国家认证武术裁判员',
+      cred_3: '驻场教练 · 新加坡中国文化中心',
+      cred_4: '中英双语授课 · 线上课程即将开放',
+      gal_eyebrow: '道场风采',
+      gal_title: '动中求<em>静</em>',
+      vid_eyebrow: '观摩示范',
+      vid_title: '陈式心意混元太极拳24式<br><em>完整示范</em>',
+      vid_sub: '不剪辑，不修饰。十二代传承，原汁原味。',
+      course_eyebrow: '课程体系',
+      course_title: '三个层次<br>一段<em>旅程</em>',
+      c1_level: '基础', c1_name: '入门班',
+      c1_desc: '从内功修炼与陈式十三式入手，建立扎实根基。无需任何基础，只需一颗好奇之心。',
+      c1_m1: '<span>→</span> 陈式十三式',
+      c1_m2: '<span>→</span> 内气培养基础',
+      c2_level: '进阶', c2_name: '提高班',
+      c2_desc: '深入学习八法五步，掌握陈式二十四式完整套路——经典修炼的核心功法。',
+      c2_m1: '<span>→</span> 陈式二十四式',
+      c2_m2: '<span>→</span> 八法五步',
+      c3_level: '高级', c3_name: '精修班',
+      c3_desc: '进入陈式剑法的境界——二十余式扎根道家哲学的经典剑术，精准与流动之美在此融合。',
+      c3_m1: '<span>→</span> 陈式剑法二十余式',
+      c3_m2: '<span>→</span> 道家剑术哲学',
+      quote_text: '身随意动，意随气行，<br>气归自然。',
+      quote_attr: '— 陈式心意混元太极拳拳理',
+      cta_title: '开始<br><em>修炼之路</em>',
+      footer_copy: '© 2026 冯彦博老师 · 新加坡中国文化中心，皇后街217号',
+      // geo-dependent
+      eyebrow_sg: '📍 新加坡线下课程',
+      eyebrow_intl: '🌐 线上课程 · 即将开放',
+      sub_sg: '冯彦博老师在新加坡中国文化中心教授正宗陈式心意混元太极拳。小班精品课程，每期名额有限，现已开放报名。',
+      sub_intl: '冯彦博老师传承700年武学精髓。学习正宗陈式心意混元太极拳——一门修身养心的动态冥想，让身体、心灵与精神焕然一新。',
+      btn_sg: '立即咨询', btn_intl: '加入候补',
+      note_sg: '留下邮箱，我们将在24小时内与您联系课程详情。',
+      note_intl: '第一时间获悉线上课程开放通知，绝不发送垃圾邮件。',
+      ok_sg: '✓ 收到！我们将尽快与您联系新加坡课程详情。',
+      ok_intl: '✓ 已加入候补名单，线上课程开放时我们会第一时间通知您。',
+      ok_cta_intl: '✓ 已加入候补名单，期待与您相见。',
+      track_ip_title_sg: '线下课程 · 新加坡',
+      track_ip_badge_sg: '立即开放',
+      track_ip_desc_sg: '小班精品课程 · 新加坡中国文化中心，皇后街217号 · 三个层次 · 每期SGD $580（共10节）',
+      track_ol_title: '线上课程 · 全球',
+      track_ol_badge: '即将开放',
+      track_ol_desc: '直播课程与录播内容，随时随地，按自己的节奏学习。',
+      sessions_base: '<span>→</span> 每期10节课',
+      sessions_sg: '<span>→</span> 每期10节课 · SGD $580',
+      cta_p_sg: '有意参加新加坡课程？留下邮箱，我们将与您联系。',
+      cta_p_intl: '线上课程即将开放，加入候补名单，抢先获知消息。',
+      input_ph1: '请输入邮箱地址',
+      input_ph2: '请输入您的邮箱',
+    }
+  };
+
+  let currentLang = localStorage.getItem('lang') || 'en';
+  let currentIsSG = false;
+
+  function render() {
+    const s = STRINGS[currentLang];
+    const isSG = currentIsSG;
+
+    // Static i18n elements
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (s[key] !== undefined) el.innerHTML = s[key];
+    });
+
+    // Input placeholders
+    const inputs = document.querySelectorAll('.email-form input[type="email"]');
+    if (inputs[0]) inputs[0].placeholder = s.input_ph1;
+    if (inputs[1]) inputs[1].placeholder = s.input_ph2;
+
+    // Geo: eyebrow
+    const eyebrow = document.querySelector('.hero-eyebrow');
+    if (eyebrow) eyebrow.textContent = isSG ? s.eyebrow_sg : s.eyebrow_intl;
+
+    // Geo: hero subtitle
+    const heroSub = document.querySelector('.hero-sub');
+    if (heroSub) heroSub.textContent = isSG ? s.sub_sg : s.sub_intl;
+
+    // Geo: buttons
+    document.querySelectorAll('.email-form button').forEach(btn => {
+      if (!btn.disabled) btn.textContent = isSG ? s.btn_sg : s.btn_intl;
+    });
+
+    // Geo: form notes
+    document.querySelectorAll('.form-note').forEach(n => {
+      n.textContent = isSG ? s.note_sg : s.note_intl;
+    });
+
+    // Geo: success messages
+    const heroSuc = document.getElementById('hero-success');
+    if (heroSuc) heroSuc.textContent = isSG ? s.ok_sg : s.ok_intl;
+    const ctaSuc = document.getElementById('cta-success');
+    if (ctaSuc) ctaSuc.textContent = isSG ? s.ok_sg : s.ok_cta_intl;
+
+    // Geo: tracks
+    const trackInperson = document.querySelector('.track-inperson');
+    const trackOnline   = document.querySelector('.track-online');
+    if (isSG) {
+      if (trackInperson) {
+        trackInperson.style.borderColor = 'rgba(201,168,76,0.7)';
+        trackInperson.style.background  = 'rgba(201,168,76,0.13)';
+        trackInperson.style.opacity     = '1';
+        trackInperson.innerHTML = `<span class="track-icon">📍</span><div>
+          <div class="track-title">${s.track_ip_title_sg} <span style="font-size:0.65rem;background:rgba(201,168,76,0.3);color:#e8c96a;padding:0.15rem 0.5rem;border-radius:2rem;margin-left:0.4rem;vertical-align:middle;">${s.track_ip_badge_sg}</span></div>
+          <div class="track-desc">${s.track_ip_desc_sg}</div>
+        </div>`;
+      }
+      if (trackOnline) {
+        trackOnline.style.opacity = '0.35';
+        trackOnline.style.borderColor = '';
+        trackOnline.style.background  = '';
+      }
+    } else {
+      if (trackOnline) {
+        trackOnline.style.borderColor = 'rgba(42,140,110,0.7)';
+        trackOnline.style.background  = 'rgba(42,140,110,0.13)';
+        trackOnline.style.opacity     = '1';
+        trackOnline.innerHTML = `<span class="track-icon">🌐</span><div>
+          <div class="track-title">${s.track_ol_title} <span class="coming-soon">${s.track_ol_badge}</span></div>
+          <div class="track-desc">${s.track_ol_desc}</div>
+        </div>`;
+      }
+      if (trackInperson) {
+        trackInperson.style.opacity = '0.35';
+        trackInperson.style.borderColor = '';
+        trackInperson.style.background  = '';
+      }
+    }
+
+    // Geo: course sessions/pricing rows
+    document.querySelectorAll('.course-sessions').forEach(el => {
+      el.innerHTML = isSG ? s.sessions_sg : s.sessions_base;
+    });
+
+    // Geo: CTA paragraph
+    const ctaP = document.querySelector('.cta-section p');
+    if (ctaP) ctaP.textContent = isSG ? s.cta_p_sg : s.cta_p_intl;
+
+    // Lang toggle active state
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === currentLang);
+    });
+
+    document.documentElement.lang = currentLang === 'zh' ? 'zh' : 'en';
+  }
+
+  function switchLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    render();
+  }
+
   (async function() {
     try {
       const res = await fetch('https://ipapi.co/json/');
       const data = await res.json();
-      const isSG = data.country_code === 'SG';
-
-      // Hero副标题
-      const heroSub = document.querySelector('.hero-sub');
-      if (heroSub) {
-        heroSub.textContent = isSG
-          ? 'Master Feng Yanbo teaches Chen-style Tai Chi at Singapore China Cultural Centre. In-person classes now open — limited spots available.'
-          : 'Master Feng Yanbo carries a tradition 700 years in the making. Learn authentic Chen-style Tai Chi — a moving meditation that transforms body, mind, and spirit.';
-      }
-
-      // Hero表单提示
-      const formNote = document.querySelector('.form-note');
-      if (formNote) {
-        formNote.textContent = isSG
-          ? 'Enquire about in-person classes in Singapore. We\'ll reply within 24 hours.'
-          : 'Be first to know when online classes open. No spam, ever.';
-      }
-
-      // Hero成功消息
-      const heroSuccess = document.getElementById('hero-success');
-      if (heroSuccess) {
-        heroSuccess.textContent = isSG
-          ? '✓ Got it! We\'ll be in touch about upcoming Singapore classes.'
-          : '✓ You\'re in. We\'ll reach out when online classes launch.';
-      }
-
-      // tracks区块：新加坡突出线下，海外突出线上
-      const trackInperson = document.querySelector('.track-inperson');
-      const trackOnline = document.querySelector('.track-online');
-      if (isSG && trackInperson && trackOnline) {
-        trackInperson.style.borderColor = 'rgba(201,168,76,0.6)';
-        trackInperson.style.background = 'rgba(201,168,76,0.12)';
-      } else if (!isSG && trackOnline) {
-        trackOnline.style.borderColor = 'rgba(42,140,110,0.6)';
-        trackOnline.style.background = 'rgba(42,140,110,0.12)';
-      }
-
+      currentIsSG = data.country_code === 'SG';
     } catch(e) {
-      // 检测失败不影响页面
+      currentIsSG = false;
     }
+    render();
   })();
 
   // ── Navbar scroll ──

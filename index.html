@@ -405,17 +405,66 @@
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
-      nav { padding: 1rem 1.4rem; }
-      section { padding: 5rem 1.4rem; }
-      .hero-content { padding: 8rem 1.4rem 5rem; }
+      /* NAV: 中文logo + 小按钮，隐藏英文副标题 */
+      nav { padding: 0.9rem 1.2rem; }
+      .nav-logo-divider, .nav-logo-en { display: none; }
+      .nav-logo-chinese { font-size: 1.3rem; }
+      .nav-cta {
+        padding: 0.45rem 1rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.05em;
+      }
+
+      /* HERO */
+      .hero-content { padding: 7rem 1.2rem 4rem; width: 100%; max-width: 100%; }
+      .hero h1 { font-size: clamp(2.4rem, 10vw, 3.5rem); }
+      .hero-sub { font-size: 0.9rem; max-width: 100%; }
       .hero-calligraphy { display: none; }
-      .philosophy-inner, .instructor-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      /* EMAIL FORM: 上下排列 */
+      .email-wrap { max-width: 100%; }
+      .email-form {
+        flex-direction: column;
+        border-radius: 1rem;
+        overflow: hidden;
+      }
+      .email-form input[type="email"] {
+        padding: 0.9rem 1.2rem;
+        font-size: 1rem;
+        border-bottom: 1px solid rgba(201,168,76,0.2);
+      }
+      .email-form button {
+        border-radius: 0 0 1rem 1rem;
+        padding: 0.9rem;
+        font-size: 0.85rem;
+        width: 100%;
+      }
+
+      /* SECTIONS */
+      section { padding: 4rem 1.2rem; }
+      .gallery-header { padding: 0 1.2rem; }
+
+      /* PHILOSOPHY / INSTRUCTOR */
+      .philosophy-inner, .instructor-inner { grid-template-columns: 1fr; gap: 2rem; }
       .photo-secondary { display: none; }
+
+      /* GALLERY */
       .gallery-strip { grid-template-columns: 1fr; }
-      .gallery-strip img { height: 240px; }
+      .gallery-strip img { height: 220px; }
+
+      /* COURSES */
       .courses-grid { grid-template-columns: 1fr; }
+
+      /* STATS */
       .stats-inner { grid-template-columns: repeat(2,1fr); }
-      footer { flex-direction: column; text-align: center; }
+      .stats-bar { padding: 1.5rem 1.2rem; }
+
+      /* CTA BOTTOM */
+      .cta-section { padding: 5rem 1.2rem; }
+      .cta-form-wrap { max-width: 100%; }
+
+      /* FOOTER */
+      footer { flex-direction: column; text-align: center; padding: 2rem 1.2rem; }
       .footer-links { justify-content: center; }
     }
   </style>

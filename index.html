@@ -723,6 +723,55 @@
       .story-modal-inner { padding: 2rem 1.4rem; }
     }
 
+    /* ─── STICKY BAR ─── */
+    .sticky-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 450;
+      background: rgba(5,10,7,0.97); backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(201,168,76,0.3);
+      padding: 0.9rem 3.5rem;
+      display: flex; align-items: center; justify-content: center; gap: 1.5rem;
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    .sticky-bar.visible { transform: translateY(0); }
+    .sticky-bar-copy {
+      font-size: 0.82rem; color: var(--muted); white-space: nowrap; flex-shrink: 0;
+    }
+    .sticky-bar-form {
+      display: flex; flex: 1; max-width: 420px;
+      border: 1px solid rgba(201,168,76,0.35);
+      border-radius: 3rem; overflow: hidden; background: rgba(255,255,255,0.04);
+    }
+    .sticky-bar-form input[type="email"] {
+      flex: 1; padding: 0.65rem 1.2rem;
+      background: transparent; border: none;
+      color: var(--white); font-size: 0.85rem; outline: none;
+    }
+    .sticky-bar-form input::placeholder { color: var(--muted); }
+    .sticky-bar-form button[type="submit"] {
+      padding: 0.65rem 1.4rem;
+      background: var(--gold); color: var(--ink);
+      border: none; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.03em;
+      cursor: pointer; border-radius: 0 3rem 3rem 0; white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .sticky-bar-form button:hover { background: #e0bc5a; }
+    .sticky-bar-close {
+      position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%);
+      background: none; border: none; color: var(--muted);
+      font-size: 1.3rem; cursor: pointer; line-height: 1;
+      padding: 0.2rem 0.4rem; transition: color 0.2s;
+    }
+    .sticky-bar-close:hover { color: var(--white); }
+    .sticky-bar-ok {
+      display: none; font-size: 0.85rem; color: var(--gold);
+    }
+    @media (max-width: 700px) {
+      .sticky-bar { flex-wrap: wrap; gap: 0.7rem; padding: 0.8rem 1.2rem; }
+      .sticky-bar-copy { display: none; }
+      .sticky-bar-form { max-width: 100%; flex: 1 1 auto; }
+    }
+
     /* ─── NAV LINK ─── */
     .nav-link {
       font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
@@ -1155,6 +1204,17 @@
   </div>
 </section>
 
+<!-- STICKY BAR -->
+<div class="sticky-bar" id="stickyBar">
+  <span class="sticky-bar-copy" data-i18n="sticky_copy">Join our growing community →</span>
+  <form class="sticky-bar-form" onsubmit="handleSubmit(event,'sticky')">
+    <input type="email" data-i18n-ph="sticky_ph" placeholder="Your email" required>
+    <button type="submit" data-i18n="sticky_btn">Get Early Access</button>
+  </form>
+  <div class="sticky-bar-ok" id="sticky-success" data-i18n="sticky_ok">✓ You're on the list.</div>
+  <button class="sticky-bar-close" id="stickyClose" aria-label="Close">×</button>
+</div>
+
 <!-- STORY MODAL -->
 <div class="story-modal" id="storyModal" onclick="handleModalClick(event)">
   <div class="story-modal-inner">
@@ -1296,6 +1356,10 @@
       cta_p_intl: 'Online classes are coming. Join the waitlist and be first to know.',
       input_ph1: 'Enter your email',
       input_ph2: 'Your email address',
+      sticky_copy: 'Weekly insights on Tai Chi, Chinese philosophy & living tradition — free.',
+      sticky_btn: 'Get Early Access',
+      sticky_ph: 'Your email',
+      sticky_ok: '✓ You\'re on the list.',
     },
     zh: {
       nav_cta: '立即订阅',
@@ -1405,6 +1469,10 @@
       cta_p_intl: '线上课程即将开放，加入候补名单，抢先获知消息。',
       input_ph1: '请输入邮箱地址',
       input_ph2: '请输入您的邮箱',
+      sticky_copy: '每周一封：太极、阴阳与中国传统智慧精华，免费订阅。',
+      sticky_btn: '立即订阅',
+      sticky_ph: '请输入邮箱',
+      sticky_ok: '✓ 已收到，期待与您相见。',
     }
   };
 
@@ -1425,6 +1493,8 @@
     const inputs = document.querySelectorAll('.email-form input[type="email"]');
     if (inputs[0]) inputs[0].placeholder = s.input_ph1;
     if (inputs[1]) inputs[1].placeholder = s.input_ph2;
+    const stickyInput = document.querySelector('.sticky-bar-form input[type="email"]');
+    if (stickyInput) stickyInput.placeholder = s.sticky_ph;
 
     // Geo: eyebrow
     const eyebrow = document.querySelector('.hero-eyebrow');
@@ -1523,6 +1593,26 @@
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 60);
+    updateStickyBar();
+  });
+
+  // ── Sticky bar ──
+  const stickyBar   = document.getElementById('stickyBar');
+  const stickyClose = document.getElementById('stickyClose');
+  const ctaSection  = document.getElementById('cta');
+  let stickyDone = sessionStorage.getItem('stickyDone');
+
+  function updateStickyBar() {
+    if (stickyDone) return;
+    const pastHero  = window.scrollY > 500;
+    const nearCta   = ctaSection.getBoundingClientRect().top < window.innerHeight * 0.85;
+    stickyBar.classList.toggle('visible', pastHero && !nearCta);
+  }
+
+  stickyClose.addEventListener('click', () => {
+    stickyBar.classList.remove('visible');
+    stickyDone = true;
+    sessionStorage.setItem('stickyDone', '1');
   });
 
   // ── Email form ──
@@ -1543,7 +1633,13 @@
       const data = await res.json();
       if (data.success) {
         form.style.display = 'none';
-        document.getElementById(id + '-success').style.display = 'block';
+        const successEl = document.getElementById(id + '-success');
+        successEl.style.display = 'block';
+        if (id === 'sticky') {
+          stickyDone = true;
+          sessionStorage.setItem('stickyDone', '1');
+          setTimeout(() => stickyBar.classList.remove('visible'), 2500);
+        }
       } else {
         btn.textContent = 'Try Again';
         btn.disabled = false;

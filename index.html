@@ -625,6 +625,148 @@
       footer { flex-direction: column; text-align: center; padding: 2rem 1.2rem; }
       .footer-links { justify-content: center; }
     }
+
+    /* ─── CULTURE SECTION ─── */
+    .culture-section { background: var(--mid); }
+    .culture-intro {
+      color: var(--text); font-size: 0.95rem; font-weight: 300;
+      max-width: 560px; margin-bottom: 3.5rem; line-height: 1.75;
+    }
+    .culture-grid {
+      columns: 3; column-gap: 1.2rem;
+    }
+    .culture-card {
+      break-inside: avoid; margin-bottom: 1.2rem;
+      padding: 1.8rem 1.8rem 1.5rem;
+      background: rgba(5,10,7,0.6);
+      border: 1px solid rgba(201,168,76,0.12);
+      border-radius: 4px; cursor: pointer;
+      transition: border-color 0.25s, background 0.25s;
+      display: block;
+    }
+    .culture-card:hover {
+      border-color: rgba(201,168,76,0.4);
+      background: rgba(201,168,76,0.05);
+    }
+    .card-tag {
+      font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .card-icon { font-size: 1.8rem; margin-bottom: 0.8rem; line-height: 1; }
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-weight: 300; line-height: 1.25;
+      margin-bottom: 0.75rem; color: var(--white);
+    }
+    .card-excerpt {
+      font-size: 0.82rem; color: var(--muted); line-height: 1.65;
+      margin-bottom: 1.1rem;
+    }
+    .card-read {
+      font-size: 0.7rem; letter-spacing: 0.1em; color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    /* ─── STORY MODAL ─── */
+    .story-modal {
+      display: none; position: fixed; inset: 0; z-index: 500;
+      background: rgba(5,10,7,0.92); backdrop-filter: blur(12px);
+      overflow-y: auto; padding: 3rem 1.5rem;
+    }
+    .story-modal.open { display: flex; align-items: flex-start; justify-content: center; }
+    .story-modal-inner {
+      position: relative; max-width: 680px; width: 100%;
+      background: var(--deep);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 4px; padding: 3.5rem;
+    }
+    .story-close {
+      position: absolute; top: 1.2rem; right: 1.5rem;
+      background: none; border: none; color: var(--muted);
+      font-size: 1.6rem; cursor: pointer; line-height: 1;
+      transition: color 0.2s;
+    }
+    .story-close:hover { color: var(--white); }
+    .story-tag {
+      font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .story-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300;
+      line-height: 1.15; margin-bottom: 2rem;
+      padding-bottom: 1.5rem; border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .story-body p {
+      font-size: 0.95rem; color: var(--text); line-height: 1.85;
+      margin-bottom: 1.2rem; font-weight: 300;
+    }
+    .story-body p:last-child { margin-bottom: 0; }
+    .story-body em { color: var(--gold); font-style: italic; }
+    .modal-hero {
+      display: block;
+      width: calc(100% + 7rem); margin: 0 -3.5rem 2rem;
+      height: auto;
+      filter: brightness(0.85) saturate(0.85);
+    }
+    .modal-hero.symbol {
+      width: 160px; margin: 0 auto 2rem;
+      filter: none;
+    }
+    @media (max-width: 600px) {
+      .modal-hero { width: calc(100% + 2.8rem); margin: 0 -1.4rem 1.5rem; }
+    }
+
+    @media (max-width: 900px) { .culture-grid { columns: 2; } }
+    @media (max-width: 600px) {
+      .culture-grid { columns: 1; }
+      .story-modal-inner { padding: 2rem 1.4rem; }
+    }
+
+    /* ─── NAV LINK ─── */
+    .nav-link {
+      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--gold); }
+    @media (max-width: 600px) { .nav-link { display: none; } }
+
+    /* ─── CULTURE SUB-HEADERS ─── */
+    .culture-sub-header { margin-bottom: 2rem; }
+    .culture-sub-header h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 300; color: var(--white); margin-bottom: 0.3rem;
+    }
+    .culture-sub-header h3 em { font-style: italic; color: var(--gold); }
+    .culture-sub-header p { font-size: 0.82rem; color: var(--muted); }
+    .culture-group-divider {
+      height: 1px; background: rgba(201,168,76,0.15); margin: 3.5rem 0;
+    }
+
+    /* ─── NAV LINKS (left of center) ─── */
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-link {
+      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--gold); }
+    @media (max-width: 768px) { .nav-links { display: none; } }
+
+    /* ─── CARD IMAGE ─── */
+    .card-img {
+      height: 145px;
+      background-size: cover;
+      background-position: center 30%;
+      margin: -1.8rem -1.8rem 1.4rem;
+      border-radius: 4px 4px 0 0;
+      filter: brightness(0.6) saturate(0.75);
+      position: relative;
+    }
+    .card-img::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 50px;
+      background: linear-gradient(to top, rgba(5,10,7,0.7), transparent);
+    }
   </style>
 </head>
 <body>
@@ -637,6 +779,10 @@
     <span class="nav-logo-chinese">太極</span>
     <div class="nav-logo-divider"></div>
     <span class="nav-logo-en">Master Feng Yanbo<br>Chen-Style Xin Yi Hun Yuan Tai Chi</span>
+  </div>
+  <div class="nav-links">
+    <a href="#tai-chi-heritage" class="nav-link" data-i18n="nav_heritage">Tai Chi Culture</a>
+    <a href="#hun-yuan" class="nav-link" data-i18n="nav_hunyuan">Hun Yuan</a>
   </div>
   <div class="nav-right">
     <div class="lang-toggle">
@@ -856,6 +1002,170 @@
   <div class="quote-attr" data-i18n="quote_attr">— Chen-style Xin Yi Hun Yuan Tai Chi principle</div>
 </div>
 
+<!-- CULTURE -->
+<section class="culture-section" id="culture">
+  <div class="container">
+    <div class="section-eyebrow" data-i18n="cult_eyebrow">The Heritage</div>
+    <h2 class="section-title" data-i18n="cult_title">Seven Centuries of<br><em>Living History</em></h2>
+    <p class="culture-intro" data-i18n="cult_intro">Tai Chi is not ancient history frozen in a museum. It is a living tradition, shaped by real people, real insights, and real transmissions across 700 years. These are some of those stories.</p>
+
+    <div class="culture-sub-header" id="tai-chi-heritage">
+      <h3 data-i18n="cult_sub1_title">The Way of <em>Tai Chi</em></h3>
+      <p data-i18n="cult_sub1_sub">History, philosophy, and legend across seven centuries.</p>
+    </div>
+    <div class="culture-grid">
+
+      <div class="culture-card" onclick="openStory(0)">
+        <div class="card-img" style="background-image:url('images/culture-wudang.jpg')"></div>
+        <div class="card-tag" data-i18n="cult_c0_tag">Origin Legend</div>
+        <div class="card-icon">☯</div>
+        <h3 class="card-title" data-i18n="cult_c0_title">The Crane and the Snake</h3>
+        <p class="card-excerpt" data-i18n="cult_c0_excerpt">On Wudang Mountain, a Taoist monk witnesses a battle that changes martial arts forever.</p>
+        <span class="card-read" data-i18n="read_more">Read the story →</span>
+      </div>
+
+      <div class="culture-card" onclick="openStory(1)">
+        <div class="card-img" style="background-image:url('images/culture-chen-village.jpg')"></div>
+        <div class="card-tag" data-i18n="cult_c1_tag">History · 1374</div>
+        <div class="card-icon">📜</div>
+        <h3 class="card-title" data-i18n="cult_c1_title">Chen Village</h3>
+        <p class="card-excerpt" data-i18n="cult_c1_excerpt">A retired Ming dynasty general retreats to his ancestral village and begins codifying something extraordinary.</p>
+        <span class="card-read" data-i18n="read_more">Read the story →</span>
+      </div>
+
+      <div class="culture-card" onclick="openStory(2)">
+        <div class="card-img" style="background-image:url('images/culture-yang-luchan.jpg'); background-position:center top;"></div>
+        <div class="card-tag" data-i18n="cult_c2_tag">History · 1850</div>
+        <div class="card-icon">🏯</div>
+        <h3 class="card-title" data-i18n="cult_c2_title">The Secret That Broke Free</h3>
+        <p class="card-excerpt" data-i18n="cult_c2_excerpt">For 150 years, the Chen family guarded their art with fierce secrecy. Then one outsider changed everything.</p>
+        <span class="card-read" data-i18n="read_more">Read the story →</span>
+      </div>
+
+      <div class="culture-card" onclick="openStory(3)">
+        <div class="card-img" style="background-image:url('images/culture-yinyang.svg'); background-color:#0b1a12; background-size:100px 100px; background-repeat:no-repeat; background-position:center;"></div>
+        <div class="card-tag" data-i18n="cult_c3_tag">Philosophy</div>
+        <div class="card-icon">⚖️</div>
+        <h3 class="card-title" data-i18n="cult_c3_title">Yin & Yang in Motion</h3>
+        <p class="card-excerpt" data-i18n="cult_c3_excerpt">Every strike contains a defense. Every hardness holds a softness. This is not metaphor — it is the physics of Tai Chi.</p>
+        <span class="card-read" data-i18n="read_more">Read the story →</span>
+      </div>
+
+      <div class="culture-card" onclick="openStory(4)">
+        <div class="card-img" style="background-image:url('images/culture-bagua.svg'); background-color:#0b1a12; background-size:120px 120px; background-repeat:no-repeat; background-position:center;"></div>
+        <div class="card-tag" data-i18n="cult_c4_tag">Philosophy</div>
+        <div class="card-icon">🌊</div>
+        <h3 class="card-title" data-i18n="cult_c4_title">Thirteen — The Number That Contains Everything</h3>
+        <p class="card-excerpt" data-i18n="cult_c4_excerpt">Thirteen doesn't mean thirteen poses. It encodes the entire universe of Tai Chi in a single number.</p>
+        <span class="card-read" data-i18n="read_more">Read the story →</span>
+      </div>
+
+      <div class="culture-card" onclick="openStory(5)">
+        <div class="card-img" style="background-image:url('images/culture-taichi-group.jpg')"></div>
+        <div class="card-tag" data-i18n="cult_c5_tag">Lineage</div>
+        <div class="card-icon">⚡</div>
+        <h3 class="card-title" data-i18n="cult_c5_title">The Synthesis</h3>
+        <p class="card-excerpt" data-i18n="cult_c5_excerpt">In 1950s Beijing, a young master trained under two of China's greatest teachers simultaneously. What emerged was something entirely new.</p>
+        <span class="card-read" data-i18n="read_more">Read the story →</span>
+      </div>
+
+      <div class="culture-card" onclick="openStory(10)">
+        <div class="card-img" style="background-image:url('images/culture-silk.jpg'); background-position:center top;"></div>
+        <div class="card-tag" data-i18n="cult_c10_tag">Technique</div>
+        <div class="card-icon">🧵</div>
+        <h3 class="card-title" data-i18n="cult_c10_title">The Silk Thread</h3>
+        <p class="card-excerpt" data-i18n="cult_c10_excerpt">What separates Chen-style from all other Tai Chi is a quality masters call silk-reeling energy. It cannot be faked — only cultivated.</p>
+        <span class="card-read" data-i18n="read_more">Read the story →</span>
+      </div>
+
+      <div class="culture-card" onclick="openStory(11)">
+        <div class="card-img" style="background-image:url('images/culture-stars.jpg')"></div>
+        <div class="card-tag" data-i18n="cult_c11_tag">Cosmology</div>
+        <div class="card-icon">☰</div>
+        <h3 class="card-title" data-i18n="cult_c11_title">Written in the Stars</h3>
+        <p class="card-excerpt" data-i18n="cult_c11_excerpt">The Eight Gates and Five Steps of Tai Chi map directly onto the I Ching's trigrams and Five Elements. This was not coincidence.</p>
+        <span class="card-read" data-i18n="read_more">Read the story →</span>
+      </div>
+
+    </div>
+
+    <div class="culture-group-divider"></div>
+
+    <div class="culture-sub-header" id="hun-yuan">
+      <h3 data-i18n="cult_sub2_title"><em>心意混元</em> — The Lineage</h3>
+      <p data-i18n="cult_sub2_sub">The creation and transmission of Xin Yi Hun Yuan Tai Chi.</p>
+    </div>
+    <div class="culture-grid">
+
+      <div class="culture-card" onclick="openStory(6)">
+        <div class="card-img" style="background-image:url('images/hunyuan-art.jpg'); background-position:center top;"></div>
+        <div class="card-tag" data-i18n="cult_c6_tag">The Art</div>
+        <div class="card-icon">🌀</div>
+        <h3 class="card-title" data-i18n="cult_c6_title">What is Xin Yi Hun Yuan?</h3>
+        <p class="card-excerpt" data-i18n="cult_c6_excerpt">Not simply Chen-style with a new name. A complete synthesis of three traditions, built over a lifetime of mastery.</p>
+        <span class="card-read" data-i18n="read_more">Read the story →</span>
+      </div>
+
+      <div class="culture-card" onclick="openStory(7)">
+        <div class="card-img" style="background-image:url('images/hunyuan-master.jpg'); background-position:center top;"></div>
+        <div class="card-tag" data-i18n="cult_c7_tag">The Master's Journey</div>
+        <div class="card-icon">🥋</div>
+        <h3 class="card-title" data-i18n="cult_c7_title">The Making of a Master</h3>
+        <p class="card-excerpt" data-i18n="cult_c7_excerpt">From a childhood in a martial arts family, to training under two of China's greatest masters simultaneously — the story of Feng Zhiqiang.</p>
+        <span class="card-read" data-i18n="read_more">Read the story →</span>
+      </div>
+
+      <div class="culture-card" onclick="openStory(8)">
+        <div class="card-img" style="background-image:url('images/hunyuan-true-taichi.jpg'); background-position:center top;"></div>
+        <div class="card-tag" data-i18n="cult_c8_tag">Legacy</div>
+        <div class="card-icon">⚔️</div>
+        <h3 class="card-title" data-i18n="cult_c8_title">"True Tai Chi"</h3>
+        <p class="card-excerpt" data-i18n="cult_c8_excerpt">An American champion who had beaten fighters from 50 countries. A showcase in Shanghai. The phrase that spread through China's martial arts world.</p>
+        <span class="card-read" data-i18n="read_more">Read the story →</span>
+      </div>
+
+      <div class="culture-card" onclick="openStory(9)">
+        <div class="card-img" style="background-image:url('images/hunyuan-singapore.jpg')"></div>
+        <div class="card-tag" data-i18n="cult_c9_tag">Singapore · 1988</div>
+        <div class="card-icon">🌴</div>
+        <h3 class="card-title" data-i18n="cult_c9_title">The Singapore Connection</h3>
+        <p class="card-excerpt" data-i18n="cult_c9_excerpt">In 1988, Grandmaster Feng Zhiqiang first brought Hun Yuan Tai Chi to Singapore. Thirty-seven years later, his grandson continues that mission.</p>
+        <span class="card-read" data-i18n="read_more">Read the story →</span>
+      </div>
+
+      <div class="culture-card" onclick="openStory(12)">
+        <div class="card-img" style="background-image:url('images/hunyuan-global.jpg'); background-position:center top;"></div>
+        <div class="card-tag" data-i18n="cult_c12_tag">Global Reach</div>
+        <div class="card-icon">🌏</div>
+        <h3 class="card-title" data-i18n="cult_c12_title">A Global Practice</h3>
+        <p class="card-excerpt" data-i18n="cult_c12_excerpt">In 2007, 700 practitioners from 16 countries gathered in Beijing. A village secret had become a world language.</p>
+        <span class="card-read" data-i18n="read_more">Read the story →</span>
+      </div>
+
+      <div class="culture-card" onclick="openStory(13)">
+        <div class="card-img" style="background-image:url('images/hunyuan-path.jpg'); background-position:center top;"></div>
+        <div class="card-tag" data-i18n="cult_c13_tag">Practice Path</div>
+        <div class="card-icon">📿</div>
+        <h3 class="card-title" data-i18n="cult_c13_title">The Practice Path</h3>
+        <p class="card-excerpt" data-i18n="cult_c13_excerpt">Eight things to nourish. Eight things to guard against. Grandmaster Feng Zhiqiang's final roadmap for cultivation.</p>
+        <span class="card-read" data-i18n="read_more">Read the story →</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- STORY MODAL -->
+<div class="story-modal" id="storyModal" onclick="handleModalClick(event)">
+  <div class="story-modal-inner">
+    <button class="story-close" onclick="closeStory()">×</button>
+    <div class="story-tag" id="modalTag"></div>
+    <h2 class="story-title" id="modalTitle"></h2>
+    <img class="modal-hero" id="modalHero" src="" alt="">
+    <div class="story-body" id="modalBody"></div>
+  </div>
+</div>
+
 <!-- CTA -->
 <section class="cta-section" id="cta">
   <h2 class="section-title" data-i18n="cta_title">Begin Your<br><em>Practice</em></h2>
@@ -922,6 +1232,46 @@
       quote_text: 'The body follows the mind. The mind follows the breath.<br>The breath follows the Tao.',
       quote_attr: '— Chen-style Xin Yi Hun Yuan Tai Chi principle',
       cta_title: 'Begin Your<br><em>Practice</em>',
+
+      cult_sub1_title: 'The Way of <em>Tai Chi</em>',
+      cult_sub1_sub: 'History, philosophy, and legend across seven centuries.',
+      cult_sub2_title: '<em>Xin Yi Hun Yuan</em> — The Lineage',
+      cult_sub2_sub: 'The creation and transmission of Xin Yi Hun Yuan Tai Chi.',
+      cult_c6_tag: 'The Art', cult_c6_title: 'What is Xin Yi Hun Yuan?',
+      cult_c6_excerpt: 'Not simply Chen-style with a new name. A complete synthesis of three traditions, built over a lifetime of mastery.',
+      cult_c7_tag: "The Master's Journey", cult_c7_title: 'The Making of a Master',
+      cult_c7_excerpt: 'From a childhood in a martial arts family, to training under two of China\'s greatest masters simultaneously — the story of Feng Zhiqiang.',
+      cult_c8_tag: 'Legacy', cult_c8_title: '"True Tai Chi"',
+      cult_c8_excerpt: 'An American champion who had beaten fighters from 50 countries. A showcase in Shanghai. The phrase that spread through China.',
+      cult_c9_tag: 'Singapore · 1988', cult_c9_title: 'The Singapore Connection',
+      cult_c9_excerpt: 'In 1988, Grandmaster Feng Zhiqiang first brought Hun Yuan Tai Chi to Singapore. Thirty-seven years later, his grandson continues that mission.',
+      nav_heritage: 'Tai Chi Culture',
+      nav_hunyuan: 'Hun Yuan',
+      cult_c10_tag: 'Technique', cult_c10_title: 'The Silk Thread',
+      cult_c10_excerpt: 'What separates Chen-style from all other Tai Chi is silk-reeling energy. It cannot be faked — only cultivated.',
+      cult_c11_tag: 'Cosmology', cult_c11_title: 'Written in the Stars',
+      cult_c11_excerpt: 'The Eight Gates and Five Steps map directly onto the I Ching. This was not coincidence.',
+      cult_c12_tag: 'Global Reach', cult_c12_title: 'A Global Practice',
+      cult_c12_excerpt: 'In 2007, 700 practitioners from 16 countries gathered in Beijing. A village secret had become a world language.',
+      cult_c13_tag: 'Practice Path', cult_c13_title: 'The Practice Path',
+      cult_c13_excerpt: 'Eight things to nourish. Eight things to guard against. Grandmaster Feng Zhiqiang\'s roadmap for cultivation.',
+      // culture section
+      cult_eyebrow: 'The Heritage',
+      cult_title: 'Seven Centuries of<br><em>Living History</em>',
+      cult_intro: 'Tai Chi is not ancient history frozen in a museum. It is a living tradition, shaped by real people, real insights, and real transmissions across 700 years. These are some of those stories.',
+      cult_c0_tag: 'Origin Legend', cult_c0_title: 'The Crane and the Snake',
+      cult_c0_excerpt: 'On Wudang Mountain, a Taoist monk witnesses a battle that changes martial arts forever.',
+      cult_c1_tag: 'History · 1374', cult_c1_title: 'Chen Village',
+      cult_c1_excerpt: 'A retired Ming dynasty general retreats to his ancestral village and begins codifying something extraordinary.',
+      cult_c2_tag: 'History · 1850', cult_c2_title: 'The Secret That Broke Free',
+      cult_c2_excerpt: 'For 150 years, the Chen family guarded their art with fierce secrecy. Then one outsider changed everything.',
+      cult_c3_tag: 'Philosophy', cult_c3_title: 'Yin & Yang in Motion',
+      cult_c3_excerpt: 'Every strike contains a defense. Every hardness holds a softness. This is not metaphor — it is the physics of Tai Chi.',
+      cult_c4_tag: 'Philosophy', cult_c4_title: 'Thirteen — The Number That Contains Everything',
+      cult_c4_excerpt: 'Thirteen doesn\'t mean thirteen poses. It encodes the entire universe of Tai Chi in a single number.',
+      cult_c5_tag: 'Lineage', cult_c5_title: 'The Synthesis',
+      cult_c5_excerpt: 'In 1950s Beijing, a young master trained under two of China\'s greatest teachers simultaneously. What emerged was something entirely new.',
+      read_more: 'Read the story →',
       footer_copy: '© 2026 Master Feng Yanbo · Singapore China Cultural Centre, 217 Queen St',
       // geo-dependent
       eyebrow_sg: '📍 In-Person Classes · Singapore',
@@ -991,6 +1341,46 @@
       quote_text: '身随意动，意随气行，<br>气归自然。',
       quote_attr: '— 陈式心意混元太极拳拳理',
       cta_title: '开始<br><em>修炼之路</em>',
+
+      cult_sub1_title: '<em>太极</em>之道',
+      cult_sub1_sub: '七百年间的历史、哲学与传说。',
+      cult_sub2_title: '<em>心意混元</em>——传承',
+      cult_sub2_sub: '心意混元太极拳的创立与传承。',
+      cult_c6_tag: '拳种介绍', cult_c6_title: '心意混元太极拳——究竟是什么？',
+      cult_c6_excerpt: '不是简单改了名字的陈式太极拳，而是三大传统的毕生融合。',
+      cult_c7_tag: '宗师的炼成', cult_c7_title: '冯志强——炼成记',
+      cult_c7_excerpt: '从武术世家的少年，到同时拜师两位当代最伟大宗师的武学奇迹。',
+      cult_c8_tag: '武学传奇', cult_c8_title: '"冯志强，真太极"',
+      cult_c8_excerpt: '击败五十国高手的美国武者，上海的惊天较技，以及传遍武林的那句话。',
+      cult_c9_tag: '新加坡 · 1988', cult_c9_title: '与新加坡的缘分',
+      cult_c9_excerpt: '1988年，冯志强大师首次将混元太极带入新加坡。三十七年后，他的嫡孙延续着这份使命。',
+      nav_heritage: '太极文化',
+      nav_hunyuan: '心意混元',
+      cult_c10_tag: '功法', cult_c10_title: '缠丝劲——那根看不见的丝',
+      cult_c10_excerpt: '陈式太极拳区别于其他太极的标志，是一种无法伪造、只能修炼的运动品质。',
+      cult_c11_tag: '哲学宇宙观', cult_c11_title: '写在星空里',
+      cult_c11_excerpt: '太极拳的八门五步，直接对应《易经》八卦与五行。这不是巧合。',
+      cult_c12_tag: '走向世界', cult_c12_title: '走向世界',
+      cult_c12_excerpt: '2007年，来自16个国家的700名修炼者汇聚北京。一门村庄的秘密，成为了世界的语言。',
+      cult_c13_tag: '修炼之道', cult_c13_title: '修炼之道',
+      cult_c13_excerpt: '八养八伤——冯志强大师留给后世修炼者最重要的功夫指南。',
+      // culture section
+      cult_eyebrow: '文化传承',
+      cult_title: '七百年<br><em>活的历史</em>',
+      cult_intro: '太极拳不是封存在博物馆里的古代历史。它是一个活着的传统，由真实的人、真实的顿悟与真实的传承，跨越700年塑造而成。这里是其中一些故事。',
+      cult_c0_tag: '传说起源', cult_c0_title: '鹤蛇之争',
+      cult_c0_excerpt: '武当山上，一位道士目睹了一场改变武术历史的战斗。',
+      cult_c1_tag: '历史 · 1374', cult_c1_title: '陈家沟',
+      cult_c1_excerpt: '一位明末退役武将归隐故乡，开始将毕生所学凝练成一门艺术。',
+      cult_c2_tag: '历史 · 1850', cult_c2_title: '秘密的破封',
+      cult_c2_excerpt: '一百五十年间，陈家人严守秘传。直到一个外人的出现，改变了一切。',
+      cult_c3_tag: '哲学', cult_c3_title: '阴阳动中求',
+      cult_c3_excerpt: '每一击中含防守，每一刚中藏柔软。这不是比喻——这是太极拳的物理学。',
+      cult_c4_tag: '哲学', cult_c4_title: '十三势——藏于数字的宇宙',
+      cult_c4_excerpt: '十三不是十三个姿势，而是将太极拳的整个宇宙浓缩在一个数字之中。',
+      cult_c5_tag: '传承', cult_c5_title: '融合之道',
+      cult_c5_excerpt: '二十世纪五十年代的北京，一位年轻宗师同时师从两位中国最伟大的武学家。由此诞生了全新的体系。',
+      read_more: '阅读故事 →',
       footer_copy: '© 2026 冯彦博老师 · 新加坡中国文化中心，皇后街217号',
       // geo-dependent
       eyebrow_sg: '📍 新加坡线下课程',
@@ -1165,6 +1555,385 @@
       alert('Network error, please try again.');
     }
   }
+
+
+  // ── Culture Story Images (indexed by story idx) ──
+  const STORY_IMGS = [
+    'images/culture-wudang.jpg',       // 0 Crane & Snake
+    'images/culture-chen-village.jpg', // 1 Chen Village
+    'images/culture-yang-luchan.jpg',  // 2 Yang Luchan
+    'images/culture-yinyang.svg',      // 3 Yin & Yang
+    'images/culture-bagua.svg',        // 4 Thirteen
+    'images/culture-taichi-group.jpg', // 5 The Synthesis
+    'images/hunyuan-art.jpg',          // 6 What is HY?
+    'images/hunyuan-master.jpg',       // 7 Making of a Master
+    'images/hunyuan-true-taichi.jpg',  // 8 True Tai Chi
+    'images/hunyuan-singapore.jpg',    // 9 Singapore Connection
+    'images/culture-silk.jpg',         // 10 Silk Thread
+    'images/culture-stars.jpg',        // 11 Written in Stars
+    'images/hunyuan-global.jpg',       // 12 A Global Practice
+    'images/hunyuan-path.jpg',         // 13 Practice Path
+  ];
+  // background-position per story (for modal hero)
+  const STORY_POS = [
+    'center 30%',  // 0 landscape temple
+    'center 30%',  // 1 landscape architecture
+    'center top',  // 2 portrait headshot
+    'center',      // 3 SVG symbol
+    'center',      // 4 SVG symbol
+    'center 40%',  // 5 landscape group
+    'center top',  // 6 portrait full-body stance
+    'center top',  // 7 portrait headshot
+    'center top',  // 8 portrait full-body outdoor
+    'center 35%',  // 9 landscape classroom
+    'center top',  // 10 portrait scroll banner
+    'center',      // 11 square diagram
+    'center top',  // 12 portrait push-hands
+    'center top',  // 13 portrait garden stance
+  ];
+
+  // ── Culture Stories ──
+  const STORIES = [
+    {
+      tag:     { en: 'Origin Legend', zh: '传说起源' },
+      title:   { en: 'The Crane and the Snake', zh: '鹤蛇之争' },
+      body: {
+        en: `<p>On Wudang Mountain in the 14th century, a Taoist monk named Zhang Sanfeng stepped into his courtyard and witnessed a battle.</p>
+<p>A large crane descended from above, driving its sharp beak downward with tremendous force. Below it, a snake coiled and waited. Each time the crane struck, the snake simply shifted — yielding to the blow, redirecting the energy, coiling back. Again and again the crane attacked. Again and again the snake moved like water.</p>
+<p>The crane never landed a decisive blow. Eventually it flew away.</p>
+<p>Zhang Sanfeng stood watching long after they were gone. What he had seen wasn't a fight — it was a teaching. Hardness and force could not defeat softness and adaptability. The snake didn't resist; it transformed the crane's power into nothing.</p>
+<p>From this insight, the story goes, he drew the 13 foundational postures of what would become Tai Chi.</p>
+<p>Historians note that Zhang Sanfeng's existence cannot be verified. But this is perhaps not the point. The legend survives because it perfectly encodes the essence of Tai Chi: that softness overcomes hardness, that stillness masters movement, that the yielding ultimately defeats the rigid.</p>
+<p><em>It is a truth made into a story. The story made into a practice.</em></p>`,
+        zh: `<p>十四世纪，武当山上，道士张三丰走入庭院，目睹了一场战斗。</p>
+<p>一只白鹤从天而降，以凌厉的喙猛然俯击。地上，一条蛇盘身等待。每当白鹤出击，蛇只是轻轻一移——顺势卸力，借力化力，再度盘回。白鹤一次次攻击，蛇一次次如水流动。</p>
+<p>白鹤始终无法得手，终于振翅而去。</p>
+<p>张三丰站在那里，久久未动。他所看到的不是一场格斗，而是一堂课。刚猛无法胜过柔顺，力量无法战胜适应。蛇没有抵抗，它将白鹤的力量化为虚无。</p>
+<p>据说，由此顿悟，他创编了太极拳最初的十三式。</p>
+<p>历史学者指出，张三丰的存在无从考证。但这或许并不重要。这个传说流传至今，是因为它完美地道出了太极拳的核心——柔能克刚，静能制动，以柔弱者，终能胜刚强。</p>
+<p><em>这是一个被编成故事的真理，一个被化为功夫的故事。</em></p>`
+      }
+    },
+    {
+      tag:     { en: 'History · 1374', zh: '历史 · 1374' },
+      title:   { en: 'Chen Village', zh: '陈家沟' },
+      body: {
+        en: `<p>In 1374, the Chen family settled in a small village in Henan Province, China. They named it Chenjiagou — Chen Family Creek.</p>
+<p>For nearly three centuries, the family farmed, traded, and quietly developed their martial practice. Then came a man who changed everything.</p>
+<p>Chen Wangting (1580–1660) was a military commander during the final years of the Ming dynasty. When the dynasty collapsed and the Qing took power, he retreated to Chen Village — and turned his knowledge into art.</p>
+<p>He synthesized something radical: military combat techniques, Taoist philosophy, traditional Chinese medicine, breathing practices, and the ancient theory of Yin-Yang — all woven into a single coherent system.</p>
+<p>He called it 太極拳. Taijiquan. <em>The Fist of the Supreme Ultimate.</em></p>
+<p>This was not a fight system with a philosophical veneer. The philosophy was inseparable from the movement. Understanding Yin and Yang was not a metaphor for fighting — it was the actual mechanism of how the body generated and transferred force.</p>
+<p>Chen Wangting created seven original routines. The art was kept strictly within the Chen family for the next 150 years, passed down through generations with fierce secrecy.</p>
+<p>The village of Chenjiagou still exists today. And Chen-style Tai Chi is still practiced there — the same art, the same lineage, seven centuries and counting.</p>`,
+        zh: `<p>1374年，陈氏家族在河南省一个小村庄安家落户，取名陈家沟。</p>
+<p>近三百年间，陈家人耕田、经商，悄然打磨着他们的武学传承。直到一个人的出现，改变了一切。</p>
+<p>陈王廷（1580—1660），明末武将。王朝覆灭、清廷立国之际，他退隐故乡陈家沟，将一生所学化为艺术。</p>
+<p>他做了一件前所未有的事：将军旅搏击、道家哲学、中医经络、吐纳之法与阴阳学说融为一炉，熔铸成一套完整的体系。</p>
+<p>他称之为——<em>太极拳</em>。</p>
+<p>这不是披着哲学外衣的武术。哲学与动作密不可分。懂阴阳，不是打架的比喻，而是身体产生力量、传导力量的真实机制。</p>
+<p>陈王廷创编了七套原始套路。此后一百五十年，这门艺术严守家族秘密，代代相传。</p>
+<p>陈家沟至今仍在。陈式太极拳至今仍在那里习练——同一门艺术，同一脉传承，七百年，绵延不绝。</p>`
+      }
+    },
+    {
+      tag:     { en: 'History · 1850', zh: '历史 · 1850' },
+      title:   { en: 'The Secret That Broke Free', zh: '秘密的破封' },
+      body: {
+        en: `<p>For 150 years after Chen Wangting, the art of Tai Chi was a family secret. No outsider was taught. No outsider was allowed to watch.</p>
+<p>Then came Yang Luchan.</p>
+<p>In the early 1800s, a young man from Hebei Province arrived in Chen Village. His name was Yang Luchan (1799–1872), and he wanted to learn Tai Chi. He was not a Chen family member. According to the strictest tradition, he should never have been taught.</p>
+<p>What is certain is that he studied under Chen Changxing for 18 years. When Yang Luchan finally left Chen Village, he was a master.</p>
+<p>He returned home and began teaching. People noticed immediately: this was unlike anything they had seen. His skill was described as <em>"cotton in iron"</em> — impossibly soft on the surface, devastatingly powerful beneath.</p>
+<p>In 1850, Yang was recruited to teach the Palace Battalion Imperial Guards in Beijing — the elite military force protecting the Qing Emperor. Overnight, Tai Chi went from a village secret to the practice of China's ruling class.</p>
+<p>Yang's descendants and students spread the art further, adapting it, creating new styles. Today, Yang-style Tai Chi is the most practiced martial art on Earth.</p>
+<p>But it all traces back to one village. One family. One lineage that began with Chen Wangting in 1374.</p>`,
+        zh: `<p>陈王廷之后的一百五十年间，太极拳是一个家族秘密。外人不得学，外人不得观。</p>
+<p>直到杨露禅的到来。</p>
+<p>十九世纪初，一个来自河北的年轻人出现在陈家沟。他叫杨露禅（1799—1872），他想学太极拳。他不是陈家人，按照最严格的传统，他本不应该得到传授。</p>
+<p>但有一点是确定的：他在陈长兴门下苦练了十八年。当杨露禅终于离开陈家沟时，他已是一代宗师。</p>
+<p>他回到家乡，开始授徒。人们立刻发现：这门功夫前所未见。他的技艺被称为<em>"棉里裹铁"</em>——表面轻柔如棉，内里摧枯拉朽。</p>
+<p>1850年，杨露禅受招入京，执教神机营——保卫清廷皇帝的精锐禁军。一夜之间，太极拳从一个村庄的秘密，变成了中国统治阶层的修炼之道。</p>
+<p>杨氏后人与弟子将这门艺术继续传播，衍化出新的流派。今天，杨式太极拳是全球习练人数最多的武术。</p>
+<p>但所有的脉络，都指向同一个村庄，同一个家族，同一脉始于1374年陈王廷的传承。</p>`
+      }
+    },
+    {
+      tag:     { en: 'Philosophy', zh: '哲学' },
+      title:   { en: 'Yin & Yang in Motion', zh: '阴阳动中求' },
+      body: {
+        en: `<p>The name says everything.</p>
+<p>太極 — Tai Chi — means "the Supreme Ultimate." It describes the moment before differentiation: the primordial state from which all things emerge. From this ultimate unity arises duality: Yin and Yang.</p>
+<p>In Tai Chi movement, Yin and Yang are not philosophical decorations. They are the operating system.</p>
+<p>At any moment, one leg is "full" (Yang — weight-bearing, active) and the other is "empty" (Yin — light, ready to move). Inhaling is Yin; exhaling is Yang. A closing movement is Yin; an opening movement is Yang. This constant alternation is not optional — it is the structural principle of every form.</p>
+<p>The martial application is precise: if your opponent is hard (Yang), you become soft (Yin) — not to absorb the blow, but to redirect it. If they are yielding, you become direct. The goal is never to meet force with force, but to flow into the spaces that force creates.</p>
+<p>This is what practitioners mean when they say <em>"four ounces deflects a thousand pounds."</em> It is not magic. It is physics: redirect a vector rather than opposing it, and you need very little energy to neutralize a great deal.</p>
+<p>But Yin-Yang in Tai Chi goes deeper than fighting strategy. It is a training in perception — in noticing opposites within unity, in finding stillness within movement. Every practice session is a small course in the actual nature of things.</p>
+<p>The Tai Chi symbol — that familiar circle of black and white, each containing a seed of the other — is not just a logo. It is a description of how reality works. And it is what you are learning to embody.</p>`,
+        zh: `<p>这个名字已经说明了一切。</p>
+<p>太极——意指"至高无上的极致"。它描述的是分化之前的那一刻：万物由此而生的原初状态。从这一终极整体中，生出二元：阴与阳。</p>
+<p>在太极拳的动作中，阴阳不是哲学装饰，而是运行系统。</p>
+<p>任何时刻，一腿为"实"（阳——承重、主动），另一腿为"虚"（阴——轻灵、待动）。吸气为阴，呼气为阳。合为阴，开为阳。这种不断的转换不是可选项——它是每一个动作的结构原则。</p>
+<p>武学应用极为精准：若对手刚猛（阳），你则柔顺（阴）——不是为了承受打击，而是为了引导化解。若对手松弛，你则直接发力。目标从不是以力对力，而是顺势流入力量所创造的空隙。</p>
+<p>这就是拳谚所说的<em>"四两拨千斤"</em>。这不是魔法，这是物理：改变一个向量而非正面对抗，则只需极小的力量便可化解极大的力道。</p>
+<p>但太极拳中的阴阳，远不止于搏击策略。它是一种感知的训练——在统一中觉察对立，在运动中寻得静止。每一次练习，都是一堂关于事物真实本质的小课。</p>
+<p>太极图——那个熟悉的黑白圆形，各含对方一点——不只是一个符号，而是对现实如何运作的描述。而这，正是你在学习体现的东西。</p>`
+      }
+    },
+    {
+      tag:     { en: 'Philosophy', zh: '哲学' },
+      title:   { en: 'Thirteen — The Number That Contains Everything', zh: '十三势——藏于数字的宇宙' },
+      body: {
+        en: `<p>When people hear "13 postures," they imagine 13 different stances. This misunderstanding goes very deep.</p>
+<p>The 13 Postures (十三势) are not 13 positions. They are 13 principles — a complete framework for understanding how the body generates, stores, and releases energy.</p>
+<p>The 13 divide into two groups:</p>
+<p><em>Eight Gates (八门)</em> — eight fundamental energies, each corresponding to one of the Eight Trigrams of the I Ching:<br>
+Peng (掤) — Ward Off: expanding energy, like a ball inflating<br>
+Lu (捋) — Pull Back: yielding and redirecting<br>
+Ji (挤) — Press: compact, direct energy<br>
+An (按) — Push: downward, rooting energy<br>
+Cai (採) — Pluck: seizing and unbalancing<br>
+Lie (挒) — Split: twisting and disrupting<br>
+Zhou (肘) — Elbow: close-range power<br>
+Kao (靠) — Shoulder: body contact power</p>
+<p><em>Five Steps (五步)</em> — five directions corresponding to the Five Elements:<br>
+Forward, Backward, Left, Right, and Center — the last being the root from which all movement originates.</p>
+<p>What makes this framework remarkable is the waist. "The waist is the commander" is one of the oldest principles in Tai Chi. All energy flows from the ground through the feet, up through the legs, is regulated by the waist, then expressed through the back, arms, and fingers.</p>
+<p>Understanding the 13 Postures means understanding that Tai Chi is not a collection of moves. It is a unified system with internal logic — <em>a language with grammar, not just vocabulary.</em></p>`,
+        zh: `<p>人们听到"十三势"，往往以为是十三个固定姿势。这是一个根本性的误解。</p>
+<p>十三势不是十三个动作，而是十三条原则——一套理解人体如何产生、储存与释放能量的完整框架。</p>
+<p>十三，分为两组：</p>
+<p><em>八门（八种劲力）</em>，各对应《易经》八卦之一：<br>
+掤——向外扩张之劲，如球充气<br>
+捋——顺势卸化之劲<br>
+挤——紧凑直接之劲<br>
+按——向下沉根之劲<br>
+採——擒拿失衡之劲<br>
+挒——旋转破势之劲<br>
+肘——近身肘击之劲<br>
+靠——身体接触之劲</p>
+<p><em>五步（五个方向）</em>，各对应五行：<br>
+进、退、顾（左）、盼（右）、定——其中"定"为中定，是一切运动的根源。</p>
+<p>这套框架之所以深刻，在于腰的位置。"腰为主宰"是太极拳最古老的原则之一。所有力量从地面经脚传至腿部，由腰调节指挥，再经背部、手臂、手指发出。</p>
+<p>理解十三势，意味着理解太极拳不是动作的集合，而是一套有内在逻辑的统一体系——<em>一种有语法的语言，而不仅仅是词汇。</em></p>`
+      }
+    },
+    {
+      tag:     { en: 'Lineage', zh: '传承' },
+      title:   { en: 'The Synthesis', zh: '融合之道' },
+      body: {
+        en: `<p>By the 1950s, Beijing was home to some of China's greatest living martial artists. Among them were two legends: Chen Fake, the revolutionary Chen-style master who had brought the art from Chen Village to the capital; and Hu Yaozhen, a Taoist master renowned for his Xin Yi Quan (Mind Intent Boxing) and internal cultivation practices.</p>
+<p>A young man named Feng Zhiqiang managed to study under both simultaneously.</p>
+<p>This was not a small thing. Each master carried a distinct and complete tradition. Training seriously under one was a life's work. Training under both — and synthesizing them — required a kind of intelligence that goes beyond physical skill.</p>
+<p>Feng Zhiqiang spent decades doing exactly this. He absorbed the Chen family's martial depth: its explosive power, its coiling silk-reeling energy, its combat applications. Simultaneously, he immersed himself in Taoist internal cultivation — the Xin Yi principles that work directly with mind, intent, and primordial energy.</p>
+<p>What emerged was <em>Xin Yi Hun Yuan Taijiquan.</em></p>
+<p>Hun Yuan (混元) means "Primordial Unity" — the state before differentiation, the source. The name describes the practice's aspiration: to return to wholeness, to act from a place of undivided mind and body.</p>
+<p>Xin (心) and Yi (意) — Heart and Intent — are the active ingredients. In this system, the external movement is secondary. What matters is what initiates the movement: a clear, unified, unforced intention.</p>
+<p>Grandmaster Feng Zhiqiang practiced and taught this system for over 60 years, into his 80s. His grandson, Master Feng Yanbo, continues this transmission today — in Singapore, and soon, online for students anywhere in the world.</p>
+<p><em>The lineage is unbroken. The practice is alive.</em></p>`,
+        zh: `<p>二十世纪五十年代，北京汇聚了中国最伟大的一批武术家。其中有两位传奇人物：陈发科，将陈式太极拳从陈家沟带入京城的革新宗师；胡耀贞，以心意拳与道家内功著称的道学大家。</p>
+<p>一个年轻人，名叫冯志强，同时拜在两人门下。</p>
+<p>这不是一件小事。每位宗师各自承载着一套完整而独特的传统。认真追随其中一位，已是毕生之功。同时追随两位——并将两者融会贯通——需要一种超越体能的智慧。</p>
+<p>冯志强用数十年时间做到了这一点。他吸收了陈家拳法的武学深度：爆发力、缠丝劲、搏击应用。同时，他深入道家内功修炼——心意拳中直接作用于心、意与元气的修炼之道。</p>
+<p>由此而生：<em>心意混元太极拳。</em></p>
+<p>混元，意指"原初整体"——分化之前的状态，万物之源。这个名字道出了修炼的志向：回归圆满，从身心不二的境界中发动。</p>
+<p>心与意——心与意念——是这套体系的核心要素。在这个系统中，外在动作是次要的。重要的是发动动作的东西：清明、统一、自然而然的意念。</p>
+<p>冯志强大师修炼和传授这套体系逾六十年，直至八十余岁仍坚持习练。他的嫡孙冯彦博老师，今天在新加坡继续着这脉传承——并即将通过线上课程，向全球各地的学员开放。</p>
+<p><em>传承未断。功夫仍在。</em></p>`
+      }
+    },
+    {
+      tag:     { en: 'The Art', zh: '拳种介绍' },
+      title:   { en: 'What is Xin Yi Hun Yuan?', zh: '心意混元太极拳——究竟是什么？' },
+      body: {
+        en: `<p>Xin Yi Hun Yuan Taijiquan is not simply Chen-style Tai Chi with a new label. It is a synthesis that took a lifetime to create — and only became possible because one man trained under the two greatest living masters simultaneously.</p>
+<p>The name encodes the entire philosophy:<br>
+<em>Xin (心)</em> — Heart/Mind: the seat of intention and consciousness<br>
+<em>Yi (意)</em> — Intent: the directed, purposeful application of the mind<br>
+<em>Hun Yuan (混元)</em> — Primordial Unity: the undifferentiated source from which all things arise</p>
+<p>In practice, this means training begins from the inside out. External movement is secondary to what initiates it: a clear, unified, unforced intention arising from a settled mind.</p>
+<p>The system rests on three pillars: Hun Yuan internal cultivation (混元内功) as the foundation; forms and solo practice as the structure; push-hands and applications as the expression.</p>
+<p>Its guiding principle is 16 characters: <em>inner and outer practiced together, with emphasis on inner; movement and stillness combined, with emphasis on stillness; practice and cultivation integrated, with emphasis on cultivation.</em></p>
+<p>This is why practitioners say Hun Yuan addresses what most modern Tai Chi has lost — the internal dimension that distinguishes a living art from physical exercise.</p>`,
+        zh: `<p>陈式心意混元太极拳不是简单改了名字的陈式太极拳。它是一个耗费毕生心血方能完成的融合——而这种融合之所以成为可能，是因为一个人同时得到了两位当代最伟大宗师的真传。</p>
+<p>这个名字本身已编码了全部哲学：<br>
+<em>心</em>——心念与意识的所在<br>
+<em>意</em>——有方向、有目的的心念运用<br>
+<em>混元</em>——分化之前的原初整体，万物由此而生的源头</p>
+<p>在修炼中，这意味着训练由内而外。外在动作是次要的——重要的是发动它的东西：从宁静心境中生发的清明、统一而自然的意念。</p>
+<p>这套体系建立在三个支柱之上：混元内功为本，拳械套路为体，推手散手为用。</p>
+<p>十六字指导思想：<em>内外兼练，以内为主；动静相兼，以静为主；练养结合，以养为主。</em></p>
+<p>因此，修炼者们说：混元太极找回了现代太极拳大多已失去的东西——那个将活的艺术与单纯体操区别开来的内在维度。</p>`
+      }
+    },
+    {
+      tag:     { en: "The Master's Journey", zh: '宗师的炼成' },
+      title:   { en: 'The Making of a Master', zh: '冯志强——炼成记' },
+      body: {
+        en: `<p>Born in 1928 in Hebei Province to a martial arts family, Feng Zhiqiang began training at age 8. But the path to Xin Yi Hun Yuan Tai Chi was not a straight line.</p>
+<p>At 17, he became a student of Han Xiaofeng — a master of Tongbei Quan, Iron Palm, and pressure-point techniques. His reputation in Beijing's martial circles was already growing.</p>
+<p>In 1950, at age 22, a connection changed everything. He was introduced to Hu Yaozhen — a Taoist healer and master of Xin Yi Liu He Quan, known as "Single Finger Shakes the Universe." Feng trained daily in internal Qigong and mind-intent principles, making rapid progress.</p>
+<p>In 1952, Hu Yaozhen did something extraordinary: recognizing Feng Zhiqiang's exceptional potential, he set aside sectarian boundaries and introduced his student to Chen Fake — the great Chen-style master known as "the one man of Tai Chi." Chen Fake accepted Feng as a disciple — his fourth teacher.</p>
+<p>For years, Feng Zhiqiang trained under both masters simultaneously — sometimes seven to eight hours daily. In 1953, both masters co-founded the Capital Martial Arts Research Society, giving Feng direct access to both in the same space on the same days.</p>
+<p>When Chen Fake died in 1957, Feng Zhiqiang was 29. He already possessed something extraordinarily rare: the combined depth of Taoist Xin Yi internal cultivation and the martial precision of Chen family Tai Chi.</p>
+<p><em>The synthesis that would become Xin Yi Hun Yuan Tai Chi was already taking shape.</em></p>`,
+        zh: `<p>1928年，冯志强生于河北武术世家，8岁开始习武。但通向心意混元太极的道路并非一条直线。</p>
+<p>17岁时，他拜通背拳、铁砂掌与点穴功名家韩晓峰为师，在北京武林界已颇有名气。</p>
+<p>1950年，22岁的他迎来了改变一切的机缘。经人介绍，冯志强拜入人称"单指震乾坤"的京城名医、心意六合拳大家胡耀贞先生门下。他每日潜心苦练内家气功与心意六合拳，进步突飞猛进。</p>
+<p>1952年，胡耀贞做了一件非同寻常的事：他看出冯志强天资超凡，遂摒弃门户之见，将其引荐给世称"太极一人"的陈式太极拳宗师陈发科先生。陈发科欣然收冯志强为徒，成为他的第四位武术老师。</p>
+<p>此后数年，冯志强同时拜在两位宗师门下——有时每天苦练七八个小时。1953年，胡耀贞与陈发科共同创办"首都武术研究社"，冯志强得以在同一场所同时聆听两位大师的教诲。</p>
+<p>1957年陈发科先生去世时，冯志强年仅29岁，已拥有极为罕见的东西：道家心意修炼的内在深度，与陈家太极的武学精准——两者兼而有之。</p>
+<p><em>那将成为陈式心意混元太极拳的融合，已初具雏形。</em></p>`
+      }
+    },
+    {
+      tag:     { en: 'Legacy', zh: '武学传奇' },
+      title:   { en: '"True Tai Chi"', zh: '冯志强，真太极' },
+      body: {
+        en: `<p>By the early 1980s, Feng Zhiqiang had retired from factory work and devoted himself fully to teaching. Word of his skill had spread. Challenges followed.</p>
+<p>In September 1981, Beijing's Sports Institute arranged a remarkable encounter: Feng Zhiqiang versus Kumar, an American martial arts champion who had defeated fighters from over 50 countries and bested more than 20 of China's top martial artists.</p>
+<p>Using what witnesses described as "mysterious Tai Chi techniques," Feng Zhiqiang sent Kumar flying through the air — effortlessly, repeatedly. Kumar was stunned. Though he couldn't arrange formal discipleship that day, he returned to Beijing numerous times afterward to continue learning.</p>
+<p>In July 1982, at a National Tai Chi Masters Showcase in Shanghai, Feng Zhiqiang was invited to demonstrate push-hands. The organizers designated challengers at will — masters from across China, internal and external styles alike. One by one, they were launched into the air.</p>
+<p>Shanghai's martial world talked about it for months. The phrase that circulated everywhere: <em>"Feng Zhiqiang — true Tai Chi."</em></p>
+<p>He never sought these encounters. But each one demonstrated what the classics describe and few ever achieve: genuine internal development produces a capability that cannot be explained by strength, speed, or technique alone.</p>`,
+        zh: `<p>八十年代初，冯志强从工厂提前退休，开始专心教拳。他的名声远播，挑战接踵而至。</p>
+<p>1981年9月，北京体育学院安排了一场引人注目的较量：冯志强对阵美国武术高手库玛——一位曾击败50多个国家选手、又胜过中国20余位武术名家的人物。</p>
+<p>冯志强运用神奇的太极绝技，将库玛一次次腾空放出，轻描淡写，从容自若。库玛惊叹不已，当场要求拜师。此后，他多次专程来京，向冯志强虚心求教。</p>
+<p>1982年7月，上海举办全国太极名家汇演，冯志强应邀表演推手。组委会任意指派来自全国各地的武术高手与他切磋——一位接一位，无论内家外家，皆被腾空放出。</p>
+<p>上海武林为之震动，议论数月。流传最广的一句话是：<em>"冯志强，真太极。"</em></p>
+<p>他从未主动寻求这些较量。但每一次，都印证了拳经所载、鲜有人真正达到的境界：真正的内功修为，产生出一种无法用力量、速度或技巧单独解释的能力。</p>`
+      }
+    },
+    {
+      tag:     { en: 'Singapore · 1988', zh: '新加坡 · 1988' },
+      title:   { en: 'The Singapore Connection', zh: '与新加坡的缘分' },
+      body: {
+        en: `<p>In 1988, Grandmaster Feng Zhiqiang received an invitation from the Singapore National Wushu Federation. Sent by the Chinese government, he traveled to Singapore — bringing Xin Yi Hun Yuan Tai Chi to Southeast Asia for the first time.</p>
+<p>He arrived exhausted from travel. Without pausing to rest, he accepted a challenge from a regional martial arts champion who had come expressly to test him — a master said to have withstood three punches from Muhammad Ali without moving.</p>
+<p>What happened next spread quickly through Singapore's martial arts community. The challenger left as a student, enrolling in every class Grandmaster Feng offered.</p>
+<p>That first Singapore visit opened a chapter that would continue for decades. Feng Zhiqiang returned multiple times, building a community of practitioners in Southeast Asia who trained in the authentic Hun Yuan system. By 2009, the Second International Hun Yuan Tai Chi Conference drew Singapore delegations among participants from 19 countries.</p>
+<p>Thirty-seven years later, his grandson Master Feng Yanbo carries that mission forward — teaching at Singapore China Cultural Centre, and soon bringing the art online for students anywhere in the world.</p>
+<p><em>What Grandmaster Feng Zhiqiang began in 1988, continues today.</em></p>`,
+        zh: `<p>1988年，冯志强大师收到新加坡国术总会的邀请，受中国政府派遣赴新加坡讲学，将心意混元太极拳首次带入东南亚。</p>
+<p>他抵达时旅途劳顿，却未加休息，便接受了一位慕名而来的东南亚武术名家的挑战——据说此人曾让拳王阿里三拳未被打动。</p>
+<p>之后发生的事，在新加坡武术界迅速流传。那位挑战者以学生身份离开，报名参加了冯志强大师所有课程的学习。</p>
+<p>那次新加坡之行开启了延续数十年的篇章。冯志强大师多次重返新加坡，在东南亚建立了修炼正宗混元体系的群体。2009年第二届国际混元太极拳交流大会，已有来自19个国家的代表参加，其中包括新加坡代表队。</p>
+<p>三十七年后，他的嫡孙冯彦博老师接过了这份使命——在新加坡中国文化中心传授这门艺术，并即将通过线上课程向全球学员开放。</p>
+<p><em>冯志强大师1988年所开创的，今日仍在延续。</em></p>`
+      }
+    },
+    {
+      tag:   { en: 'Technique', zh: '功法' },
+      title: { en: 'The Silk Thread', zh: '缠丝劲——那根看不见的丝' },
+      body: {
+        en: `<p>The unique physical signature of Chen-style Tai Chi is a quality called 缠丝劲 (chán sī jìn) — silk-reeling energy.</p>
+<p>The name comes from drawing silk from a cocoon. Pull too hard and the thread breaks. Lose tension and it tangles. The correct touch requires a consistent, spiraling pressure that neither grips nor releases.</p>
+<p>In practice, silk-reeling means the body moves in continuous spirals. Nothing is linear. When you raise an arm, the force originates at the foot, spirals up through the leg, through the hip and waist, through the shoulder and elbow, to the fingertips. Every joint participates. Nothing is disconnected.</p>
+<p>This spiral quality gives Chen-style its characteristic appearance — that flowing yet coiled look that makes it visually distinct from Yang-style's upright softness or Wu-style's smaller circles.</p>
+<p>It is also what makes it feel unlike anything else when you receive it. The force has nowhere to brace against, because it doesn't come in a straight line.</p>
+<p>Grandmaster Feng Zhiqiang described silk-reeling as the foundation of Xin Yi Hun Yuan practice — not a stylistic preference, but the structural mechanism through which internal energy is cultivated and expressed. His system includes dedicated <em>缠丝功 (Silk Reeling Exercises)</em> as foundational practice before the forms.</p>
+<p>The thread is there in every movement. It just takes time to feel it.</p>`,
+        zh: `<p>陈式太极拳区别于其他太极拳的独特标志，是一种被宗师们称为"缠丝劲"的运动品质。它无法伪造，只能修炼。</p>
+<p>"缠丝"二字，来自从蚕茧中抽丝的意象。用力过猛，丝线即断；张力松弛，则纷乱缠结。正确的手法需要持续的螺旋压力——既不抓紧，也不松开。</p>
+<p>在修炼中，缠丝劲意味着身体以连绵不断的螺旋运动。没有直线。举起手臂时，力从脚跟生发，经腿部螺旋而上，贯穿胯腰，过肩过肘，直达指尖。每个关节都参与其中，没有什么是孤立的。</p>
+<p>这种螺旋品质赋予了陈式太极拳独特的外观——那种流动而又蓄势待发的样子，使其在视觉上有别于杨式的直立柔和，或吴式的小圆圈风格。</p>
+<p>当你接触到它时，感觉也与任何东西都不同。力量无从格挡，因为它从不走直线。</p>
+<p>冯志强大师将缠丝劲描述为心意混元太极修炼的基础——不是风格偏好，而是内气培养与表达的结构性机制。他的体系将<em>缠丝功</em>作为套路之前的基础功法专门修炼。</p>
+<p>那根丝线藏于每个动作之中。只是需要时间去感受它。</p>`
+      }
+    },
+    {
+      tag:   { en: 'Cosmology', zh: '哲学宇宙观' },
+      title: { en: 'Written in the Stars', zh: '写在星空里——太极与易经' },
+      body: {
+        en: `<p>When Chen Wangting created Tai Chi in the 17th century, he drew on a text already two thousand years old: the I Ching — the Book of Changes.</p>
+<p>The Eight Trigrams (八卦) of the I Ching are eight symbols representing fundamental states of the universe: heaven, earth, thunder, wind, water, fire, mountain, lake. Chen Wangting mapped these directly onto the eight fundamental energies of Tai Chi — the Eight Gates (八门) of the 13 Postures.</p>
+<p>The Five Elements (五行) — wood, fire, earth, metal, water — map onto the Five Steps (五步): forward, backward, left, right, center.</p>
+<p>Together, 8 + 5 = 13 Postures encode an entire cosmological system inside a martial practice.</p>
+<p>But this is not mere symbolism. In traditional Chinese thought, the I Ching is not mystical — it is a model of how change works. The 64 hexagrams represent all possible states and transitions. The underlying logic: reality is not made of fixed things, but of patterns of change.</p>
+<p>This is the same underlying logic as Tai Chi: not fixed techniques, but principles for navigating change. The opponent changes; the environment changes; your own state changes. The practitioner who has internalized the 13 Postures doesn't respond to situations — <em>they respond to the pattern beneath the situations.</em></p>
+<p>The I Ching and Tai Chi are both maps of the same territory.</p>`,
+        zh: `<p>当陈王廷在十七世纪创编太极拳时，他援引的是一部已有两千年历史的典籍：《易经》——变化之书。</p>
+<p>《易经》的八卦，以八个符号代表宇宙的基本状态：乾、坤、震、巽、坎、离、艮、兑。陈王廷将这八卦直接对应到太极拳的八种基本劲力——即十三势中的"八门"。</p>
+<p>五行——木、火、土、金、水——对应太极拳的"五步"：进、退、顾、盼、定。</p>
+<p>八门加五步，合为十三势，将一套完整的宇宙哲学编码进了一门武术之中。</p>
+<p>但这不仅仅是象征。在中国传统思想中，《易经》不是神秘文本，而是一个关于"变化如何运作"的模型。六十四卦代表所有可能的状态与转化。其底层逻辑是：现实不是由固定的事物构成，而是由变化的模式构成。</p>
+<p>这与太极拳的底层逻辑完全一致：不是固定的技术，而是应对变化的原则。对手在变，环境在变，自身状态也在变。真正内化了十三势的习练者，不是在应对具体局面——<em>他们在应对局面之下的模式。</em></p>
+<p>《易经》与太极拳，都是同一个领域的地图。</p>`
+      }
+    },
+    {
+      tag:   { en: 'Global Reach', zh: '走向世界' },
+      title: { en: 'A Global Practice', zh: '走向世界' },
+      body: {
+        en: `<p>In January 2007, something extraordinary happened at a conference center in Beijing.</p>
+<p>Seven hundred practitioners of Xin Yi Hun Yuan Tai Chi gathered from 16 countries — the First International Hun Yuan Tai Chi Exchange Conference. People who had learned the art in Japan, Korea, the UK, the US, Canada, and across Asia came together to practice the same system, transmitted from the same source.</p>
+<p>It was not just a conference. It was evidence.</p>
+<p>Grandmaster Feng Zhiqiang first brought Xin Yi Hun Yuan outside China in 1984, sent to Japan by the Chinese government. Over the next two decades, he made nearly 20 visits to Japan alone, building one of the strongest international communities for the art. He also taught in Switzerland, the US, Finland, the Netherlands, South Korea, Hong Kong, Singapore, and across China.</p>
+<p>By 2009, the Second International Conference drew participants from 19 countries. By 2011, the Third drew over 1,000 people from 23 countries.</p>
+<p>In 2012, Xin Yi Hun Yuan Tai Chi was officially recognized as an <em>Intangible Cultural Heritage</em> of Beijing's Chaoyang District — formal acknowledgment of what practitioners already knew: this is not just exercise. It is a living cultural form.</p>
+<p>A village tradition that had been a family secret for 150 years had become, within a single lifetime, a global practice.</p>`,
+        zh: `<p>2007年1月，北京一处会议中心发生了一件不寻常的事。</p>
+<p>来自16个国家和地区的700名心意混元太极拳修炼者齐聚一堂，举行了第一届国际混元太极拳交流大会。那些在日本、韩国、英国、美国、加拿大及亚洲各地习练这套体系的人们，聚集在一起，修炼同一套功法，共同追溯同一个源头。</p>
+<p>这不只是一场大会，更是一份见证。</p>
+<p>冯志强大师1984年首次将心意混元太极拳带出中国，赴日讲学。此后二十年间，他仅赴日就近二十次，建立了规模最大的海外混元太极社群之一。他还在瑞士、美国、芬兰、荷兰、韩国、香港、新加坡及中国各地广泛传播。</p>
+<p>2009年第二届国际大会，参与者来自19个国家。2011年第三届，逾千人与会，代表队来自23个国家。</p>
+<p>2012年，心意混元太极拳被正式列为<em>北京市朝阳区非物质文化遗产</em>——这是官方对修炼者早已知晓之事的认可：这不只是运动，而是一门活着的文化形式。</p>
+<p>一门被家族秘传一百五十年的艺术，在一个人的一生中，成为了全球性的修炼传统。</p>`
+      }
+    },
+    {
+      tag:   { en: 'Practice Path', zh: '修炼之道' },
+      title: { en: 'The Practice Path', zh: '修炼之道——八养八伤' },
+      body: {
+        en: `<p>At the Third International Hun Yuan Tai Chi Conference in 2011, Grandmaster Feng Zhiqiang — then 83 years old — shared one of his most important teachings: the concept of <em>八养八伤</em> — Eight Nourishments and Eight Injuries.</p>
+<p>The teaching: what you practice matters less than how you practice.</p>
+<p><em>The Eight Nourishments</em> — conditions that deepen internal cultivation:<br>
+Calm mind · Correct posture · Natural breathing · Relaxed body<br>
+Focused intent · Consistent practice · Appropriate rest · Virtuous conduct</p>
+<p><em>The Eight Injuries</em> — habits that undermine it:<br>
+Forced effort · Tension · Held breath · Rigid joints<br>
+Scattered mind · Irregular practice · Overexertion · Moral carelessness</p>
+<p>What is striking about this framework is what is absent. Physical technique is not mentioned. The emphasis is entirely on the internal conditions — the state of mind and body that either opens or closes the channel through which cultivation happens.</p>
+<p>This is consistent with Grandmaster Feng Zhiqiang's lifelong teaching: <em>"Train the intention, not the force. Train the Qi, not the strength. Train the strength and it becomes brittle. Train the intention and it becomes pervasive."</em></p>
+<p>The path is available to anyone. The direction is clear. What remains is the practice itself.</p>`,
+        zh: `<p>2011年第三届国际混元太极拳交流大会上，时年83岁的冯志强大师分享了他最重要的教导之一：<em>八养八伤</em>。</p>
+<p>这一教导的核心是：你练什么，不如你怎么练。</p>
+<p><em>八养</em>——深化内功修炼的条件：<br>
+心静 · 体正 · 气顺 · 身松<br>
+意专 · 功勤 · 适休 · 德修</p>
+<p><em>八伤</em>——消解修炼成果的习惯：<br>
+强为 · 紧绷 · 憋气 · 僵关<br>
+散意 · 懈怠 · 过劳 · 失德</p>
+<p>这套框架令人深思之处，在于它所缺失的内容。外在功法只字未提。全部重点落在内在条件上——那种开启或关闭修炼通道的身心状态。</p>
+<p>这与冯志强大师毕生的教导一脉相承：<em>"练意不练气，练气不练力，练力易断，练意则通。"</em></p>
+<p>道路对所有人开放。方向已然清晰。剩下的，是修炼本身。</p>`
+      }
+    }
+  ];
+
+  function openStory(idx) {
+    const s = STORIES[idx];
+    const lang = currentLang;
+    document.getElementById('modalTag').textContent   = s.tag[lang];
+    document.getElementById('modalTitle').textContent = s.title[lang];
+    document.getElementById('modalBody').innerHTML    = s.body[lang];
+    const hero = document.getElementById('modalHero');
+    const imgSrc = STORY_IMGS[idx] || '';
+    const isSvg = imgSrc.endsWith('.svg');
+    hero.className = 'modal-hero' + (isSvg ? ' symbol' : '');
+    hero.src = imgSrc;
+    document.getElementById('storyModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeStory() {
+    document.getElementById('storyModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function handleModalClick(e) {
+    if (e.target === document.getElementById('storyModal')) closeStory();
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeStory(); });
 
   // ── Particle system ──
   (function() {

@@ -2,6 +2,23 @@
 
 ---
 
+## v1.0.4 — 2026-04-14
+
+### 订阅文案重构（海外用户）
+
+从"候补名单"话语体系切换至"故事订阅"话语体系，与 Reddit 内容引流策略对齐：
+
+- **导航栏按钮**：Get Early Access → Subscribe Free
+- **CTA 区按钮（海外）**：Join Waitlist → Subscribe Free
+- **CTA 区说明文字**：Online classes are coming… → Get Tai Chi stories in your inbox — history, philosophy & living tradition. Free, no spam.
+- **CTA 订阅成功提示**：You're on the list. See you on the mat. → Subscribed. Stories coming your way.
+- **吸底悬浮条按钮**：Get Early Access → Subscribe Free
+- **吸底悬浮条成功提示**：You're on the list. → Subscribed. Stories coming your way.
+
+> 背景：通过 Reddit r/taichi 发布太极历史故事帖，帖末引导读者至 taichigpt.com 免费订阅。原文案"Waitlist"与"订阅故事"定位不符，造成预期落差，故统一文案语言。
+
+---
+
 ## v1.0.3 — 2026-04-14
 
 ### SEO 深度优化

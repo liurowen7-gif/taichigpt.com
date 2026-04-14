@@ -610,6 +610,29 @@
     .footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--gold); }
     .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.2); }
+    .footer-version { font-size: 0.72rem; color: rgba(255,255,255,0.18); cursor: pointer; transition: color 0.2s; user-select: none; }
+    .footer-version:hover { color: var(--gold); }
+
+    /* ─── CHANGELOG PANEL ─── */
+    .changelog-panel {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0;
+      max-height: 60vh; overflow-y: auto;
+      background: rgba(10,9,8,0.97);
+      border-top: 1px solid rgba(201,168,76,0.25);
+      z-index: 900;
+      padding: 2rem 3rem 3rem;
+    }
+    .changelog-panel.open { display: block; }
+    .changelog-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+    .changelog-header h3 { font-family: 'Cormorant Garamond', serif; color: var(--gold); font-size: 1.2rem; margin: 0; }
+    .changelog-close { background: none; border: none; color: var(--muted); font-size: 1.4rem; cursor: pointer; line-height: 1; padding: 0; }
+    .changelog-close:hover { color: var(--gold); }
+    .changelog-version { margin-bottom: 1.5rem; }
+    .changelog-version h4 { font-size: 0.85rem; color: var(--gold); margin: 0 0 0.4rem; letter-spacing: 0.05em; }
+    .changelog-version ul { margin: 0; padding-left: 1.2rem; }
+    .changelog-version ul li { font-size: 0.78rem; color: var(--muted); line-height: 1.7; }
+    @media (max-width: 768px) { .changelog-panel { padding: 1.5rem 1.2rem 2.5rem; } }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
@@ -1322,7 +1345,59 @@
 <footer>
   <div class="footer-logo">太極 · Feng Yanbo</div>
   <div class="footer-copy" data-i18n="footer_copy">© 2026 Master Feng Yanbo · Singapore China Cultural Centre, 217 Queen St</div>
+  <div class="footer-version" onclick="toggleChangelog()">v1.0.4 · Changelog</div>
 </footer>
+
+<!-- Changelog Panel -->
+<div class="changelog-panel" id="changelogPanel">
+  <div class="changelog-header">
+    <h3>Changelog · taichigpt.com</h3>
+    <button class="changelog-close" onclick="toggleChangelog()">×</button>
+  </div>
+  <div class="changelog-version">
+    <h4>v1.0.4 · 2026-04-14</h4>
+    <ul>
+      <li>订阅文案重构：海外用户入口从「Waitlist」切换至「Stories」定位</li>
+      <li>导航栏、CTA 区、吸底悬浮条共 6 处英文文案更新为 Subscribe Free</li>
+      <li>与 Reddit 内容引流策略对齐，降低订阅页面预期落差</li>
+    </ul>
+  </div>
+  <div class="changelog-version">
+    <h4>v1.0.3 · 2026-04-14</h4>
+    <ul>
+      <li>hreflang 双语声明（en / zh），帮助 Google 按语言匹配用户</li>
+      <li>图片 alt 关键词优化 + lazy loading</li>
+      <li>FAQ Schema 结构化数据（6条），可触发 Google 富摘要</li>
+      <li>14篇文化故事正文语义 HTML 内嵌，供搜索引擎索引</li>
+    </ul>
+  </div>
+  <div class="changelog-version">
+    <h4>v1.0.2 · 2026-04-13</h4>
+    <ul>
+      <li>吸底订阅悬浮条：滚过 Hero 后底部滑出，靠近 CTA 自动隐藏</li>
+      <li>关闭后本次会话不再弹出（sessionStorage）</li>
+      <li>双语同步更新</li>
+    </ul>
+  </div>
+  <div class="changelog-version">
+    <h4>v1.0.1 · 2026-04-13</h4>
+    <ul>
+      <li>太极文化板块：8张故事卡片（鹤蛇传说、陈家沟、杨露禅等）</li>
+      <li>心意混元板块：6张故事卡片（冯志强传承、新加坡缘分等）</li>
+      <li>卡片点击弹窗全文阅读，支持 ESC / 点击遮罩关闭</li>
+      <li>导航栏新增两个锚点入口，全文案双语覆盖</li>
+    </ul>
+  </div>
+  <div class="changelog-version">
+    <h4>v1.0.0 · 2026-04-05</h4>
+    <ul>
+      <li>网站上线：Hero、Stats、Philosophy、Instructor、Gallery、Video、Courses、CTA</li>
+      <li>双语（EN / 中文）+ Geo 地理定位（新加坡线下 / 海外线上）</li>
+      <li>邮件订阅：表单 → Cloudflare Worker → 飞书 Bitable</li>
+      <li>Canvas 粒子动画背景，响应式移动端适配</li>
+    </ul>
+  </div>
+</div>
 
 <script>
   // ── Bilingual strings ──
@@ -2111,7 +2186,14 @@ Scattered mind · Irregular practice · Overexertion · Moral carelessness</p>
   function handleModalClick(e) {
     if (e.target === document.getElementById('storyModal')) closeStory();
   }
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeStory(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeStory(); closeChangelog(); } });
+
+  function toggleChangelog() {
+    document.getElementById('changelogPanel').classList.toggle('open');
+  }
+  function closeChangelog() {
+    document.getElementById('changelogPanel').classList.remove('open');
+  }
 
   // ── Particle system ──
   (function() {

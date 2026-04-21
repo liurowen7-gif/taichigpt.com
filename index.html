@@ -373,8 +373,22 @@
     }
     .stats-inner {
       max-width: 1100px; margin: 0 auto;
-      display: grid; grid-template-columns: repeat(4,1fr);
-      gap: 1rem; text-align: center;
+      display: flex; flex-direction: column; gap: 0;
+      text-align: center;
+    }
+    .stats-group {
+      display: flex; flex-direction: column; align-items: center;
+      padding: 1.2rem 0;
+    }
+    .stats-group + .stats-group {
+      border-top: 1px solid rgba(201,168,76,0.15);
+    }
+    .stats-group-label {
+      font-size: 0.65rem; color: var(--gold); letter-spacing: 0.2em;
+      text-transform: uppercase; margin-bottom: 0.8rem; opacity: 0.75;
+    }
+    .stats-group-items {
+      display: flex; flex-direction: row; justify-content: center; gap: 2rem;
     }
     .stat-item { padding: 0.5rem; }
     .stat-num {
@@ -481,10 +495,6 @@
       display: flex; gap: 1rem; align-items: flex-start;
       padding: 1.2rem 1.5rem;
       border-radius: 4px;
-    }
-    .track-inperson {
-      background: rgba(201,168,76,0.07);
-      border: 1px solid rgba(201,168,76,0.2);
     }
     .track-online {
       background: rgba(42,140,110,0.07);
@@ -698,7 +708,8 @@
       .courses-grid { grid-template-columns: 1fr; }
 
       /* STATS */
-      .stats-inner { grid-template-columns: repeat(2,1fr); }
+      .stats-inner { flex-direction: column; }
+      .stats-group-items { gap: 1.2rem; }
       .stats-bar { padding: 1.5rem 1.2rem; }
 
       /* CTA BOTTOM */
@@ -960,21 +971,31 @@
 <!-- STATS -->
 <div class="stats-bar">
   <div class="stats-inner">
-    <div class="stat-item">
-      <div class="stat-num">700<small style="font-size:1.2rem">+</small></div>
-      <div class="stat-label" data-i18n="stat_years_label">Years of Tradition</div>
+    <div class="stats-group">
+      <div class="stats-group-label" data-i18n="stat_art_label">The Art</div>
+      <div class="stats-group-items">
+        <div class="stat-item">
+          <div class="stat-num">700<small style="font-size:1.2rem">+</small></div>
+          <div class="stat-label" data-i18n="stat_years_label">Years of Tradition</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">13</div>
+          <div class="stat-label" data-i18n="stat_postures_label">Foundational Postures</div>
+        </div>
+      </div>
     </div>
-    <div class="stat-item">
-      <div class="stat-num">12<small style="font-size:1.2rem">th</small></div>
-      <div class="stat-label" data-i18n="stat_gen_label">Generation Lineage</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">3</div>
-      <div class="stat-label" data-i18n="stat_levels_label">Levels of Mastery</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">7<small style="font-size:1.2rem">段</small></div>
-      <div class="stat-label" data-i18n="stat_rank_label">Black Belt Rank</div>
+    <div class="stats-group">
+      <div class="stats-group-label" data-i18n="stat_master_label">Master Feng</div>
+      <div class="stats-group-items">
+        <div class="stat-item">
+          <div class="stat-num">12<small style="font-size:1.2rem">th</small></div>
+          <div class="stat-label" data-i18n="stat_gen_label">Generation Lineage</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">7<small style="font-size:1.2rem">段</small></div>
+          <div class="stat-label" data-i18n="stat_rank_label">Black Belt Rank</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -1073,17 +1094,10 @@
 
     <!-- Two tracks -->
     <div class="tracks">
-      <div class="track track-inperson">
-        <span class="track-icon">📍</span>
-        <div>
-          <div class="track-title">In-Person · Singapore</div>
-          <div class="track-desc">Small-group classes at Singapore China Cultural Centre. Limited spots per cohort.</div>
-        </div>
-      </div>
       <div class="track track-online">
         <span class="track-icon">🌐</span>
         <div>
-          <div class="track-title">Online · Worldwide <span class="coming-soon">Coming Soon</span></div>
+          <div class="track-title">Online · Worldwide</div>
           <div class="track-desc">Learn from anywhere. Live sessions and recorded courses for global students.</div>
         </div>
       </div>
@@ -1488,27 +1502,19 @@
       cult_c5_excerpt: 'In 1950s Beijing, a young master trained under two of China\'s greatest teachers simultaneously. What emerged was something entirely new.',
       read_more: 'Read the story →',
       footer_copy: '© 2026 Master Feng Yanbo · Singapore China Cultural Centre, 217 Queen St',
-      // geo-dependent
-      eyebrow_sg: '📍 In-Person Classes · Singapore',
       eyebrow_intl: '🌐 Online Classes · Coming Soon',
-      sub_sg: 'Master Feng Yanbo teaches authentic Chen-style Xin Yi Hun Yuan Tai Chi at Singapore China Cultural Centre. Small-group classes now open — limited spots per cohort.',
       sub_intl: 'Master Feng Yanbo carries a tradition 700 years in the making. Learn authentic Chen-style Xin Yi Hun Yuan Tai Chi — a moving meditation that transforms body, mind, and spirit.',
-      btn_sg: 'Get in Touch', btn_intl: 'Subscribe Free',
-      note_sg: "Leave your email and we'll reply within 24 hours about upcoming classes.",
+      btn_intl: 'Subscribe Free',
       note_intl: 'Be first to know when online classes open worldwide. No spam, ever.',
-      ok_sg: "✓ Got it! We'll be in touch about Singapore classes shortly.",
       ok_intl: "✓ You're on the list. We'll reach out when online classes launch.",
       ok_cta_intl: "✓ Subscribed. Stories coming your way.",
-      track_ip_title_sg: 'In-Person · Singapore',
-      track_ip_badge_sg: 'Now Open',
-      track_ip_desc_sg: 'Small-group classes · Singapore China Cultural Centre, 217 Queen St · 3 levels available · SGD $580 / 10 sessions',
       track_ol_title: 'Online · Worldwide',
-      track_ol_badge: 'Coming Soon',
       track_ol_desc: 'Live sessions & recorded courses — learn from anywhere in the world, at your own pace.',
       sessions_base: '<span>→</span> 10 sessions per cohort',
-      sessions_sg: '<span>→</span> 10 sessions · SGD $580',
-      cta_p_sg: "Interested in joining a class in Singapore? Leave your email and we'll be in touch.",
       cta_p_intl: 'Get Tai Chi stories in your inbox — history, philosophy & living tradition. Free, no spam.',
+      stat_art_label: 'The Art',
+      stat_master_label: 'Master Feng',
+      stat_postures_label: 'Foundational Postures',
       input_ph1: 'Enter your email',
       input_ph2: 'Your email address',
       sticky_copy: 'Weekly insights on Tai Chi, Chinese philosophy & living tradition — free.',
@@ -1601,27 +1607,19 @@
       cult_c5_excerpt: '二十世纪五十年代的北京，一位年轻宗师同时师从两位中国最伟大的武学家。由此诞生了全新的体系。',
       read_more: '阅读故事 →',
       footer_copy: '© 2026 冯彦博老师 · 新加坡中国文化中心，皇后街217号',
-      // geo-dependent
-      eyebrow_sg: '📍 新加坡线下课程',
       eyebrow_intl: '🌐 线上课程 · 即将开放',
-      sub_sg: '冯彦博老师在新加坡中国文化中心教授正宗陈式心意混元太极拳。小班精品课程，每期名额有限，现已开放报名。',
       sub_intl: '冯彦博老师传承700年武学精髓。学习正宗陈式心意混元太极拳——一门修身养心的动态冥想，让身体、心灵与精神焕然一新。',
-      btn_sg: '立即咨询', btn_intl: '加入候补',
-      note_sg: '留下邮箱，我们将在24小时内与您联系课程详情。',
+      btn_intl: '加入候补',
       note_intl: '第一时间获悉线上课程开放通知，绝不发送垃圾邮件。',
-      ok_sg: '✓ 收到！我们将尽快与您联系新加坡课程详情。',
       ok_intl: '✓ 已加入候补名单，线上课程开放时我们会第一时间通知您。',
       ok_cta_intl: '✓ 已加入候补名单，期待与您相见。',
-      track_ip_title_sg: '线下课程 · 新加坡',
-      track_ip_badge_sg: '立即开放',
-      track_ip_desc_sg: '小班精品课程 · 新加坡中国文化中心，皇后街217号 · 三个层次 · 每期SGD $580（共10节）',
       track_ol_title: '线上课程 · 全球',
-      track_ol_badge: '即将开放',
       track_ol_desc: '直播课程与录播内容，随时随地，按自己的节奏学习。',
       sessions_base: '<span>→</span> 每期10节课',
-      sessions_sg: '<span>→</span> 每期10节课 · SGD $580',
-      cta_p_sg: '有意参加新加坡课程？留下邮箱，我们将与您联系。',
       cta_p_intl: '线上课程即将开放，加入候补名单，抢先获知消息。',
+      stat_art_label: '太极拳',
+      stat_master_label: '冯彦博老师',
+      stat_postures_label: '基础拳式',
       input_ph1: '请输入邮箱地址',
       input_ph2: '请输入您的邮箱',
       sticky_copy: '每周一封：太极、阴阳与中国传统智慧精华，免费订阅。',
@@ -1632,11 +1630,9 @@
   };
 
   let currentLang = localStorage.getItem('lang') || 'en';
-  let currentIsSG = false;
 
   function render() {
     const s = STRINGS[currentLang];
-    const isSG = currentIsSG;
 
     // Update html lang attribute for SEO
     document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en';
@@ -1654,73 +1650,50 @@
     const stickyInput = document.querySelector('.sticky-bar-form input[type="email"]');
     if (stickyInput) stickyInput.placeholder = s.sticky_ph;
 
-    // Geo: eyebrow
+    // Eyebrow
     const eyebrow = document.querySelector('.hero-eyebrow');
-    if (eyebrow) eyebrow.textContent = isSG ? s.eyebrow_sg : s.eyebrow_intl;
+    if (eyebrow) eyebrow.textContent = s.eyebrow_intl;
 
-    // Geo: hero subtitle
+    // Hero subtitle
     const heroSub = document.querySelector('.hero-sub');
-    if (heroSub) heroSub.textContent = isSG ? s.sub_sg : s.sub_intl;
+    if (heroSub) heroSub.textContent = s.sub_intl;
 
-    // Geo: buttons
+    // Buttons
     document.querySelectorAll('.email-form button').forEach(btn => {
-      if (!btn.disabled) btn.textContent = isSG ? s.btn_sg : s.btn_intl;
+      if (!btn.disabled) btn.textContent = s.btn_intl;
     });
 
-    // Geo: form notes
+    // Form notes
     document.querySelectorAll('.form-note').forEach(n => {
-      n.textContent = isSG ? s.note_sg : s.note_intl;
+      n.textContent = s.note_intl;
     });
 
-    // Geo: success messages
+    // Success messages
     const heroSuc = document.getElementById('hero-success');
-    if (heroSuc) heroSuc.textContent = isSG ? s.ok_sg : s.ok_intl;
+    if (heroSuc) heroSuc.textContent = s.ok_intl;
     const ctaSuc = document.getElementById('cta-success');
-    if (ctaSuc) ctaSuc.textContent = isSG ? s.ok_sg : s.ok_cta_intl;
+    if (ctaSuc) ctaSuc.textContent = s.ok_cta_intl;
 
-    // Geo: tracks
-    const trackInperson = document.querySelector('.track-inperson');
-    const trackOnline   = document.querySelector('.track-online');
-    if (isSG) {
-      if (trackInperson) {
-        trackInperson.style.borderColor = 'rgba(201,168,76,0.7)';
-        trackInperson.style.background  = 'rgba(201,168,76,0.13)';
-        trackInperson.style.opacity     = '1';
-        trackInperson.innerHTML = `<span class="track-icon">📍</span><div>
-          <div class="track-title">${s.track_ip_title_sg} <span style="font-size:0.65rem;background:rgba(201,168,76,0.3);color:#e8c96a;padding:0.15rem 0.5rem;border-radius:2rem;margin-left:0.4rem;vertical-align:middle;">${s.track_ip_badge_sg}</span></div>
-          <div class="track-desc">${s.track_ip_desc_sg}</div>
-        </div>`;
-      }
-      if (trackOnline) {
-        trackOnline.style.opacity = '0.35';
-        trackOnline.style.borderColor = '';
-        trackOnline.style.background  = '';
-      }
-    } else {
-      if (trackOnline) {
-        trackOnline.style.borderColor = 'rgba(42,140,110,0.7)';
-        trackOnline.style.background  = 'rgba(42,140,110,0.13)';
-        trackOnline.style.opacity     = '1';
-        trackOnline.innerHTML = `<span class="track-icon">🌐</span><div>
-          <div class="track-title">${s.track_ol_title} <span class="coming-soon">${s.track_ol_badge}</span></div>
-          <div class="track-desc">${s.track_ol_desc}</div>
-        </div>`;
-      }
-      if (trackInperson) {
-        trackInperson.style.opacity = '0.35';
-        trackInperson.style.borderColor = '';
-        trackInperson.style.background  = '';
-      }
+    // Track: online only
+    const trackOnline = document.querySelector('.track-online');
+    if (trackOnline) {
+      trackOnline.style.borderColor = 'rgba(42,140,110,0.7)';
+      trackOnline.style.background  = 'rgba(42,140,110,0.13)';
+      trackOnline.style.opacity     = '1';
+      trackOnline.innerHTML = `<span class="track-icon">🌐</span><div>
+        <div class="track-title">${s.track_ol_title}</div>
+        <div class="track-desc">${s.track_ol_desc}</div>
+      </div>`;
     }
 
-    // Geo: course sessions/pricing rows
+    // Course sessions/pricing rows
     document.querySelectorAll('.course-sessions').forEach(el => {
-      el.innerHTML = isSG ? s.sessions_sg : s.sessions_base;
+      el.innerHTML = s.sessions_base;
     });
 
-    // Geo: CTA paragraph
+    // CTA paragraph
     const ctaP = document.querySelector('.cta-section p');
-    if (ctaP) ctaP.textContent = isSG ? s.cta_p_sg : s.cta_p_intl;
+    if (ctaP) ctaP.textContent = s.cta_p_intl;
 
     // Lang toggle active state
     document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -1736,16 +1709,7 @@
     render();
   }
 
-  (async function() {
-    try {
-      const res = await fetch('https://ipapi.co/json/');
-      const data = await res.json();
-      currentIsSG = data.country_code === 'SG';
-    } catch(e) {
-      currentIsSG = false;
-    }
-    render();
-  })();
+  render();
 
   // ── Navbar scroll ──
   const nav = document.getElementById('nav');

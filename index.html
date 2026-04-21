@@ -388,12 +388,14 @@
       text-transform: uppercase; margin-bottom: 0.8rem; opacity: 0.75;
     }
     .stats-group-items {
-      display: flex; flex-direction: row; justify-content: center; gap: 2rem;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      width: 100%; max-width: 900px; text-align: center;
     }
-    .stat-item { padding: 0.5rem; }
+    .stat-item { padding: 0.5rem; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; }
     .stat-num {
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.4rem; font-weight: 300; color: var(--gold); line-height: 1;
+      min-height: 2.8rem; display: flex; align-items: flex-end; justify-content: center;
     }
     .stat-label { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 0.3rem; }
 
@@ -1000,7 +1002,7 @@
           <div class="stat-label" data-i18n="stat_gen_label">Generation Lineage</div>
         </div>
         <div class="stat-item">
-          <div class="stat-num">7<small style="font-size:1.2rem">段</small></div>
+          <div class="stat-num" data-i18n="stat_rank_num">7<small style="font-size:1.2rem">th</small></div>
           <div class="stat-label" data-i18n="stat_rank_label">Black Belt Rank</div>
         </div>
         <div class="stat-item">
@@ -1008,7 +1010,7 @@
           <div class="stat-label" data-i18n="stat_heir_label">Direct Lineage Heir</div>
         </div>
         <div class="stat-item">
-          <div class="stat-num" style="font-size:1.6rem" data-i18n="stat_examiner_num">国家级</div>
+          <div class="stat-num" data-i18n="stat_examiner_num">Nat'l</div>
           <div class="stat-label" data-i18n="stat_examiner_label">Certified Examiner</div>
         </div>
       </div>
@@ -1543,7 +1545,8 @@
       stat_practitioners_label: 'Practitioners Worldwide',
       stat_lineages_label: 'Major Lineages',
       stat_heir_label: 'Direct Lineage Heir',
-      stat_examiner_num: '国家级', stat_examiner_label: 'Certified Examiner',
+      stat_rank_num: '7<small style="font-size:1.2rem">th</small>',
+      stat_examiner_num: "Nat'l", stat_examiner_label: 'Certified Examiner',
       input_ph1: 'Enter your email',
       input_ph2: 'Your email address',
       sticky_copy: 'Weekly insights on Tai Chi, Chinese philosophy & living tradition — free.',
@@ -1652,6 +1655,7 @@
       stat_practitioners_label: '全球习练者',
       stat_lineages_label: '主要流派',
       stat_heir_label: '嫡系传人',
+      stat_rank_num: '7<small style="font-size:1.2rem">段</small>',
       stat_examiner_num: '国家级', stat_examiner_label: '武术考官',
       input_ph1: '请输入邮箱地址',
       input_ph2: '请输入您的邮箱',

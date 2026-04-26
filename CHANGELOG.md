@@ -2,6 +2,26 @@
 
 ---
 
+## v1.1.0 — 2026-04-26
+
+### Blog 上线 · SEO 长尾流量获取
+
+新增独立博客系统，将原有太极文化故事从单页内嵌内容拆分为独立 URL，获取搜索引擎长尾流量并转化订阅用户：
+
+- **博客首页** `/blog/` ：文章列表 + 邮件订阅 CTA
+- **10 篇独立文章页面**，覆盖太极历史、哲学、技法、传承四大主题
+- **SEO 长尾关键词覆盖**：zhang sanfeng tai chi、chen wangting history、yang luchan、four ounces thousand pounds、13 postures tai chi、silk reeling energy、feng zhiqiang、tai chi singapore、tai chi i ching 等
+- **每篇文章底部**：邮件订阅表单（Formspree），读者 → 订阅用户转化
+- **前后文章导航**：引导用户连续阅读，降低跳出率
+- **主站导航栏**：新增 "Stories" 入口
+- **Sitemap**：新增 11 个 URL（1 博客首页 + 10 文章）
+- **Google Analytics**：所有博客页面已接入 GA 追踪
+- **统一设计风格**：深色主题 + 金色点缀，响应式，与主站一致
+
+> 背景：单页网站仅能竞争有限关键词。博客为每篇文章创建独立入口，覆盖不同搜索意图，通过内容营销获取自然流量并转化为邮件订阅用户。
+
+---
+
 ## v1.0.4 — 2026-04-14
 
 ### 订阅文案重构（海外用户）

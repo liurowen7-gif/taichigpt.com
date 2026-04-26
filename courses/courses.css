@@ -1,0 +1,413 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --gold:    #c9a84c;
+  --gold-dim: rgba(201,168,76,0.15);
+  --ink:     #050a07;
+  --deep:    #0a100c;
+  --mid:     #111a14;
+  --text:    rgba(255,255,255,0.82);
+  --muted:   rgba(255,255,255,0.45);
+  --white:   #ffffff;
+  --teal:    #2a8c6e;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--ink);
+  color: var(--text);
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.4rem 3rem;
+  background: rgba(5,10,7,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201,168,76,0.12);
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 0.9rem;
+  text-decoration: none;
+}
+.nav-logo-chinese {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem; color: var(--gold); line-height: 1;
+}
+.nav-logo-divider { width: 1px; height: 22px; background: rgba(201,168,76,0.4); }
+.nav-logo-en {
+  font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted); line-height: 1.3;
+}
+.nav-links { display: flex; align-items: center; gap: 1.8rem; }
+.nav-links a {
+  color: var(--muted); text-decoration: none;
+  font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+.nav-cta {
+  padding: 0.55rem 1.5rem; border-radius: 2rem;
+  border: 1px solid var(--gold); color: var(--gold);
+  text-decoration: none; font-size: 0.78rem; letter-spacing: 0.1em;
+  text-transform: uppercase; font-weight: 500;
+  transition: all 0.25s;
+}
+.nav-cta:hover { background: var(--gold); color: var(--ink); }
+
+/* ─── COURSE INDEX HERO ─── */
+.courses-hero {
+  max-width: 800px; margin: 0 auto;
+  padding: 9rem 2rem 3rem;
+  text-align: center;
+}
+
+.courses-hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 300; color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.courses-hero p {
+  font-size: 1.05rem; color: var(--muted);
+  max-width: 560px; margin: 0 auto 1rem;
+  line-height: 1.7;
+}
+
+.courses-hero .coming-soon-badge {
+  display: inline-block;
+  padding: 0.35rem 1.2rem;
+  border: 1px solid rgba(201,168,76,0.4);
+  border-radius: 2rem;
+  font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2rem;
+}
+
+/* ─── COURSE CARDS (index) ─── */
+.course-cards {
+  max-width: 960px; margin: 0 auto;
+  padding: 0 2rem 3rem;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.course-card {
+  display: flex; flex-direction: column;
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 1rem;
+  padding: 2rem 1.8rem;
+  background: rgba(201,168,76,0.03);
+  transition: border-color 0.3s, transform 0.3s;
+  text-decoration: none;
+}
+
+.course-card:hover {
+  border-color: rgba(201,168,76,0.4);
+  transform: translateY(-4px);
+}
+
+.course-card-tier {
+  font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.8rem;
+}
+
+.course-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem; font-weight: 400;
+  color: var(--white); line-height: 1.25;
+  margin-bottom: 0.8rem;
+}
+
+.course-card-desc {
+  font-size: 0.88rem; color: var(--muted);
+  line-height: 1.6; flex: 1;
+  margin-bottom: 1.5rem;
+}
+
+.course-card-meta {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(201,168,76,0.1);
+}
+
+.course-card-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem; color: var(--white); font-weight: 400;
+}
+
+.course-card-price .period {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem; color: var(--muted);
+}
+
+.course-card-cta {
+  font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ─── COURSE DETAIL PAGE ─── */
+.course-detail {
+  max-width: 760px; margin: 0 auto;
+  padding: 8rem 2rem 4rem;
+}
+
+.course-tier-badge {
+  display: inline-block;
+  padding: 0.3rem 0.9rem;
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 2rem;
+  font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+}
+
+.course-detail h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 300; color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.course-subtitle {
+  font-size: 1.05rem; color: var(--muted);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+
+/* Stats row */
+.course-stats {
+  display: flex; gap: 2rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(201,168,76,0.12);
+  border-bottom: 1px solid rgba(201,168,76,0.12);
+  margin-bottom: 2.5rem;
+}
+
+.course-stat {
+  text-align: center; flex: 1;
+}
+
+.course-stat-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; color: var(--white);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.course-stat-label {
+  font-size: 0.7rem; color: var(--muted);
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+
+/* Section headings */
+.course-section {
+  margin-bottom: 2.5rem;
+}
+
+.course-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 400;
+  color: var(--white);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+}
+
+.course-section p {
+  font-size: 0.95rem; color: var(--text);
+  margin-bottom: 1rem; line-height: 1.8;
+}
+
+/* Syllabus */
+.syllabus {
+  list-style: none; padding: 0;
+}
+
+.syllabus li {
+  display: flex; align-items: baseline; gap: 1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.92rem; color: var(--text);
+}
+
+.syllabus-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; color: var(--gold);
+  min-width: 1.8rem;
+}
+
+.syllabus-title { flex: 1; }
+
+.syllabus-duration {
+  font-size: 0.75rem; color: var(--muted);
+  white-space: nowrap;
+}
+
+/* What you'll learn */
+.learn-list {
+  list-style: none; padding: 0;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;
+}
+
+.learn-list li {
+  font-size: 0.9rem; color: var(--text);
+  padding-left: 1.4rem;
+  position: relative;
+}
+
+.learn-list li::before {
+  content: '✓';
+  position: absolute; left: 0;
+  color: var(--gold); font-size: 0.85rem;
+}
+
+/* Pricing box */
+.pricing-box {
+  margin-top: 2.5rem;
+  padding: 2.5rem;
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 1rem;
+  background: rgba(201,168,76,0.04);
+  text-align: center;
+}
+
+.pricing-box .price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem; color: var(--white);
+  font-weight: 300;
+  margin-bottom: 0.3rem;
+}
+
+.pricing-box .price-note {
+  font-size: 0.82rem; color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+.pricing-box .price-cta {
+  display: inline-block;
+  padding: 0.9rem 2.5rem;
+  border-radius: 3rem;
+  background: var(--gold); color: var(--ink);
+  text-decoration: none;
+  font-size: 0.85rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  transition: background 0.2s;
+}
+
+.pricing-box .price-cta:hover { background: #e0bc5a; }
+
+.pricing-box .price-cta.coming-soon {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  cursor: default;
+}
+
+/* Notify form */
+.notify-form {
+  display: flex; gap: 0;
+  max-width: 420px; margin: 1.2rem auto 0;
+  border: 1px solid rgba(201,168,76,0.35);
+  border-radius: 3rem; overflow: hidden;
+  background: rgba(255,255,255,0.05);
+}
+
+.notify-form input[type="email"] {
+  flex: 1; padding: 0.85rem 1.3rem;
+  background: transparent; border: none;
+  color: var(--white); font-size: 0.88rem; outline: none;
+  font-family: 'Inter', sans-serif;
+}
+
+.notify-form input::placeholder { color: var(--muted); }
+
+.notify-form button {
+  padding: 0.85rem 1.5rem;
+  background: var(--gold); color: var(--ink);
+  border: none; font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  cursor: pointer; transition: background 0.2s; white-space: nowrap;
+  border-radius: 0 3rem 3rem 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.notify-form button:hover { background: #e0bc5a; }
+
+/* FAQ */
+.faq-item {
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+  padding: 1.2rem 0;
+}
+
+.faq-q {
+  font-size: 0.95rem; color: var(--white);
+  font-weight: 500; margin-bottom: 0.5rem;
+}
+
+.faq-a {
+  font-size: 0.88rem; color: var(--muted);
+  line-height: 1.7;
+}
+
+/* Instructor mini */
+.instructor-mini {
+  display: flex; align-items: center; gap: 1.2rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(201,168,76,0.12);
+  border-radius: 0.8rem;
+  background: rgba(201,168,76,0.03);
+}
+
+.instructor-mini img {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(201,168,76,0.3);
+}
+
+.instructor-mini-info h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; color: var(--white);
+  font-weight: 400; margin-bottom: 0.2rem;
+}
+
+.instructor-mini-info p {
+  font-size: 0.78rem; color: var(--muted);
+  margin: 0; line-height: 1.5;
+}
+
+/* Footer */
+.courses-footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid rgba(201,168,76,0.08);
+  font-size: 0.72rem; color: var(--muted);
+}
+.courses-footer a { color: var(--gold); text-decoration: none; }
+.courses-footer a:hover { text-decoration: underline; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .course-cards { grid-template-columns: 1fr; }
+  .learn-list { grid-template-columns: 1fr; }
+  .course-stats { gap: 1rem; }
+}
+
+@media (max-width: 640px) {
+  nav { padding: 1rem 1.5rem; }
+  .courses-hero { padding: 7rem 1.2rem 2rem; }
+  .course-detail { padding: 6.5rem 1.2rem 3rem; }
+  .course-cards { padding: 0 1.2rem 3rem; }
+  .nav-links { gap: 1rem; }
+  .notify-form { flex-direction: column; border-radius: 1rem; }
+  .notify-form input[type="email"] { border-radius: 1rem 1rem 0 0; text-align: center; }
+  .notify-form button { border-radius: 0 0 1rem 1rem; padding: 0.9rem; }
+}

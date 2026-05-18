@@ -255,6 +255,41 @@
       position: absolute; inset: 0; z-index: 1;
       background: url('images/performance.png') 25% 30% / cover no-repeat;
     }
+    .hero-bg video {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: 25% 30%;
+    }
+    .hero-title-wrap {
+      position: relative; display: inline-block;
+    }
+    .sound-toggle {
+      position: absolute;
+      top: 0.15em; right: -58px;
+      display: flex; align-items: center; justify-content: center;
+      width: 46px; height: 46px; border-radius: 50%;
+      border: 2px solid var(--gold);
+      background: rgba(201,168,76,0.15); backdrop-filter: blur(8px);
+      color: var(--gold); font-size: 1.2rem; line-height: 1;
+      font-family: 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif;
+      cursor: pointer;
+      transition: all 0.25s;
+      animation: pulse-ring 1.8s ease-out infinite;
+    }
+    .sound-toggle.on {
+      animation: none;
+      border-color: rgba(201,168,76,0.4);
+      background: rgba(5,10,7,0.5);
+    }
+    .sound-toggle:hover {
+      background: rgba(201,168,76,0.3);
+      border-color: var(--gold);
+      transform: scale(1.1);
+    }
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(201,168,76,0.6); }
+      70% { box-shadow: 0 0 0 14px rgba(201,168,76,0); }
+      100% { box-shadow: 0 0 0 0 rgba(201,168,76,0); }
+    }
     .hero-overlay {
       position: absolute; inset: 0; z-index: 2;
       background: linear-gradient(
@@ -514,22 +549,31 @@
     }
     @media (max-width: 768px) {
       .tracks { grid-template-columns: 1fr; }
+      .video-layout { grid-template-columns: 1fr; text-align: center; }
+      .video-wrapper { max-width: 280px; margin: 0 auto; }
+      .video-text { text-align: left; }
     }
 
     /* ─── VIDEO ─── */
     .video-section { background: var(--ink); }
+    .video-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: center;
+    }
+    .video-text .section-eyebrow { margin-bottom: 1rem; }
+    .video-text .section-title { margin-bottom: 1.5rem; }
     .video-sub {
       color: var(--muted); font-size: 0.95rem; font-weight: 300;
-      margin-bottom: 2.5rem; max-width: 520px;
+      max-width: 520px;
     }
     .video-wrapper {
-      position: relative; padding-bottom: 56.25%; height: 0;
+      aspect-ratio: 9 / 16;
+      max-width: 400px;
       border: 1px solid rgba(201,168,76,0.2);
       border-radius: 4px; overflow: hidden;
       box-shadow: 0 0 80px rgba(201,168,76,0.08);
     }
     .video-wrapper iframe {
-      position: absolute; top: 0; left: 0;
       width: 100%; height: 100%;
     }
 
@@ -662,6 +706,7 @@
       /* HERO */
       .hero-content { padding: 7rem 1.2rem 4rem; width: 100%; max-width: 100%; }
       .hero h1 { font-size: clamp(2.4rem, 10vw, 3.5rem); }
+      .sound-toggle { width: 34px; height: 34px; font-size: 0.85rem; right: -42px; top: 0.1em; }
       .hero-sub { font-size: 0.9rem; max-width: 100%; }
       .hero-calligraphy { display: none; }
 
@@ -945,14 +990,21 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-bg">
+    <video id="heroVideo" autoplay loop playsinline poster="images/performance.png">
+      <source src="videos/promo.mp4" type="video/mp4">
+    </video>
+  </div>
   <div class="hero-overlay"></div>
   <div class="hero-grid"></div>
   <div class="hero-ink"></div>
   <div class="hero-calligraphy">天人合一</div>
   <div class="hero-content">
     <div class="hero-eyebrow">12th-Generation Lineage · Singapore</div>
-    <h1 data-i18n="hero_h1">Ancient Art.<br><em>Living</em> Wisdom.</h1>
+    <div class="hero-title-wrap">
+      <h1 data-i18n="hero_h1">Ancient Art.<br><em>Living</em> Wisdom.</h1>
+      <button class="sound-toggle" id="soundToggle" onclick="toggleSound()" aria-label="Toggle sound">🔇</button>
+    </div>
     <p class="hero-sub">
       Master Feng Yanbo carries a tradition 700 years in the making.
       Learn authentic Chen-style Xin Yi Hun Yuan Tai Chi — a moving meditation that
@@ -1092,17 +1144,21 @@
 <!-- VIDEO -->
 <section class="video-section">
   <div class="container">
-    <div class="section-eyebrow" data-i18n="vid_eyebrow">Watch the Form</div>
-    <h2 class="section-title" data-i18n="vid_title">Chen-Style 24 Form —<br><em>Full Demonstration</em></h2>
-    <p class="video-sub" data-i18n="vid_sub">Uninterrupted. Unedited. The authentic form as passed down through 12 generations.</p>
-    <div class="video-wrapper">
-      <iframe
-        src="https://www.youtube.com/embed/nwYKP6xJy6g?rel=0&color=white&modestbranding=1"
-        title="Chen-Style Xin Yi Hun Yuan Tai Chi 24 Form — Master Feng Yanbo"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
+    <div class="video-layout">
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/nwYKP6xJy6g?rel=0&color=white&modestbranding=1"
+          title="Chen-Style Xin Yi Hun Yuan Tai Chi 24 Form — Master Feng Yanbo"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-text">
+        <div class="section-eyebrow" data-i18n="vid_eyebrow">Watch the Form</div>
+        <h2 class="section-title" data-i18n="vid_title">Chen-Style 24 Form —<br><em>Full Demonstration</em></h2>
+        <p class="video-sub" data-i18n="vid_sub">Uninterrupted. Unedited. The authentic form as passed down through 12 generations.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1467,6 +1523,28 @@
 </div>
 
 <script>
+  // ── Hero video sound ──
+  (function() {
+    const vid = document.getElementById('heroVideo');
+    const btn = document.getElementById('soundToggle');
+    // Try to play with sound; browsers may block this
+    vid.muted = false;
+    const p = vid.play();
+    if (p) p.catch(function() {
+      // Autoplay with sound was blocked — fall back to muted
+      vid.muted = true;
+      btn.textContent = '🔇';
+      vid.play();
+    });
+  })();
+  function toggleSound() {
+    const vid = document.getElementById('heroVideo');
+    const btn = document.getElementById('soundToggle');
+    vid.muted = !vid.muted;
+    btn.textContent = vid.muted ? '🔇' : '🔊';
+    btn.classList.toggle('on', !vid.muted);
+  }
+
   // ── Bilingual strings ──
   const STRINGS = {
     en: {

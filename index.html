@@ -757,7 +757,11 @@
 
       /* STATS */
       .stats-inner { flex-direction: column; }
-      .stats-group-items { gap: 1.2rem; }
+      .stats-group-items { grid-template-columns: repeat(2, 1fr); gap: 1.4rem 0.6rem; }
+      .stat-item { min-width: 0; padding: 0.3rem; }
+      .stat-num { font-size: 2rem; min-height: 2.4rem; }
+      .stat-num--sm { font-size: 1.3rem; }
+      .stat-label { font-size: 0.62rem; letter-spacing: 0.08em; }
       .stats-bar { padding: 1.5rem 1.2rem; }
 
       /* CTA BOTTOM */
@@ -942,7 +946,67 @@
       color: var(--muted); text-decoration: none; transition: color 0.2s;
     }
     .nav-link:hover { color: var(--gold); }
+    .nav-link--ceremony { color: var(--gold); }
     @media (max-width: 768px) { .nav-links { display: none; } }
+
+    /* ─── MOBILE MENU (burger) ─── */
+    .nav-burger {
+      display: none; background: none; border: none; cursor: pointer;
+      flex-direction: column; justify-content: center; gap: 5px;
+      width: 36px; height: 36px; padding: 6px;
+    }
+    .nav-burger span {
+      display: block; height: 1.5px; width: 100%;
+      background: var(--gold); transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    @media (max-width: 768px) { .nav-burger { display: flex; } }
+    .mobile-menu {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 190;
+      background: rgba(5,10,7,0.96); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+      padding: 5rem 1.6rem 2rem;
+      transform: translateY(-105%); transition: transform 0.35s ease;
+    }
+    .mobile-menu.open { transform: translateY(0); }
+    .mobile-menu a {
+      display: block; padding: 1rem 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 300;
+      color: var(--white); text-decoration: none;
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a em { font-style: normal; color: var(--gold); }
+    .mobile-menu a .mobile-menu-tag {
+      font-family: 'Inter', sans-serif; font-size: 0.6rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold); margin-left: 0.6rem; vertical-align: middle;
+      border: 1px solid rgba(201,168,76,0.4); border-radius: 2rem;
+      padding: 0.15rem 0.55rem;
+    }
+
+    /* ─── HERO ANNOUNCE (ceremony entry) ─── */
+    .hero-announce {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      margin-bottom: 1.6rem; padding: 0.5rem 1.2rem;
+      border: 1px solid rgba(201,168,76,0.5); border-radius: 2rem;
+      background: rgba(201,168,76,0.08); backdrop-filter: blur(8px);
+      color: var(--gold); text-decoration: none;
+      font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+      transition: background 0.25s, box-shadow 0.25s;
+    }
+    .hero-announce:hover {
+      background: rgba(201,168,76,0.16);
+      box-shadow: 0 0 24px rgba(201,168,76,0.25);
+    }
+    .hero-announce .hero-announce-arrow { transition: transform 0.25s; }
+    .hero-announce:hover .hero-announce-arrow { transform: translateX(4px); }
+    @media (max-width: 768px) {
+      .hero-announce { font-size: 0.68rem; padding: 0.45rem 1rem; letter-spacing: 0.05em; }
+    }
 
     /* ─── CARD IMAGE ─── */
     .card-img {
@@ -973,6 +1037,7 @@
     <span class="nav-logo-en">Master Feng Yanbo<br>Chen-Style Xin Yi Hun Yuan Tai Chi</span>
   </div>
   <div class="nav-links">
+    <a href="/ceremony/" class="nav-link nav-link--ceremony" data-i18n="nav_ceremony">Ceremony</a>
     <a href="#tai-chi-heritage" class="nav-link" data-i18n="nav_heritage">Tai Chi Culture</a>
     <a href="#hun-yuan" class="nav-link" data-i18n="nav_hunyuan">Hun Yuan</a>
     <a href="/blog/" class="nav-link">Stories</a>
@@ -985,13 +1050,25 @@
       <button class="lang-btn" data-lang="zh" onclick="switchLang('zh')">中文</button>
     </div>
     <a href="#subscribe" class="nav-cta" data-i18n="nav_cta">Get Early Access</a>
+    <button class="nav-burger" id="navBurger" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/ceremony/"><em data-i18n="nav_ceremony">Ceremony</em><span class="mobile-menu-tag" data-i18n="menu_tag_new">Jul 25</span></a>
+  <a href="#tai-chi-heritage" data-i18n="nav_heritage" onclick="toggleMenu()">Tai Chi Culture</a>
+  <a href="#hun-yuan" data-i18n="nav_hunyuan" onclick="toggleMenu()">Hun Yuan</a>
+  <a href="/blog/">Stories</a>
+  <a href="/courses/">Courses</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg">
-    <video id="heroVideo" autoplay loop playsinline poster="images/performance.png">
+    <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="images/performance.png">
       <source src="videos/promo.mp4" type="video/mp4">
     </video>
   </div>
@@ -1000,6 +1077,10 @@
   <div class="hero-ink"></div>
   <div class="hero-calligraphy">天人合一</div>
   <div class="hero-content">
+    <a href="/ceremony/" class="hero-announce">
+      <span data-i18n="announce_ceremony">Jul 25 · Singapore — Discipleship Ceremony</span>
+      <span class="hero-announce-arrow">→</span>
+    </a>
     <div class="hero-eyebrow">12th-Generation Lineage · Singapore</div>
     <div class="hero-title-wrap">
       <h1 data-i18n="hero_h1">Ancient Art.<br><em>Living</em> Wisdom.</h1>
@@ -1436,7 +1517,7 @@
 <footer>
   <div class="footer-logo">太極 · Feng Yanbo</div>
   <div class="footer-copy" data-i18n="footer_copy">© 2026 Master Feng Yanbo · Singapore China Cultural Centre, 217 Queen St</div>
-  <div class="footer-version" onclick="toggleChangelog()">v1.2.0 · Changelog</div>
+  <div class="footer-version" onclick="toggleChangelog()">v1.3.0 · Changelog</div>
 </footer>
 
 <!-- Changelog Panel -->
@@ -1444,6 +1525,16 @@
   <div class="changelog-header">
     <h3>Changelog · taichigpt.com</h3>
     <button class="changelog-close" onclick="toggleChangelog()">×</button>
+  </div>
+  <div class="changelog-version">
+    <h4>v1.3.0 · 2026-07-04</h4>
+    <ul>
+      <li>Ceremony page launched: /ceremony/ — Jul 25 Discipleship Ceremony (Singapore), photos coming soon</li>
+      <li>Homepage entries: hero announcement pill + gold "Ceremony" nav link</li>
+      <li>Mobile fix: stats bar no longer overflows viewport (2-column layout)</li>
+      <li>Mobile nav: hamburger menu with full site navigation</li>
+      <li>Hero video: proper muted autoplay attributes for mobile browsers</li>
+    </ul>
   </div>
   <div class="changelog-version">
     <h4>v1.2.0 · 2026-04-26</h4>
@@ -1545,6 +1636,15 @@
     btn.classList.toggle('on', !vid.muted);
   }
 
+  // ── Mobile menu ──
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const burger = document.getElementById('navBurger');
+    const open = menu.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open);
+  }
+
   // ── Bilingual strings ──
   const STRINGS = {
     en: {
@@ -1606,6 +1706,9 @@
       cult_c9_excerpt: 'In 1988, Grandmaster Feng Zhiqiang first brought Hun Yuan Tai Chi to Singapore. Thirty-seven years later, his grandson continues that mission.',
       nav_heritage: 'Tai Chi Culture',
       nav_hunyuan: 'Hun Yuan',
+      nav_ceremony: 'Ceremony',
+      menu_tag_new: 'Jul 25',
+      announce_ceremony: 'Jul 25 · Singapore — Discipleship Ceremony',
       cult_c10_tag: 'Technique', cult_c10_title: 'The Silk Thread',
       cult_c10_excerpt: 'What separates Chen-style from all other Tai Chi is silk-reeling energy. It cannot be faked — only cultivated.',
       cult_c11_tag: 'Cosmology', cult_c11_title: 'Written in the Stars',
@@ -1716,6 +1819,9 @@
       cult_c9_excerpt: '1988年，冯志强大师首次将混元太极带入新加坡。三十七年后，他的嫡孙延续着这份使命。',
       nav_heritage: '太极文化',
       nav_hunyuan: '心意混元',
+      nav_ceremony: '拜师仪式',
+      menu_tag_new: '7月25日',
+      announce_ceremony: '7月25日 · 新加坡 — 拜师仪式',
       cult_c10_tag: '功法', cult_c10_title: '缠丝劲——那根看不见的丝',
       cult_c10_excerpt: '陈式太极拳区别于其他太极的标志，是一种无法伪造、只能修炼的运动品质。',
       cult_c11_tag: '哲学宇宙观', cult_c11_title: '写在星空里',

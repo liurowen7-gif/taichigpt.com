@@ -141,8 +141,24 @@
       font-size: 1rem; font-weight: 300; line-height: 1.8;
       color: var(--text); max-width: 520px; margin: 0 auto 2.6rem;
     }
+    .invite-btn {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      margin-bottom: 1.5rem;
+      padding: 0.95rem 2.6rem; border-radius: 3rem;
+      background: var(--gold); color: var(--ink);
+      text-decoration: none; font-size: 0.85rem; font-weight: 600;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      font-family: 'Inter', sans-serif;
+      transition: background 0.25s, box-shadow 0.25s;
+    }
+    .invite-btn:hover {
+      background: #e0bc5a;
+      box-shadow: 0 0 28px rgba(201,168,76,0.35);
+    }
+    .invite-btn .invite-arrow { transition: transform 0.25s; }
+    .invite-btn:hover .invite-arrow { transform: translateX(4px); }
     .coming-soon {
-      display: inline-block;
+      display: block; width: fit-content; margin: 0 auto;
       padding: 0.7rem 1.8rem;
       border: 1px solid rgba(201,168,76,0.5); border-radius: 2rem;
       color: var(--gold);
@@ -243,6 +259,10 @@
       tea is offered, vows are spoken, and the Chen-style Xin Yi Hun Yuan Tai Chi
       lineage passes to its next generation.
     </p>
+    <a href="/ceremony/invitation.html" class="invite-btn">
+      <span data-i18n="invite_btn">View the Invitation</span>
+      <span class="invite-arrow">→</span>
+    </a>
     <div class="coming-soon" data-i18n="coming">Photos &amp; Stories — Coming Soon</div>
   </div>
 </section>
@@ -286,6 +306,7 @@
       title: 'The <em>Discipleship</em> Ceremony',
       date: 'July 25 · Singapore',
       sub: 'Master Feng Yanbo formally accepts disciples in the traditional baishi rite — tea is offered, vows are spoken, and the Chen-style Xin Yi Hun Yuan Tai Chi lineage passes to its next generation.',
+      invite_btn: 'View the Invitation',
       coming: 'Photos &amp; Stories — Coming Soon',
       m_eyebrow: 'The Meaning',
       m_title: 'More Than a Ritual —<br>a <em>Living Vow</em>',
@@ -303,6 +324,7 @@
       title: '<em>拜师</em>仪式',
       date: '7月25日 · 新加坡',
       sub: '冯彦博老师将以传统拜师礼正式收徒——奉茶、立誓，陈式心意混元太极拳的薪火，交予下一代传人。',
+      invite_btn: '查看邀请函',
       coming: '仪式照片与全记录 — 敬请期待',
       m_eyebrow: '拜师的意义',
       m_title: '不止是仪式，<br>更是一份<em>传承之约</em>',

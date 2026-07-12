@@ -249,7 +249,7 @@
     #panel-preview .hero { padding-top: 10rem; }
     #panel-invitation { display: none; }
     @media (max-width: 768px) {
-      .tabbar { top: 53px; }
+      .tabbar { top: 49px; }
       .tab-btn { font-size: 0.7rem; padding: 0.5rem 0.9rem; letter-spacing: 0.08em; }
     }
 
@@ -810,6 +810,16 @@
   window.addEventListener('hashchange', () => {
     switchTab(location.hash === '#invitation' ? 'invitation' : 'preview');
   });
+
+  // tabbar 紧贴 nav 底边（上移 1px 重叠，避免露出页面背景形成细线）
+  function alignTabbar() {
+    const nav = document.querySelector('nav');
+    const tb = document.querySelector('.tabbar');
+    if (nav && tb) tb.style.top = (nav.offsetHeight - 1) + 'px';
+  }
+  alignTabbar();
+  window.addEventListener('resize', alignTabbar);
+  window.addEventListener('load', alignTabbar);
 </script>
 
 </body>

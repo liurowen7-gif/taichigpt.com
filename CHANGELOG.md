@@ -2,6 +2,25 @@
 
 ---
 
+## v1.4.0 — 2026-07-12
+
+### 拜师仪式页 Tab 化 · 新增邀请函 Tab（真实信息）
+
+- **仪式页改为 Tab 结构** `/ceremony/`：顶部「仪式预告 / 邀请函」两个 Tab，共享全站语言偏好
+  - 仪式预告 Tab：保留原有暗金风格的仪式含义、日期地点、订阅 CTA
+  - 邀请函 Tab：米色纸质请柬（样式作用域隔离，不污染预告页），可直达 `/ceremony/#invitation`
+- **邀请函真实信息**
+  - 地点：湘厨 The Xiang Restaurant，8 Smith St, Singapore 058922
+  - 时间：2026年7月25日（星期六）· 拜师礼 10:00–12:00 · 拜师宴 12:00–14:00
+  - 显眼「立即报名」按钮（Google 表单 https://forms.gle/jZMK8YiUYmYaGX4d9）
+  - 保留邮箱订阅表单（Cloudflare Worker 逻辑不变）
+- **真实 8 步仪式流程**：上香 → 介绍来宾 → 正式开始（含奉茶/递帖/磕头/宣读守则子项）→ 致辞（含八位新弟子/师父/见证人/老弟子/王铭源子项）→ 各地展示 → 集体合影 → 宣布结束 → 拜师宴
+- **旧链接重定向**：`/ceremony/invitation.html` → `/ceremony/#invitation`
+- **导航优化**：新增 Home（金色选中态）、Ceremony 移至导航末尾；左上角太極 logo 前加旋转太极图（首页 + 仪式页）
+- Sitemap 移除 invitation.html，`/ceremony/` lastmod 更新
+
+---
+
 ## v1.3.1 — 2026-07-05
 
 ### 拜师仪式邀请函页面

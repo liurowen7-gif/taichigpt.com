@@ -27,7 +27,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -59,6 +59,12 @@
       border-bottom: 1px solid rgba(201,168,76,0.12);
     }
     .nav-logo { display: flex; align-items: center; gap: 0.9rem; text-decoration: none; }
+    .nav-logo-taiji {
+      width: 22px; height: 22px; flex-shrink: 0;
+      animation: nav-taiji-spin 40s linear infinite;
+    }
+    .nav-logo-taiji svg { display: block; width: 100%; height: 100%; }
+    @keyframes nav-taiji-spin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
     .nav-logo-chinese {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.5rem; color: var(--gold); line-height: 1;
@@ -220,12 +226,208 @@
       border-top: 1px solid rgba(201,168,76,0.1);
     }
     footer a { color: var(--gold); text-decoration: none; }
+
+    /* ─── TAB BAR ─── */
+    .tabbar {
+      position: fixed; top: 65px; left: 0; right: 0; z-index: 190;
+      display: flex; justify-content: center; gap: 0.4rem;
+      padding: 0.6rem 1rem;
+      background: rgba(5,10,7,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+    }
+    .tab-btn {
+      background: none; border: none; cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted); padding: 0.55rem 1.2rem;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .tab-btn:hover { color: var(--gold); }
+    .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+    #panel-preview .hero { padding-top: 10rem; }
+    #panel-invitation { display: none; }
+    @media (max-width: 768px) {
+      .tabbar { top: 53px; }
+      .tab-btn { font-size: 0.7rem; padding: 0.5rem 0.9rem; letter-spacing: 0.08em; }
+    }
+
+    /* ═══ INVITATION (scoped) ═══ */
+    .invitation-scope {
+      --paper:      #f6efdc;
+      --paper-deep: #efe5cc;
+      --inv-ink:    #2e3d3a;
+      --pine:       #3f6f5f;
+      --inv-sky:    #cfe3ec;
+      --sky-deep:   #a8ccdc;
+      --brown-gold: #8a6a2f;
+      --inv-gold:   #b08f3e;
+      --inv-muted:  #6f6a58;
+      --hairline:   rgba(138,106,47,0.25);
+      background: var(--paper); color: var(--inv-ink);
+      font-family: 'Noto Serif SC', 'Cormorant Garamond', serif;
+      padding-top: 3.6rem;
+    }
+    @media (max-width: 768px) { .invitation-scope { padding-top: 2.6rem; } }
+
+    /* SKY HEADER */
+    .invitation-scope .sky {
+      position: relative;
+      background:
+        radial-gradient(ellipse at 22% 30%, rgba(255,255,255,0.65), transparent 55%),
+        linear-gradient(180deg, var(--inv-sky) 0%, var(--sky-deep) 78%, var(--paper) 100%);
+      padding: 5rem 1.6rem 0;
+      text-align: center; overflow: hidden;
+    }
+    .invitation-scope .sky-taiji {
+      width: 60px; height: 60px; margin: 0 auto 1.6rem;
+      animation: taiji-spin 40s linear infinite; opacity: 0.9;
+    }
+    .invitation-scope .sky-taiji svg { display: block; width: 100%; height: 100%; }
+    .invitation-scope .sky-slogan {
+      font-size: clamp(1.7rem, 6.5vw, 2.8rem); font-weight: 700;
+      letter-spacing: 0.12em; line-height: 1.4;
+      background: linear-gradient(100deg, var(--pine) 20%, var(--brown-gold) 85%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      margin-bottom: 0.9rem;
+    }
+    .invitation-scope .sky-event {
+      font-size: clamp(0.95rem, 3.4vw, 1.25rem); font-weight: 600;
+      color: var(--pine); letter-spacing: 0.25em; margin-bottom: 2rem;
+    }
+    .invitation-scope .sky-meta {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 0.8rem 2.4rem;
+      font-size: 0.85rem; color: var(--inv-ink); opacity: 0.85;
+      margin-bottom: 2rem;
+    }
+    .invitation-scope .sky-meta b { color: var(--pine); font-weight: 600; margin-right: 0.5rem; }
+    .invitation-scope .signup-wrap { padding-bottom: 3rem; }
+    .invitation-scope .signup-btn {
+      display: inline-block;
+      padding: 0.9rem 2.6rem; border-radius: 3rem;
+      background: var(--brown-gold); color: var(--paper);
+      text-decoration: none; font-family: 'Noto Serif SC', serif;
+      font-size: 0.95rem; font-weight: 600; letter-spacing: 0.1em;
+      box-shadow: 0 6px 20px rgba(138,106,47,0.28);
+      transition: background 0.25s, box-shadow 0.25s;
+    }
+    .invitation-scope .signup-btn:hover {
+      background: var(--pine); box-shadow: 0 8px 26px rgba(63,111,95,0.32);
+    }
+    .invitation-scope .mountains { display: block; width: 100%; margin-bottom: -1px; }
+
+    /* CARD */
+    .invitation-scope .card { max-width: 780px; margin: 0 auto; padding: 3.5rem 1.6rem 2rem; }
+    .invitation-scope .card-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 3rem; }
+    @media (max-width: 700px) { .invitation-scope .card-grid { grid-template-columns: 1fr; gap: 2.4rem; } }
+
+    .invitation-scope .inv-title {
+      font-size: clamp(2.2rem, 8vw, 3rem); font-weight: 700;
+      letter-spacing: 0.35em; color: var(--brown-gold); margin-bottom: 0.2rem;
+    }
+    .invitation-scope .inv-title-en {
+      font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.35em; text-transform: uppercase; color: var(--inv-gold);
+      margin-bottom: 2rem;
+    }
+    .invitation-scope .inv-dear { font-weight: 600; font-size: 1rem; margin-bottom: 1rem; }
+    .invitation-scope .inv-body p {
+      font-size: 0.92rem; line-height: 2.05; text-align: justify; margin-bottom: 1rem;
+    }
+
+    .invitation-scope .block { margin-top: 2.2rem; }
+    .invitation-scope .block-label {
+      font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em;
+      color: var(--inv-ink); margin-bottom: 0.7rem;
+    }
+    .invitation-scope .block-label span {
+      font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.78rem;
+      letter-spacing: 0.18em; margin-left: 0.6rem; color: var(--brown-gold);
+    }
+    .invitation-scope .big-date {
+      font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+      display: flex; align-items: baseline; gap: 0.6rem; color: var(--inv-ink);
+      flex-wrap: wrap;
+    }
+    .invitation-scope .big-date .year {
+      font-size: 1rem; letter-spacing: 0.1em; writing-mode: vertical-rl;
+      transform: rotate(180deg) translateY(-4px); line-height: 1.1;
+    }
+    .invitation-scope .big-date .md { font-size: 3.4rem; font-weight: 600; letter-spacing: 0.04em; line-height: 1; }
+    .invitation-scope .big-date .rest { font-size: 0.95rem; color: var(--inv-muted); }
+    .invitation-scope .block-text { font-size: 0.92rem; line-height: 1.9; }
+    .invitation-scope .block-text .en { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--inv-muted); }
+
+    /* programme */
+    .invitation-scope .prog { list-style: none; }
+    .invitation-scope .prog > li {
+      display: flex; gap: 1rem; align-items: baseline;
+      padding: 0.55rem 0; border-bottom: 1px solid var(--hairline);
+      font-size: 0.92rem;
+    }
+    .invitation-scope .prog > li:last-child { border-bottom: none; }
+    .invitation-scope .prog .no {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.05rem;
+      color: var(--brown-gold); min-width: 1.4rem; flex-shrink: 0;
+    }
+    .invitation-scope .prog .p-body { min-width: 0; }
+    .invitation-scope .prog .en-sub { display: block; font-family: 'Inter', sans-serif; font-size: 0.72rem; color: var(--inv-muted); }
+    .invitation-scope .prog .sub {
+      list-style: none; margin: 0.5rem 0 0; padding: 0;
+      font-size: 0.85rem; line-height: 1.75;
+    }
+    .invitation-scope .prog .sub li {
+      position: relative; padding-left: 0.9rem; margin-bottom: 0.15rem; color: var(--inv-ink);
+    }
+    .invitation-scope .prog .sub li::before {
+      content: '·'; position: absolute; left: 0; color: var(--brown-gold); font-weight: 700;
+    }
+
+    .invitation-scope .divider { height: 1px; background: var(--hairline); margin: 3rem 0 2.6rem; }
+
+    /* SUBSCRIBE */
+    .invitation-scope .subscribe { text-align: center; padding-bottom: 1rem; }
+    .invitation-scope .subscribe h3 { font-size: 1.15rem; font-weight: 600; letter-spacing: 0.1em; margin-bottom: 0.5rem; color: var(--inv-ink); }
+    .invitation-scope .subscribe p { font-size: 0.85rem; color: var(--inv-muted); margin-bottom: 1.4rem; }
+    .invitation-scope .sub-form {
+      display: flex; max-width: 420px; margin: 0 auto;
+      border: 1px solid var(--hairline); border-radius: 3rem;
+      overflow: hidden; background: rgba(255,255,255,0.55);
+    }
+    .invitation-scope .sub-form input {
+      flex: 1; min-width: 0; border: none; background: transparent;
+      padding: 0.85rem 1.3rem; font-size: 0.9rem; color: var(--inv-ink);
+      font-family: 'Inter', sans-serif; outline: none;
+    }
+    .invitation-scope .sub-form button {
+      border: none; cursor: pointer;
+      background: var(--brown-gold); color: var(--paper);
+      padding: 0.85rem 1.6rem; font-size: 0.82rem; font-weight: 600;
+      letter-spacing: 0.08em; white-space: nowrap;
+      font-family: 'Noto Serif SC', serif; transition: background 0.25s;
+    }
+    .invitation-scope .sub-form button:hover { background: var(--pine); }
+    .invitation-scope .sub-note { display: none; margin-top: 1rem; font-size: 0.85rem; color: var(--pine); }
+
+    .invitation-scope .inv-footer {
+      text-align: center; padding: 2.2rem 1.6rem 2.8rem;
+      font-family: 'Inter', sans-serif; font-size: 0.72rem; color: var(--inv-muted);
+      border-top: none;
+    }
+    .invitation-scope .inv-footer a { color: var(--brown-gold); text-decoration: none; }
   </style>
 </head>
 <body>
 
 <nav>
   <a href="/" class="nav-logo">
+    <span class="nav-logo-taiji" aria-hidden="true"><svg viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="48" fill="none" stroke="#c9a84c" stroke-width="2"/>
+      <path d="M50 2 A48 48 0 0 1 50 98 A24 24 0 0 1 50 50 A24 24 0 0 0 50 2 Z" fill="#c9a84c"/>
+      <circle cx="50" cy="26" r="7" fill="#c9a84c"/>
+      <circle cx="50" cy="74" r="7" fill="#050a07"/>
+    </svg></span>
     <span class="nav-logo-chinese">太極</span>
     <div class="nav-logo-divider"></div>
     <span class="nav-logo-en">Master Feng Yanbo<br>Chen-Style Xin Yi Hun Yuan Tai Chi</span>
@@ -240,6 +442,12 @@
   </div>
 </nav>
 
+<div class="tabbar">
+  <button class="tab-btn active" data-tab="preview" data-i18n="tab_preview" onclick="switchTab('preview')">The Ceremony</button>
+  <button class="tab-btn" data-tab="invitation" data-i18n="tab_invite" onclick="switchTab('invitation')">Invitation</button>
+</div>
+
+<div id="panel-preview">
 <section class="hero">
   <div class="hero-calligraphy">拜師</div>
   <div class="hero-content">
@@ -259,7 +467,7 @@
       tea is offered, vows are spoken, and the Chen-style Xin Yi Hun Yuan Tai Chi
       lineage passes to its next generation.
     </p>
-    <a href="/ceremony/invitation.html" class="invite-btn">
+    <a href="#invitation" class="invite-btn" onclick="switchTab('invitation');return false;">
       <span data-i18n="invite_btn">View the Invitation</span>
       <span class="invite-arrow">→</span>
     </a>
@@ -293,6 +501,126 @@
   <p data-i18n="cta_p">Subscribe free and we'll send the ceremony story to your inbox.</p>
   <a href="/#subscribe" class="cta-btn" data-i18n="cta_btn">Subscribe Free</a>
 </section>
+</div><!-- /#panel-preview -->
+
+<div id="panel-invitation">
+  <div class="invitation-scope">
+    <!-- SKY HEADER -->
+    <header class="sky">
+      <div class="sky-taiji" aria-hidden="true">
+        <svg viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="48" fill="none" stroke="#3f6f5f" stroke-width="1.5"/>
+          <path d="M50 2 A48 48 0 0 1 50 98 A24 24 0 0 1 50 50 A24 24 0 0 0 50 2 Z" fill="#3f6f5f"/>
+          <circle cx="50" cy="26" r="7" fill="#3f6f5f"/>
+          <circle cx="50" cy="74" r="7" fill="#f6efdc"/>
+        </svg>
+      </div>
+      <h1 class="sky-slogan" data-i18n="slogan">太极传薪火，四海共传承</h1>
+      <div class="sky-event" data-i18n="event">冯彦博老师 收徒拜师仪式</div>
+      <div class="sky-meta">
+        <div><b data-i18n="meta_time_k">时间</b><span data-i18n="meta_time_v">2026年7月25日（星期六）</span></div>
+        <div><b data-i18n="meta_place_k">地点</b><span data-i18n="meta_place_v">湘厨 The Xiang Restaurant · 8 Smith St</span></div>
+      </div>
+      <div class="signup-wrap">
+        <a href="https://forms.gle/jZMK8YiUYmYaGX4d9" target="_blank" rel="noopener" class="signup-btn" data-i18n="signup_btn">立即报名 →</a>
+      </div>
+      <svg class="mountains" viewBox="0 0 1440 150" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,150 L0,95 Q120,40 240,88 Q310,110 380,80 Q470,42 560,92 Q650,130 720,95 Q820,48 900,90 Q990,128 1080,85 Q1170,45 1260,95 Q1350,135 1440,90 L1440,150 Z" fill="#8fa8ad" opacity="0.55"/>
+        <path d="M0,150 L0,115 Q160,70 320,108 Q430,132 540,100 Q660,68 780,110 Q890,140 1000,105 Q1120,72 1240,112 Q1340,140 1440,110 L1440,150 Z" fill="#5f7f78" opacity="0.6"/>
+        <path d="M0,150 L0,132 Q180,102 360,128 Q520,148 680,124 Q840,102 1000,130 Q1220,158 1440,126 L1440,150 Z" fill="#f6efdc"/>
+      </svg>
+    </header>
+
+    <!-- INVITATION CARD -->
+    <main class="card">
+      <div class="card-grid">
+        <div>
+          <div class="inv-title" data-i18n="inv_title">邀 请 函</div>
+          <div class="inv-title-en">Invitation</div>
+          <div class="inv-body">
+            <div class="inv-dear" data-i18n="dear">尊敬的嘉宾：</div>
+            <p data-i18n="p1">诚邀您出席并见证冯彦博老师——陈式心意混元太极拳第十二代传人——收徒拜师仪式。</p>
+            <p data-i18n="p2">拜师，是中国武术最郑重的托付：奉茶、立誓，薪火由此相传。七百年的传承之链，将在这一日迎来新的一环。恭候您的光临。</p>
+          </div>
+
+          <div class="block">
+            <div class="block-label" data-i18n="lbl_time">活动时间<span>Ceremony</span></div>
+            <div class="big-date">
+              <span class="year">2026</span>
+              <span class="md">07·25</span>
+              <span class="rest" data-i18n="date_rest">（星期六）· 拜师礼 10:00–12:00 · 拜师宴 12:00–14:00</span>
+            </div>
+          </div>
+
+          <div class="block">
+            <div class="block-label" data-i18n="lbl_venue">地点<span>Venue</span></div>
+            <div class="block-text">
+              <span data-i18n="venue_zh">湘厨 The Xiang Restaurant</span><br>
+              <span class="en">8 Smith St, Singapore 058922</span>
+            </div>
+          </div>
+
+          <div class="block">
+            <div class="block-label" data-i18n="lbl_dress">着装要求<span>Dress Code</span></div>
+            <div class="block-text">
+              <span data-i18n="dress_zh">商务休闲 / 民族服装</span><br>
+              <span class="en">Business Casual / National Dress</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="block" style="margin-top: 0.4rem;">
+            <div class="block-label" data-i18n="lbl_prog">仪式流程<span>Programme</span></div>
+            <ol class="prog">
+              <li><span class="no">1.</span><span class="p-body"><span data-i18n="prog1">冯彦博老师带领全体来宾，为混元太极祖师冯志强先生上香</span></span></li>
+              <li><span class="no">2.</span><span class="p-body"><span data-i18n="prog2">冯彦博老师介绍今日仪式主持人、见证人及所有来宾</span></span></li>
+              <li><span class="no">3.</span><span class="p-body"><span data-i18n="prog3">仪式正式开始</span>
+                <ul class="sub">
+                  <li data-i18n="prog3a">新弟子集体宣读拜师帖内容</li>
+                  <li data-i18n="prog3b">向冯彦博老师及师母行鞠躬礼、递拜师帖、奉上礼物、奉茶；师父回礼</li>
+                  <li data-i18n="prog3c">分别向冯志强祖师行磕头礼、上香</li>
+                  <li data-i18n="prog3d">弟子一起宣读混元太极拳修炼守则</li>
+                </ul>
+              </li>
+              <li><span class="no">4.</span><span class="p-body"><span data-i18n="prog4">致辞环节</span>
+                <ul class="sub">
+                  <li data-i18n="prog4a">八位新弟子自我介绍</li>
+                  <li data-i18n="prog4b">冯彦博老师讲话</li>
+                  <li data-i18n="prog4c">见证人讲话</li>
+                  <li data-i18n="prog4d">老弟子代表讲话</li>
+                  <li data-i18n="prog4e">弟子王铭源代表八位新弟子讲话</li>
+                </ul>
+              </li>
+              <li><span class="no">5.</span><span class="p-body"><span data-i18n="prog5">各地拳友分别展示（现场 + 视频）</span></span></li>
+              <li><span class="no">6.</span><span class="p-body"><span data-i18n="prog6">新老弟子及嘉宾集体合影</span></span></li>
+              <li><span class="no">7.</span><span class="p-body"><span data-i18n="prog7">主持人宣布仪式结束</span></span></li>
+              <li><span class="no">8.</span><span class="p-body"><span data-i18n="prog8">拜师宴</span></span></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- SUBSCRIBE -->
+      <div class="subscribe">
+        <h3 data-i18n="sub_title">无法亲临现场？</h3>
+        <p data-i18n="sub_p">免费订阅，仪式照片与全记录将第一时间发送到您的邮箱。</p>
+        <form class="sub-form" id="subForm" onsubmit="handleSubmit(event)">
+          <input type="email" required placeholder="您的邮箱" id="subEmail">
+          <button type="submit" id="subBtn" data-i18n="sub_btn">订 阅</button>
+        </form>
+        <div class="sub-note" id="subOk" data-i18n="sub_ok">已订阅，仪式记录将送达您的邮箱。</div>
+        <div class="sub-note" id="subErr" style="color:#a04b2f;" data-i18n="sub_err">提交失败，请稍后再试。</div>
+      </div>
+    </main>
+
+    <div class="inv-footer">
+      太極 · Feng Yanbo — <a href="/">taichigpt.com</a>
+    </div>
+  </div>
+</div><!-- /#panel-invitation -->
 
 <footer>
   <span data-i18n="footer">太極 · Feng Yanbo — </span><a href="/">taichigpt.com</a>
@@ -316,7 +644,48 @@
       cta_title: 'Be the first to see it',
       cta_p: "Subscribe free and we'll send the ceremony story to your inbox.",
       cta_btn: 'Subscribe Free',
-      footer: '太極 · Feng Yanbo — '
+      footer: '太極 · Feng Yanbo — ',
+      tab_preview: 'The Ceremony',
+      tab_invite: 'Invitation',
+      signup_btn: 'Register Now →',
+      slogan: 'The Flame of Tai Chi, Carried Across the Seas',
+      event: 'Discipleship Ceremony of Master Feng Yanbo',
+      meta_time_k: 'Date', meta_time_v: 'July 25, 2026 (Saturday)',
+      meta_place_k: 'Venue', meta_place_v: 'The Xiang Restaurant · 8 Smith St',
+      inv_title: 'Invitation',
+      dear: 'Dear Honoured Guest,',
+      p1: 'You are cordially invited to witness the baishi discipleship ceremony of Master Feng Yanbo, 12th-generation lineage holder of Chen-style Xin Yi Hun Yuan Tai Chi.',
+      p2: 'Baishi is the most solemn entrustment in Chinese martial arts: tea is offered, vows are spoken, and the flame passes on. On this day, a 700-year chain of transmission gains its newest link. We look forward to your presence.',
+      lbl_time: 'Ceremony<span>时间</span>',
+      date_rest: '(Saturday) · Ceremony 10:00–12:00 · Banquet 12:00–14:00',
+      lbl_venue: 'Venue<span>地点</span>',
+      venue_zh: 'The Xiang Restaurant',
+      lbl_dress: 'Dress Code<span>着装</span>',
+      dress_zh: 'Business Casual / National Dress',
+      lbl_prog: 'Programme<span>流程</span>',
+      prog1: 'Master Feng Yanbo leads all guests in offering incense to Grandmaster Feng Zhiqiang, founder of Hun Yuan Tai Chi',
+      prog2: 'Master Feng Yanbo introduces the host, the witnesses and all guests',
+      prog3: 'The ceremony formally begins',
+      prog3a: 'The new disciples collectively read aloud the discipleship pledge',
+      prog3b: 'They bow to Master Feng Yanbo and his wife, present the pledge, offer gifts and tea; the master returns the courtesy',
+      prog3c: 'Each performs the kowtow and offers incense to Grandmaster Feng Zhiqiang',
+      prog3d: 'The disciples recite together the Hun Yuan Tai Chi code of practice',
+      prog4: 'Addresses',
+      prog4a: 'The eight new disciples introduce themselves',
+      prog4b: 'Address by Master Feng Yanbo',
+      prog4c: 'Address by the witnesses',
+      prog4d: 'Address by a senior disciple representative',
+      prog4e: 'Disciple Wang Mingyuan speaks on behalf of the eight new disciples',
+      prog5: 'Demonstrations by tai chi practitioners from around the world (live + video)',
+      prog6: 'Group photo of new and senior disciples with the guests',
+      prog7: 'The host announces the close of the ceremony',
+      prog8: 'The discipleship banquet',
+      sub_title: 'Can\'t attend in person?',
+      sub_p: 'Subscribe free — photos and the full story of the ceremony, straight to your inbox.',
+      sub_btn: 'Subscribe',
+      sub_ph: 'Your email address',
+      sub_ok: 'Subscribed. The ceremony story is coming your way.',
+      sub_err: 'Something went wrong — please try again.'
     },
     zh: {
       nav_back: '← 返回首页',
@@ -334,7 +703,48 @@
       cta_title: '第一时间收到仪式记录',
       cta_p: '免费订阅，仪式全记录将第一时间发送到你的邮箱。',
       cta_btn: '免费订阅',
-      footer: '太極 · 冯彦博 — '
+      footer: '太極 · 冯彦博 — ',
+      tab_preview: '仪式预告',
+      tab_invite: '邀请函',
+      signup_btn: '立即报名 →',
+      slogan: '太极传薪火，四海共传承',
+      event: '冯彦博老师 收徒拜师仪式',
+      meta_time_k: '时间', meta_time_v: '2026年7月25日（星期六）',
+      meta_place_k: '地点', meta_place_v: '湘厨 The Xiang Restaurant · 8 Smith St',
+      inv_title: '邀 请 函',
+      dear: '尊敬的嘉宾：',
+      p1: '诚邀您出席并见证冯彦博老师——陈式心意混元太极拳第十二代传人——收徒拜师仪式。',
+      p2: '拜师，是中国武术最郑重的托付：奉茶、立誓，薪火由此相传。七百年的传承之链，将在这一日迎来新的一环。恭候您的光临。',
+      lbl_time: '活动时间<span>Ceremony</span>',
+      date_rest: '（星期六）· 拜师礼 10:00–12:00 · 拜师宴 12:00–14:00',
+      lbl_venue: '地点<span>Venue</span>',
+      venue_zh: '湘厨 The Xiang Restaurant',
+      lbl_dress: '着装要求<span>Dress Code</span>',
+      dress_zh: '商务休闲 / 民族服装',
+      lbl_prog: '仪式流程<span>Programme</span>',
+      prog1: '冯彦博老师带领全体来宾，为混元太极祖师冯志强先生上香',
+      prog2: '冯彦博老师介绍今日仪式主持人、见证人及所有来宾',
+      prog3: '仪式正式开始',
+      prog3a: '新弟子集体宣读拜师帖内容',
+      prog3b: '向冯彦博老师及师母行鞠躬礼、递拜师帖、奉上礼物、奉茶；师父回礼',
+      prog3c: '分别向冯志强祖师行磕头礼、上香',
+      prog3d: '弟子一起宣读混元太极拳修炼守则',
+      prog4: '致辞环节',
+      prog4a: '八位新弟子自我介绍',
+      prog4b: '冯彦博老师讲话',
+      prog4c: '见证人讲话',
+      prog4d: '老弟子代表讲话',
+      prog4e: '弟子王铭源代表八位新弟子讲话',
+      prog5: '各地拳友分别展示（现场 + 视频）',
+      prog6: '新老弟子及嘉宾集体合影',
+      prog7: '主持人宣布仪式结束',
+      prog8: '拜师宴',
+      sub_title: '无法亲临现场？',
+      sub_p: '免费订阅，仪式照片与全记录将第一时间发送到您的邮箱。',
+      sub_btn: '订 阅',
+      sub_ph: '您的邮箱',
+      sub_ok: '已订阅，仪式记录将送达您的邮箱。',
+      sub_err: '提交失败，请稍后再试。'
     }
   };
 
@@ -347,6 +757,8 @@
       const key = el.dataset.i18n;
       if (s[key] !== undefined) el.innerHTML = s[key];
     });
+    const subEmail = document.getElementById('subEmail');
+    if (subEmail && s.sub_ph !== undefined) subEmail.placeholder = s.sub_ph;
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.lang === currentLang);
     });
@@ -358,7 +770,46 @@
     render();
   }
 
+  function switchTab(name) {
+    const isInv = name === 'invitation';
+    document.getElementById('panel-preview').style.display = isInv ? 'none' : '';
+    document.getElementById('panel-invitation').style.display = isInv ? 'block' : 'none';
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.tab === name);
+    });
+    history.replaceState(null, '', isInv ? '#invitation' : location.pathname);
+    window.scrollTo(0, 0);
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const email = document.getElementById('subEmail').value;
+    const btn = document.getElementById('subBtn');
+    btn.disabled = true;
+    btn.textContent = '…';
+    try {
+      const res = await fetch('https://taichi-email-collector.liurowen7.workers.dev', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('subForm').style.display = 'none';
+        document.getElementById('subOk').style.display = 'block';
+      } else { throw new Error('fail'); }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = STRINGS[currentLang].sub_btn;
+      document.getElementById('subErr').style.display = 'block';
+    }
+  }
+
   render();
+  switchTab(location.hash === '#invitation' ? 'invitation' : 'preview');
+  window.addEventListener('hashchange', () => {
+    switchTab(location.hash === '#invitation' ? 'invitation' : 'preview');
+  });
 </script>
 
 </body>

@@ -2,6 +2,17 @@
 
 ---
 
+## v1.4.2 — 2026-07-13
+
+### 文案口径调整（邀请函 + 全站）
+
+- 「第十二代传人 / 12th-generation」全站统一改为「嫡传人 / direct lineage successor」，相应去掉"第十三代/12 generations"等代数表述（首页 hero eyebrow、Stats、视频文案、SEO meta/JSON-LD、仪式页两个 Tab）
+- Stats「Master Feng」组移除"12th 代传承"项，两组各 3 项对称
+- 邀请函去掉「立即报名」按钮
+- 着装要求、"七百年"相关表述保持不变
+
+---
+
 ## v1.4.1 — 2026-07-12
 
 ### 修复：仪式页 Tab 栏与顶部导航之间的白色细线

@@ -253,97 +253,156 @@
       .tab-btn { font-size: 0.7rem; padding: 0.5rem 0.9rem; letter-spacing: 0.08em; }
     }
 
-    /* ═══ INVITATION (scoped) ═══ */
+    /* ═══ INVITATION (scoped) — 红金节庆 ═══ */
     .invitation-scope {
-      --paper:      #f6efdc;
-      --paper-deep: #efe5cc;
-      --inv-ink:    #2e3d3a;
-      --pine:       #3f6f5f;
-      --inv-sky:    #cfe3ec;
-      --sky-deep:   #a8ccdc;
-      --brown-gold: #8a6a2f;
-      --inv-gold:   #b08f3e;
-      --inv-muted:  #6f6a58;
-      --hairline:   rgba(138,106,47,0.25);
-      background: var(--paper); color: var(--inv-ink);
+      --red:        #c8102e;
+      --red-deep:   #7a0f1a;
+      --red-soft:   #a01523;
+      --gold:       #c9a227;
+      --gold-light: #f0d98a;
+      --paper:      #f7efd8;
+      --paper-deep: #efe3c2;
+      --inv-ink:    #6e1116;
+      --inv-muted:  #97562f;
+      --hairline:   rgba(201,162,39,0.35);
+      background: var(--red); color: var(--inv-ink);
       font-family: 'Noto Serif SC', 'Cormorant Garamond', serif;
       padding-top: 3.6rem;
     }
     @media (max-width: 768px) { .invitation-scope { padding-top: 2.6rem; } }
 
-    /* SKY HEADER */
+    /* SKY HEADER (red poster + cream scroll) */
     .invitation-scope .sky {
-      position: relative;
-      background:
-        radial-gradient(ellipse at 22% 30%, rgba(255,255,255,0.65), transparent 55%),
-        linear-gradient(180deg, var(--inv-sky) 0%, var(--sky-deep) 78%, var(--paper) 100%);
-      padding: 5rem 1.6rem 0;
+      position: relative; background: var(--red);
+      padding: 1.6rem 1.2rem 2.6rem;
       text-align: center; overflow: hidden;
     }
-    .invitation-scope .sky-taiji {
-      width: 60px; height: 60px; margin: 0 auto 1.6rem;
-      animation: taiji-spin 40s linear infinite; opacity: 0.9;
+    .invitation-scope .cloud-band { display: block; width: 100%; max-width: 640px; height: auto; margin: 0 auto; }
+    .invitation-scope .cloud-band-top { margin-bottom: 1.4rem; }
+    .invitation-scope .cloud-band-bottom { transform: scaleY(-1); margin-top: 1.6rem; }
+
+    /* scroll */
+    .invitation-scope .scroll { position: relative; max-width: 620px; margin: 0 auto; }
+    .invitation-scope .scroll-rod {
+      position: relative; height: 20px; border-radius: 10px; z-index: 3;
+      background: linear-gradient(180deg, #f5e29a 0%, #c9a227 55%, #9c7a24 100%);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.28);
     }
-    .invitation-scope .sky-taiji svg { display: block; width: 100%; height: 100%; }
+    .invitation-scope .scroll-rod-top { margin-bottom: -4px; }
+    .invitation-scope .scroll-rod-bottom { margin-top: -4px; }
+    .invitation-scope .scroll-rod::before,
+    .invitation-scope .scroll-rod::after {
+      content: ''; position: absolute; top: 50%; width: 15px; height: 30px;
+      border-radius: 4px; transform: translateY(-50%);
+      background: linear-gradient(180deg, #e0533a, #a01523);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+    .invitation-scope .scroll-rod::before { left: -9px; }
+    .invitation-scope .scroll-rod::after  { right: -9px; }
+    .invitation-scope .scroll-face {
+      position: relative; overflow: hidden;
+      background: linear-gradient(180deg, #fbf5e2 0%, #f2e7c8 100%);
+      padding: 2.8rem 1.8rem 2.2rem;
+      box-shadow: inset 0 0 0 1px rgba(201,162,39,0.4);
+    }
+    @media (max-width: 768px) { .invitation-scope .scroll-face { padding: 2.2rem 1.1rem 1.8rem; } }
+
+    /* 回纹角框 */
+    .invitation-scope .fret { position: absolute; width: 44px; height: 44px; z-index: 2; }
+    .invitation-scope .fret path { fill: none; stroke: var(--red-soft); stroke-width: 3; }
+    .invitation-scope .fret-tl { top: 10px; left: 10px; }
+    .invitation-scope .fret-tr { top: 10px; right: 10px; transform: scaleX(-1); }
+    .invitation-scope .fret-bl { bottom: 10px; left: 10px; transform: scaleY(-1); }
+    .invitation-scope .fret-br { bottom: 10px; right: 10px; transform: scale(-1); }
+    @media (max-width: 768px) { .invitation-scope .fret { width: 32px; height: 32px; } }
+
     .invitation-scope .sky-slogan {
-      font-size: clamp(1.7rem, 6.5vw, 2.8rem); font-weight: 700;
-      letter-spacing: 0.12em; line-height: 1.4;
-      background: linear-gradient(100deg, var(--pine) 20%, var(--brown-gold) 85%);
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-      margin-bottom: 0.9rem;
+      position: relative; z-index: 1;
+      font-size: clamp(1.5rem, 6.2vw, 2.5rem); font-weight: 700;
+      letter-spacing: 0.08em; line-height: 1.4;
+      color: var(--red-deep); margin-bottom: 0.9rem;
     }
     .invitation-scope .sky-event {
-      font-size: clamp(0.95rem, 3.4vw, 1.25rem); font-weight: 600;
-      color: var(--pine); letter-spacing: 0.25em; margin-bottom: 2rem;
+      position: relative; z-index: 1;
+      display: inline-flex; align-items: center; gap: 0.8rem;
+      font-size: clamp(0.9rem, 3.4vw, 1.15rem); font-weight: 600;
+      color: var(--red-soft); letter-spacing: 0.12em; margin-bottom: 1.6rem;
     }
-    .invitation-scope .sky-meta {
-      display: flex; justify-content: center; flex-wrap: wrap; gap: 0.8rem 2.4rem;
-      font-size: 0.85rem; color: var(--inv-ink); opacity: 0.85;
-      margin-bottom: 3rem;
+    .invitation-scope .sky-event::before,
+    .invitation-scope .sky-event::after {
+      content: ''; width: 26px; height: 2px; background: var(--gold); flex-shrink: 0;
     }
-    .invitation-scope .sky-meta b { color: var(--pine); font-weight: 600; margin-right: 0.5rem; }
-    .invitation-scope .mountains { display: block; width: 100%; margin-bottom: -1px; }
 
-    /* CARD */
-    .invitation-scope .card { max-width: 780px; margin: 0 auto; padding: 3.5rem 1.6rem 2rem; }
+    /* 中心太极卡 */
+    .invitation-scope .taiji-card {
+      position: relative; width: min(240px, 66%); margin: 0.6rem auto 1.8rem;
+      aspect-ratio: 3 / 3.3; background: var(--red);
+      border: 3px solid var(--gold); border-radius: 10px;
+      box-shadow: inset 0 0 0 4px var(--red), inset 0 0 0 6px var(--gold);
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .invitation-scope .tc-cloud { position: absolute; width: 46%; height: auto; z-index: 1; }
+    .invitation-scope .tc-cloud-tl { top: 3%; left: -7%; }
+    .invitation-scope .tc-cloud-tr { top: 8%; right: -7%; transform: scaleX(-1); }
+    .invitation-scope .tc-cloud-br { bottom: 3%; right: -4%; transform: rotate(180deg); }
+    .invitation-scope .sky-taiji {
+      position: relative; z-index: 2; width: 56%; margin: 0;
+      animation: taiji-spin 40s linear infinite;
+    }
+    .invitation-scope .sky-taiji svg { display: block; width: 100%; height: 100%; }
+
+    .invitation-scope .sky-meta {
+      position: relative; z-index: 1;
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 0.4rem 1.8rem;
+      font-size: 0.9rem; color: var(--red-deep); margin-top: 0.4rem;
+    }
+    .invitation-scope .sky-meta b { color: var(--red-soft); font-weight: 700; margin-right: 0.4rem; }
+
+    /* CARD (cream sheet on red) */
+    .invitation-scope .card {
+      max-width: 820px; margin: 2.4rem auto; padding: 3rem 1.8rem 2rem;
+      background: var(--paper); border: 1px solid var(--hairline); border-radius: 8px;
+    }
+    @media (max-width: 768px) { .invitation-scope .card { margin: 1.6rem 0.9rem; padding: 2.2rem 1.2rem 1.6rem; border-radius: 6px; } }
     .invitation-scope .card-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 3rem; }
     @media (max-width: 700px) { .invitation-scope .card-grid { grid-template-columns: 1fr; gap: 2.4rem; } }
 
     .invitation-scope .inv-title {
       font-size: clamp(2.2rem, 8vw, 3rem); font-weight: 700;
-      letter-spacing: 0.35em; color: var(--brown-gold); margin-bottom: 0.2rem;
+      letter-spacing: 0.35em; color: var(--red-deep); margin-bottom: 0.2rem;
     }
     .invitation-scope .inv-title-en {
-      font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 500;
-      letter-spacing: 0.35em; text-transform: uppercase; color: var(--inv-gold);
+      font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.35em; text-transform: uppercase; color: var(--inv-muted);
       margin-bottom: 2rem;
     }
     .invitation-scope .inv-dear { font-weight: 600; font-size: 1rem; margin-bottom: 1rem; }
     .invitation-scope .inv-body p {
       font-size: 0.92rem; line-height: 2.05; text-align: justify; margin-bottom: 1rem;
+      color: var(--inv-ink);
     }
 
     .invitation-scope .block { margin-top: 2.2rem; }
     .invitation-scope .block-label {
       font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em;
-      color: var(--inv-ink); margin-bottom: 0.7rem;
+      color: var(--red-deep); margin-bottom: 0.7rem;
     }
     .invitation-scope .block-label span {
       font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.78rem;
-      letter-spacing: 0.18em; margin-left: 0.6rem; color: var(--brown-gold);
+      letter-spacing: 0.18em; margin-left: 0.6rem; color: var(--inv-muted);
     }
     .invitation-scope .big-date {
       font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
-      display: flex; align-items: baseline; gap: 0.6rem; color: var(--inv-ink);
+      display: flex; align-items: baseline; gap: 0.6rem; color: var(--red-deep);
       flex-wrap: wrap;
     }
     .invitation-scope .big-date .year {
       font-size: 1rem; letter-spacing: 0.1em; writing-mode: vertical-rl;
-      transform: rotate(180deg) translateY(-4px); line-height: 1.1;
+      transform: rotate(180deg) translateY(-4px); line-height: 1.1; color: var(--inv-muted);
     }
-    .invitation-scope .big-date .md { font-size: 3.4rem; font-weight: 600; letter-spacing: 0.04em; line-height: 1; }
+    .invitation-scope .big-date .md { font-size: 3.4rem; font-weight: 600; letter-spacing: 0.04em; line-height: 1; color: var(--red-deep); }
     .invitation-scope .big-date .rest { font-size: 0.95rem; color: var(--inv-muted); }
-    .invitation-scope .block-text { font-size: 0.92rem; line-height: 1.9; }
+    .invitation-scope .block-text { font-size: 0.92rem; line-height: 1.9; color: var(--inv-ink); }
     .invitation-scope .block-text .en { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--inv-muted); }
 
     /* programme */
@@ -351,12 +410,12 @@
     .invitation-scope .prog > li {
       display: flex; gap: 1rem; align-items: baseline;
       padding: 0.55rem 0; border-bottom: 1px solid var(--hairline);
-      font-size: 0.92rem;
+      font-size: 0.92rem; color: var(--inv-ink);
     }
     .invitation-scope .prog > li:last-child { border-bottom: none; }
     .invitation-scope .prog .no {
-      font-family: 'Cormorant Garamond', serif; font-size: 1.05rem;
-      color: var(--brown-gold); min-width: 1.4rem; flex-shrink: 0;
+      font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 700;
+      color: var(--red-soft); min-width: 1.4rem; flex-shrink: 0;
     }
     .invitation-scope .prog .p-body { min-width: 0; }
     .invitation-scope .prog .en-sub { display: block; font-family: 'Inter', sans-serif; font-size: 0.72rem; color: var(--inv-muted); }
@@ -368,19 +427,19 @@
       position: relative; padding-left: 0.9rem; margin-bottom: 0.15rem; color: var(--inv-ink);
     }
     .invitation-scope .prog .sub li::before {
-      content: '·'; position: absolute; left: 0; color: var(--brown-gold); font-weight: 700;
+      content: '·'; position: absolute; left: 0; color: var(--red-soft); font-weight: 700;
     }
 
     .invitation-scope .divider { height: 1px; background: var(--hairline); margin: 3rem 0 2.6rem; }
 
     /* SUBSCRIBE */
     .invitation-scope .subscribe { text-align: center; padding-bottom: 1rem; }
-    .invitation-scope .subscribe h3 { font-size: 1.15rem; font-weight: 600; letter-spacing: 0.1em; margin-bottom: 0.5rem; color: var(--inv-ink); }
+    .invitation-scope .subscribe h3 { font-size: 1.15rem; font-weight: 600; letter-spacing: 0.1em; margin-bottom: 0.5rem; color: var(--red-deep); }
     .invitation-scope .subscribe p { font-size: 0.85rem; color: var(--inv-muted); margin-bottom: 1.4rem; }
     .invitation-scope .sub-form {
       display: flex; max-width: 420px; margin: 0 auto;
       border: 1px solid var(--hairline); border-radius: 3rem;
-      overflow: hidden; background: rgba(255,255,255,0.55);
+      overflow: hidden; background: rgba(255,255,255,0.6);
     }
     .invitation-scope .sub-form input {
       flex: 1; min-width: 0; border: none; background: transparent;
@@ -389,20 +448,20 @@
     }
     .invitation-scope .sub-form button {
       border: none; cursor: pointer;
-      background: var(--brown-gold); color: var(--paper);
+      background: var(--red); color: var(--paper);
       padding: 0.85rem 1.6rem; font-size: 0.82rem; font-weight: 600;
       letter-spacing: 0.08em; white-space: nowrap;
       font-family: 'Noto Serif SC', serif; transition: background 0.25s;
     }
-    .invitation-scope .sub-form button:hover { background: var(--pine); }
-    .invitation-scope .sub-note { display: none; margin-top: 1rem; font-size: 0.85rem; color: var(--pine); }
+    .invitation-scope .sub-form button:hover { background: var(--red-deep); }
+    .invitation-scope .sub-note { display: none; margin-top: 1rem; font-size: 0.85rem; color: var(--red-soft); }
 
     .invitation-scope .inv-footer {
       text-align: center; padding: 2.2rem 1.6rem 2.8rem;
-      font-family: 'Inter', sans-serif; font-size: 0.72rem; color: var(--inv-muted);
+      font-family: 'Inter', sans-serif; font-size: 0.72rem; color: rgba(255,255,255,0.75);
       border-top: none;
     }
-    .invitation-scope .inv-footer a { color: var(--brown-gold); text-decoration: none; }
+    .invitation-scope .inv-footer a { color: var(--gold-light); text-decoration: none; }
   </style>
 </head>
 <body>
@@ -492,26 +551,67 @@
 
 <div id="panel-invitation">
   <div class="invitation-scope">
-    <!-- SKY HEADER -->
+    <!-- reusable 祥云 defs -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <linearGradient id="inv-cloud-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#f5e29a"/>
+          <stop offset="1" stop-color="#c9992a"/>
+        </linearGradient>
+        <g id="inv-cloud">
+          <path d="M6,64 C6,50 18,44 30,48 C33,33 52,30 60,42 C66,27 90,27 96,44 C110,40 124,48 122,60 C134,60 136,70 124,70 L14,70 C2,70 2,66 6,64 Z" fill="url(#inv-cloud-grad)"/>
+          <path d="M30,48 C40,47 42,58 32,60 C25,61 24,53 31,52" fill="none" stroke="#8a5a12" stroke-width="2" opacity="0.4"/>
+          <path d="M60,42 C72,41 74,54 62,56 C54,57 53,48 61,47" fill="none" stroke="#8a5a12" stroke-width="2" opacity="0.4"/>
+          <path d="M96,44 C107,43 109,55 98,57" fill="none" stroke="#8a5a12" stroke-width="2" opacity="0.4"/>
+        </g>
+      </defs>
+    </svg>
+
+    <!-- SKY HEADER (red poster + cream scroll) -->
     <header class="sky">
-      <div class="sky-taiji" aria-hidden="true">
-        <svg viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="48" fill="none" stroke="#3f6f5f" stroke-width="1.5"/>
-          <path d="M50 2 A48 48 0 0 1 50 98 A24 24 0 0 1 50 50 A24 24 0 0 0 50 2 Z" fill="#3f6f5f"/>
-          <circle cx="50" cy="26" r="7" fill="#3f6f5f"/>
-          <circle cx="50" cy="74" r="7" fill="#f6efdc"/>
-        </svg>
+      <svg class="cloud-band cloud-band-top" viewBox="0 0 720 74" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <use href="#inv-cloud" x="0" y="2"/><use href="#inv-cloud" x="118" y="-4"/>
+        <use href="#inv-cloud" x="236" y="2"/><use href="#inv-cloud" x="354" y="-4"/>
+        <use href="#inv-cloud" x="472" y="2"/><use href="#inv-cloud" x="590" y="-4"/>
+      </svg>
+
+      <div class="scroll">
+        <div class="scroll-rod scroll-rod-top"></div>
+        <div class="scroll-face">
+          <svg class="fret fret-tl" viewBox="0 0 62 62" aria-hidden="true"><path d="M4,58 L4,4 L58,4"/><path d="M15,47 L15,15 L47,15"/><path d="M26,36 L26,26 L36,26"/></svg>
+          <svg class="fret fret-tr" viewBox="0 0 62 62" aria-hidden="true"><path d="M4,58 L4,4 L58,4"/><path d="M15,47 L15,15 L47,15"/><path d="M26,36 L26,26 L36,26"/></svg>
+          <svg class="fret fret-bl" viewBox="0 0 62 62" aria-hidden="true"><path d="M4,58 L4,4 L58,4"/><path d="M15,47 L15,15 L47,15"/><path d="M26,36 L26,26 L36,26"/></svg>
+          <svg class="fret fret-br" viewBox="0 0 62 62" aria-hidden="true"><path d="M4,58 L4,4 L58,4"/><path d="M15,47 L15,15 L47,15"/><path d="M26,36 L26,26 L36,26"/></svg>
+
+          <h1 class="sky-slogan" data-i18n="slogan">太极传薪火，四海共传承</h1>
+          <div class="sky-event" data-i18n="event">冯彦博老师 收徒拜师仪式</div>
+
+          <div class="taiji-card">
+            <svg class="tc-cloud tc-cloud-tl" viewBox="0 0 130 74" aria-hidden="true"><use href="#inv-cloud"/></svg>
+            <svg class="tc-cloud tc-cloud-tr" viewBox="0 0 130 74" aria-hidden="true"><use href="#inv-cloud"/></svg>
+            <svg class="tc-cloud tc-cloud-br" viewBox="0 0 130 74" aria-hidden="true"><use href="#inv-cloud"/></svg>
+            <div class="sky-taiji" aria-hidden="true">
+              <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="48" fill="#f6efdc" stroke="#c9a227" stroke-width="2.5"/>
+                <path d="M50 2 A48 48 0 0 1 50 98 A24 24 0 0 1 50 50 A24 24 0 0 0 50 2 Z" fill="#c8102e"/>
+                <circle cx="50" cy="26" r="7" fill="#c8102e"/>
+                <circle cx="50" cy="74" r="7" fill="#f6efdc"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="sky-meta">
+            <div><b data-i18n="meta_time_k">时间</b><span data-i18n="meta_time_v">2026年7月25日（星期六）</span></div>
+            <div><b data-i18n="meta_place_k">地点</b><span data-i18n="meta_place_v">湘厨 The Xiang Restaurant · 8 Smith St</span></div>
+          </div>
+        </div>
+        <div class="scroll-rod scroll-rod-bottom"></div>
       </div>
-      <h1 class="sky-slogan" data-i18n="slogan">太极传薪火，四海共传承</h1>
-      <div class="sky-event" data-i18n="event">冯彦博老师 收徒拜师仪式</div>
-      <div class="sky-meta">
-        <div><b data-i18n="meta_time_k">时间</b><span data-i18n="meta_time_v">2026年7月25日（星期六）</span></div>
-        <div><b data-i18n="meta_place_k">地点</b><span data-i18n="meta_place_v">湘厨 The Xiang Restaurant · 8 Smith St</span></div>
-      </div>
-      <svg class="mountains" viewBox="0 0 1440 150" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M0,150 L0,95 Q120,40 240,88 Q310,110 380,80 Q470,42 560,92 Q650,130 720,95 Q820,48 900,90 Q990,128 1080,85 Q1170,45 1260,95 Q1350,135 1440,90 L1440,150 Z" fill="#8fa8ad" opacity="0.55"/>
-        <path d="M0,150 L0,115 Q160,70 320,108 Q430,132 540,100 Q660,68 780,110 Q890,140 1000,105 Q1120,72 1240,112 Q1340,140 1440,110 L1440,150 Z" fill="#5f7f78" opacity="0.6"/>
-        <path d="M0,150 L0,132 Q180,102 360,128 Q520,148 680,124 Q840,102 1000,130 Q1220,158 1440,126 L1440,150 Z" fill="#f6efdc"/>
+
+      <svg class="cloud-band cloud-band-bottom" viewBox="0 0 720 74" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <use href="#inv-cloud" x="0" y="2"/><use href="#inv-cloud" x="118" y="-4"/>
+        <use href="#inv-cloud" x="236" y="2"/><use href="#inv-cloud" x="354" y="-4"/>
+        <use href="#inv-cloud" x="472" y="2"/><use href="#inv-cloud" x="590" y="-4"/>
       </svg>
     </header>
 
@@ -595,7 +695,7 @@
           <button type="submit" id="subBtn" data-i18n="sub_btn">订 阅</button>
         </form>
         <div class="sub-note" id="subOk" data-i18n="sub_ok">已订阅，仪式记录将送达您的邮箱。</div>
-        <div class="sub-note" id="subErr" style="color:#a04b2f;" data-i18n="sub_err">提交失败，请稍后再试。</div>
+        <div class="sub-note" id="subErr" data-i18n="sub_err">提交失败，请稍后再试。</div>
       </div>
     </main>
 
@@ -696,7 +796,7 @@
       p1: '诚邀您出席并见证冯彦博老师——陈式心意混元太极拳嫡传人——收徒拜师仪式。',
       p2: '拜师，是中国武术最郑重的托付：奉茶、立誓，薪火由此相传。七百年的传承之链，将在这一日迎来新的一环。恭候您的光临。',
       lbl_time: '活动时间<span>Ceremony</span>',
-      date_rest: '（星期六）· 拜师礼 10:00–12:00 · 拜师宴 12:00–14:00',
+      date_rest: '（星期六）· 拜师仪式 10:00–12:00 · 拜师宴 12:00–14:00',
       lbl_venue: '地点<span>Venue</span>',
       venue_zh: '湘厨 The Xiang Restaurant',
       lbl_dress: '着装要求<span>Dress Code</span>',
@@ -790,11 +890,15 @@
     switchTab(location.hash === '#invitation' ? 'invitation' : 'preview');
   });
 
-  // tabbar 紧贴 nav 底边（上移 1px 重叠，避免露出页面背景形成细线）
+  // tabbar 紧贴 nav 底边（上移 1px 重叠，避免露出页面背景形成细线）；
+  // 邀请函顶部装饰带动态让出 nav+tabbar 的高度，不写死像素
   function alignTabbar() {
     const nav = document.querySelector('nav');
     const tb = document.querySelector('.tabbar');
-    if (nav && tb) tb.style.top = (nav.offsetHeight - 1) + 'px';
+    if (!nav || !tb) return;
+    tb.style.top = (nav.offsetHeight - 1) + 'px';
+    const inv = document.querySelector('.invitation-scope');
+    if (inv) inv.style.paddingTop = (nav.offsetHeight + tb.offsetHeight) + 'px';
   }
   alignTabbar();
   window.addEventListener('resize', alignTabbar);

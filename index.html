@@ -946,14 +946,18 @@
     }
 
     /* ─── NAV LINKS (left of center) ─── */
-    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; margin-left: auto; margin-right: 1.6rem; }
     .nav-link {
       font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--muted); text-decoration: none; transition: color 0.2s;
     }
     .nav-link:hover { color: var(--gold); }
     .nav-link--current { color: var(--gold); }
-    @media (max-width: 768px) { .nav-links { display: none; } }
+    @media (max-width: 1380px) {
+      .nav-links { gap: 1.3rem; }
+      nav .nav-logo-divider, nav .nav-logo-en { display: none; }
+    }
+    @media (max-width: 1000px) { .nav-links { display: none; } }
 
     /* ─── MOBILE MENU (burger) ─── */
     .nav-burger {
@@ -968,7 +972,7 @@
     .nav-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
     .nav-burger.open span:nth-child(2) { opacity: 0; }
     .nav-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-    @media (max-width: 768px) { .nav-burger { display: flex; } }
+    @media (max-width: 1000px) { .nav-burger { display: flex; } }
     .mobile-menu {
       position: fixed; top: 0; left: 0; right: 0; z-index: 190;
       background: rgba(5,10,7,0.96); backdrop-filter: blur(16px);
@@ -1029,6 +1033,56 @@
       position: absolute; bottom: 0; left: 0; right: 0; height: 50px;
       background: linear-gradient(to top, rgba(5,10,7,0.7), transparent);
     }
+
+    /* ─── CEREMONY RECAP ENTRY CARD ─── */
+    .recap-entry { background: var(--ink); padding: 0 0 5rem; }
+    .recap-entry .container { padding: 0 3rem; }
+    .recap-card {
+      display: flex; align-items: stretch; gap: 0;
+      background: var(--deep);
+      border: 1px solid rgba(201,168,76,0.18);
+      border-radius: 6px; overflow: hidden;
+      text-decoration: none;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .recap-card:hover {
+      border-color: rgba(201,168,76,0.5);
+      box-shadow: 0 0 28px rgba(201,168,76,0.12);
+    }
+    .recap-card-img {
+      flex: 0 0 auto; width: 220px; height: 150px;
+      object-fit: cover; display: block;
+      filter: brightness(0.72) saturate(0.85);
+      transition: filter 0.3s;
+    }
+    .recap-card:hover .recap-card-img { filter: brightness(0.85) saturate(1); }
+    .recap-card-body {
+      flex: 1 1 auto; min-width: 0;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 1.4rem 1.8rem;
+    }
+    .recap-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; color: var(--gold); line-height: 1.3;
+      margin-bottom: 0.5rem;
+    }
+    .recap-card-sub {
+      font-size: 0.85rem; color: var(--muted); line-height: 1.6;
+    }
+    .recap-card-arrow {
+      flex: 0 0 auto; align-self: center;
+      padding: 0 1.8rem; color: var(--gold);
+      font-size: 1.1rem; transition: transform 0.25s;
+    }
+    .recap-card:hover .recap-card-arrow { transform: translateX(4px); }
+    @media (max-width: 768px) {
+      .recap-entry { padding: 0 0 3.5rem; }
+      .recap-entry .container { padding: 0 1.2rem; }
+      .recap-card { flex-direction: column; }
+      .recap-card-img { width: 100%; height: 160px; }
+      .recap-card-body { padding: 1.2rem 1.4rem; }
+      .recap-card-arrow { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -1052,8 +1106,8 @@
     <a href="/" class="nav-link nav-link--current" data-i18n="nav_home">Home</a>
     <a href="#tai-chi-heritage" class="nav-link" data-i18n="nav_heritage">Tai Chi Culture</a>
     <a href="#hun-yuan" class="nav-link" data-i18n="nav_hunyuan">Hun Yuan</a>
-    <a href="/blog/" class="nav-link">Stories</a>
-    <a href="/courses/" class="nav-link">Courses</a>
+    <a href="/blog/" class="nav-link" data-i18n="nav_stories">Stories</a>
+    <a href="/courses/" class="nav-link" data-i18n="nav_courses">Courses</a>
     <a href="/ceremony/" class="nav-link" data-i18n="nav_ceremony">Ceremony</a>
   </div>
   <div class="nav-right">
@@ -1076,7 +1130,7 @@
   <a href="#hun-yuan" data-i18n="nav_hunyuan" onclick="toggleMenu()">Hun Yuan</a>
   <a href="/blog/">Stories</a>
   <a href="/courses/">Courses</a>
-  <a href="/ceremony/"><em data-i18n="nav_ceremony">Ceremony</em><span class="mobile-menu-tag" data-i18n="menu_tag_new">Jul 25</span></a>
+  <a href="/ceremony/"><em data-i18n="nav_ceremony">Ceremony</em><span class="mobile-menu-tag" data-i18n="menu_tag_new">Recap</span></a>
 </div>
 
 <!-- HERO -->
@@ -1091,8 +1145,8 @@
   <div class="hero-ink"></div>
   <div class="hero-calligraphy">天人合一</div>
   <div class="hero-content">
-    <a href="/ceremony/" class="hero-announce">
-      <span data-i18n="announce_ceremony">Jul 25 · Singapore — Discipleship Ceremony</span>
+    <a href="/ceremony/#recap" class="hero-announce">
+      <span data-i18n="announce_ceremony">July 25 · Singapore — Ceremony Recap</span>
       <span class="hero-announce-arrow">→</span>
     </a>
     <div class="hero-eyebrow">Direct Lineage · Singapore</div>
@@ -1231,6 +1285,20 @@
     <img src="images/master-students.png" alt="Master Feng Yanbo demonstrating Xin Yi Hun Yuan Tai Chi with students" loading="lazy" />
   </div>
 </div>
+
+<!-- CEREMONY RECAP ENTRY -->
+<section class="recap-entry">
+  <div class="container">
+    <a href="/ceremony/#recap" class="recap-card">
+      <img class="recap-card-img" src="images/ceremony-2026-01.jpg" alt="" loading="lazy" />
+      <div class="recap-card-body">
+        <div class="recap-card-title" data-i18n="home_recap_title">Ceremony Recap · July 25, 2026</div>
+        <div class="recap-card-sub" data-i18n="home_recap_sub">Photographs from the day — tea, vows, and a lineage carried on</div>
+      </div>
+      <span class="recap-card-arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>
 
 <!-- VIDEO -->
 <section class="video-section">
@@ -1527,7 +1595,7 @@
 <footer>
   <div class="footer-logo">太極 · Feng Yanbo</div>
   <div class="footer-copy" data-i18n="footer_copy">© 2026 Master Feng Yanbo · Singapore China Cultural Centre, 217 Queen St</div>
-  <div class="footer-version" onclick="toggleChangelog()">v1.5.0 · Changelog</div>
+  <div class="footer-version" onclick="toggleChangelog()">v1.6.0 · Changelog</div>
 </footer>
 
 <!-- Changelog Panel -->
@@ -1535,6 +1603,15 @@
   <div class="changelog-header">
     <h3>Changelog · taichigpt.com</h3>
     <button class="changelog-close" onclick="toggleChangelog()">×</button>
+  </div>
+  <div class="changelog-version">
+    <h4>v1.6.0 · 2026-11-15</h4>
+    <ul>
+      <li>Ceremony page: new default "Ceremony Recap" tab — red-and-gold, 5 sections, 11 photos</li>
+      <li>Home: recap entry card between the gallery and video, linking to /ceremony/#recap</li>
+      <li>#recap / #invitation deep links; the old #invitation contract is unaffected</li>
+      <li>Site-wide nav unified: taiji logo, right-aligned menu, bilingual labels, subscribe pill on every page</li>
+    </ul>
   </div>
   <div class="changelog-version">
     <h4>v1.5.0 · 2026-07-14</h4>
@@ -1760,9 +1837,13 @@
       nav_heritage: 'Tai Chi Culture',
       nav_hunyuan: 'Hun Yuan',
       nav_home: 'Home',
+      nav_stories: 'Stories',
+      nav_courses: 'Courses',
       nav_ceremony: 'Ceremony',
-      menu_tag_new: 'Jul 25',
-      announce_ceremony: 'Jul 25 · Singapore — Discipleship Ceremony',
+      menu_tag_new: 'Recap',
+      announce_ceremony: 'July 25 · Singapore — Ceremony Recap',
+      home_recap_title: 'Ceremony Recap · July 25, 2026',
+      home_recap_sub: 'Photographs from the day — tea, vows, and a lineage carried on',
       cult_c10_tag: 'Technique', cult_c10_title: 'The Silk Thread',
       cult_c10_excerpt: 'What separates Chen-style from all other Tai Chi is silk-reeling energy. It cannot be faked — only cultivated.',
       cult_c11_tag: 'Cosmology', cult_c11_title: 'Written in the Stars',
@@ -1873,9 +1954,13 @@
       nav_heritage: '太极文化',
       nav_hunyuan: '心意混元',
       nav_home: '首页',
+      nav_stories: '故事',
+      nav_courses: '课程',
       nav_ceremony: '拜师仪式',
-      menu_tag_new: '7月25日',
-      announce_ceremony: '7月25日 · 新加坡 — 拜师仪式',
+      menu_tag_new: '回顾',
+      announce_ceremony: '7月25日 · 新加坡 — 仪式回顾',
+      home_recap_title: '仪式回顾 · 2026-07-25 拜师仪式',
+      home_recap_sub: '照片回看那一日的奉茶、立誓与薪火相传',
       cult_c10_tag: '功法', cult_c10_title: '缠丝劲——那根看不见的丝',
       cult_c10_excerpt: '陈式太极拳区别于其他太极的标志，是一种无法伪造、只能修炼的运动品质。',
       cult_c11_tag: '哲学宇宙观', cult_c11_title: '写在星空里',

@@ -85,11 +85,27 @@
     .lang-btn.active { color: var(--gold); font-weight: 600; }
     .lang-sep { color: rgba(255,255,255,0.15); font-size: 0.7rem; }
     .nav-back {
-      font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--muted); text-decoration: none; transition: color 0.2s;
     }
     .nav-back:hover { color: var(--gold); }
+    .nav-cta {
+      padding: 0.55rem 1.5rem; border-radius: 2rem;
+      border: 1px solid var(--gold); color: var(--gold);
+      text-decoration: none; font-size: 0.78rem; letter-spacing: 0.1em;
+      text-transform: uppercase; font-weight: 500; transition: all 0.25s;
+    }
+    .nav-cta:hover { background: var(--gold); color: #050a07; }
+    @media (max-width: 768px) { .nav-cta { display: none; } }
+    .nav-menu { display: flex; align-items: center; gap: 2rem; margin-left: auto; margin-right: 1.6rem; }
+    .nav-menu a {
+      font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-menu a:hover, .nav-menu a.current { color: var(--gold); }
+    @media (min-width: 769px) { .nav-back { display: none; } }
     @media (max-width: 768px) {
+      .nav-menu { display: none; }
       nav { padding: 0.9rem 1.2rem; }
       .nav-logo-divider, .nav-logo-en { display: none; }
       .nav-logo-chinese { font-size: 1.3rem; }
@@ -247,7 +263,7 @@
     .tab-btn:hover { color: var(--gold); }
     .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
     #panel-preview .hero { padding-top: 10rem; }
-    #panel-invitation { display: none; }
+    #panel-preview, #panel-invitation { display: none; }
     @media (max-width: 768px) {
       .tabbar { top: 49px; }
       .tab-btn { font-size: 0.7rem; padding: 0.5rem 0.9rem; letter-spacing: 0.08em; }
@@ -462,6 +478,111 @@
       border-top: none;
     }
     .invitation-scope .inv-footer a { color: var(--gold-light); text-decoration: none; }
+
+    /* ═══ RECAP (scoped) — 红金节庆，与邀请函一致 ═══ */
+    .recap-scope {
+      --red:        #c8102e;
+      --red-deep:   #7a0f1a;
+      --red-soft:   #a01523;
+      --gold:       #c9a227;
+      --gold-light: #f0d98a;
+      --paper:      #f7efd8;
+      --paper-deep: #efe3c2;
+      --inv-ink:    #6e1116;
+      --inv-muted:  #97562f;
+      --hairline:   rgba(201,162,39,0.35);
+      background: var(--red); color: var(--paper);
+      font-family: 'Noto Serif SC', 'Cormorant Garamond', serif;
+      padding-top: 3.6rem; /* JS 前兜底；真正避让由 alignTabbar 动态 paddingTop 提供 */
+    }
+    @media (max-width: 768px) { .recap-scope { padding-top: 2.6rem; } }
+    .recap-scope img { max-width: 100%; display: block; }
+
+    /* HERO (整幅图 + 金色标题叠放) */
+    .recap-scope .rc-hero {
+      position: relative; max-width: 1100px; margin: 0 auto 2.6rem;
+      overflow: hidden;
+    }
+    .recap-scope .rc-hero img { width: 100%; height: auto; }
+    .recap-scope .rc-hero-overlay {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      padding: 3.5rem 1.8rem 1.8rem; text-align: center;
+      background: linear-gradient(180deg, transparent, rgba(80,8,14,0.82) 70%);
+    }
+    .recap-scope .rc-hero-title {
+      font-size: clamp(1.8rem, 5.5vw, 3rem); font-weight: 700;
+      letter-spacing: 0.08em; line-height: 1.3; color: var(--gold-light);
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5); margin-bottom: 0.8rem;
+    }
+    .recap-scope .rc-hero-sub {
+      font-family: 'Inter', sans-serif; font-weight: 400;
+      font-size: clamp(0.82rem, 2.4vw, 1rem); line-height: 1.7;
+      color: rgba(255,255,255,0.9); max-width: 680px; margin: 0 auto;
+    }
+
+    /* 版块通用 */
+    .recap-scope .rc-sec { max-width: 1100px; margin: 0 auto; padding: 0 1.4rem 3.2rem; }
+    .recap-scope .rc-sec-title {
+      text-align: center; font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 700;
+      letter-spacing: 0.14em; color: var(--gold-light); margin-bottom: 1.8rem;
+    }
+    .recap-scope .rc-quote {
+      max-width: 760px; margin: 1.8rem auto 0; text-align: center;
+      font-size: clamp(1rem, 2.8vw, 1.25rem); line-height: 1.8;
+      color: var(--paper); font-style: italic;
+    }
+
+    /* 仪式环节：三栏 → 单列 */
+    .recap-scope .rc-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+    @media (max-width: 768px) { .recap-scope .rc-steps { grid-template-columns: 1fr; } }
+    .recap-scope .rc-step figure { margin: 0; }
+    .recap-scope .rc-step img { width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--hairline); }
+    .recap-scope .rc-step figcaption {
+      margin-top: 0.8rem; text-align: center; font-weight: 600;
+      font-size: 1rem; letter-spacing: 0.1em; color: var(--gold-light);
+    }
+
+    /* 师徒之礼：不对称网格 2fr / 1fr → 堆叠 */
+    .recap-scope .rc-pair { display: grid; grid-template-columns: 2fr 1fr; gap: 1.4rem; align-items: stretch; aspect-ratio: 2 / 1; }
+    .recap-scope .rc-pair img { width: 100%; height: 100%; min-height: 0; object-fit: cover; border-radius: 8px; border: 1px solid var(--hairline); }
+    .recap-scope .rc-pair-side { display: grid; grid-template-rows: 1fr 1fr; gap: 1.4rem; min-height: 0; }
+    @media (max-width: 768px) {
+      .recap-scope .rc-pair { grid-template-columns: 1fr; aspect-ratio: auto; }
+      .recap-scope .rc-pair img { height: auto; }
+      .recap-scope .rc-pair-side { grid-template-rows: none; }
+    }
+    .recap-scope .rc-sec2-text {
+      margin-top: 1.6rem; text-align: center; font-size: clamp(1rem, 2.8vw, 1.2rem);
+      line-height: 1.8; color: var(--paper); font-style: italic;
+    }
+
+    /* 现场花絮：横向滚动条带，自身滚动不撑宽 body */
+    .recap-scope .rc-strip-wrap { max-width: 1100px; margin: 0 auto; padding: 0 1.4rem; }
+    .recap-scope .recap-strip {
+      display: flex; gap: 1rem; max-width: 100%;
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      padding-bottom: 0.8rem; scroll-snap-type: x mandatory;
+    }
+    .recap-scope .recap-strip img {
+      flex: 0 0 auto; height: 260px; width: auto; border-radius: 8px;
+      border: 1px solid var(--hairline); scroll-snap-align: start;
+    }
+    @media (max-width: 768px) { .recap-scope .recap-strip img { height: 200px; } }
+
+    /* CTA */
+    .recap-scope .rc-cta { max-width: 760px; margin: 0 auto; padding: 1rem 1.4rem 4rem; text-align: center; }
+    .recap-scope .rc-cta-text {
+      font-size: clamp(1rem, 2.8vw, 1.2rem); line-height: 1.8;
+      color: var(--paper); margin-bottom: 2rem;
+    }
+    .recap-scope .rc-cta-btn {
+      display: inline-block; padding: 0.9rem 2.4rem; border-radius: 3rem;
+      background: var(--gold); color: var(--red-deep);
+      text-decoration: none; font-family: 'Inter', sans-serif;
+      font-size: 0.85rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      transition: background 0.25s, box-shadow 0.25s;
+    }
+    .recap-scope .rc-cta-btn:hover { background: var(--gold-light); box-shadow: 0 0 24px rgba(201,162,39,0.4); }
   </style>
 </head>
 <body>
@@ -478,20 +599,94 @@
     <div class="nav-logo-divider"></div>
     <span class="nav-logo-en">Master Feng Yanbo<br>Chen-Style Xin Yi Hun Yuan Tai Chi</span>
   </a>
+  <div class="nav-menu">
+    <a href="/" data-i18n="nav_home">Home</a>
+    <a href="/blog/" data-i18n="nav_stories">Stories</a>
+    <a href="/courses/" data-i18n="nav_courses">Courses</a>
+    <a href="/ceremony/" class="current" data-i18n="nav_ceremony">Ceremony</a>
+  </div>
   <div class="nav-right">
     <div class="lang-toggle">
       <button class="lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
       <span class="lang-sep">|</span>
       <button class="lang-btn" data-lang="zh" onclick="switchLang('zh')">中文</button>
     </div>
+    <a href="/#subscribe" class="nav-cta" data-i18n="nav_cta">Subscribe Free</a>
     <a href="/" class="nav-back" data-i18n="nav_back">← Home</a>
   </div>
 </nav>
 
 <div class="tabbar">
-  <button class="tab-btn active" data-tab="preview" data-i18n="tab_preview" onclick="switchTab('preview')">The Ceremony</button>
+  <button class="tab-btn active" data-tab="recap" data-i18n="tab_recap" onclick="switchTab('recap')">Ceremony Recap</button>
+  <button class="tab-btn" data-tab="preview" data-i18n="tab_preview" onclick="switchTab('preview')">The Ceremony</button>
   <button class="tab-btn" data-tab="invitation" data-i18n="tab_invite" onclick="switchTab('invitation')">Invitation</button>
 </div>
+
+<div id="panel-recap">
+  <div class="recap-scope">
+
+    <!-- Hero：整幅图 + 金色标题 -->
+    <section class="rc-hero">
+      <img src="/images/ceremony-2026-01.jpg" alt="Discipleship ceremony" />
+      <div class="rc-hero-overlay">
+        <h1 class="rc-hero-title" data-i18n="rc_hero_title">The Ceremony: A Lineage Continues</h1>
+        <p class="rc-hero-sub" data-i18n="rc_hero_sub">July 25, 2026 · The Xiang, Singapore — Master Feng Yanbo formally accepts disciples.</p>
+      </div>
+    </section>
+
+    <!-- 仪式环节：三图三栏 -->
+    <section class="rc-sec">
+      <h2 class="rc-sec-title" data-i18n="rc_sec1">The Rite</h2>
+      <div class="rc-steps">
+        <div class="rc-step"><figure>
+          <img src="/images/ceremony-2026-07.jpg" alt="" />
+          <figcaption data-i18n="rc_step1">Offering incense to the ancestors</figcaption>
+        </figure></div>
+        <div class="rc-step"><figure>
+          <img src="/images/ceremony-2026-11.jpg" alt="" />
+          <figcaption data-i18n="rc_step2">The kowtow</figcaption>
+        </figure></div>
+        <div class="rc-step"><figure>
+          <img src="/images/ceremony-2026-09.jpg" alt="" />
+          <figcaption data-i18n="rc_step3">Witnessed by the elders</figcaption>
+        </figure></div>
+      </div>
+      <p class="rc-quote" data-i18n="rc_sec1_quote">"One stick of incense honours Grandmaster Feng Zhiqiang."</p>
+    </section>
+
+    <!-- 师徒之礼：不对称网格 -->
+    <section class="rc-sec">
+      <h2 class="rc-sec-title" data-i18n="rc_sec2">Master and Disciple</h2>
+      <div class="rc-pair">
+        <img src="/images/ceremony-2026-02.jpg" alt="" />
+        <div class="rc-pair-side">
+          <img src="/images/ceremony-2026-10.jpg" alt="" />
+          <img src="/images/ceremony-2026-04.jpg" alt="" />
+        </div>
+      </div>
+      <p class="rc-sec2-text" data-i18n="rc_sec2_text">"The master returns the pledge — the bond is sealed."</p>
+    </section>
+
+    <!-- 现场花絮：横向滚动条带 -->
+    <section class="rc-sec">
+      <h2 class="rc-sec-title" data-i18n="rc_sec3">Moments</h2>
+      <div class="rc-strip-wrap">
+        <div class="recap-strip">
+          <img src="/images/ceremony-2026-03.jpg" alt="" />
+          <img src="/images/ceremony-2026-08.jpg" alt="" />
+          <img src="/images/ceremony-2026-06.jpg" alt="" />
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="rc-cta">
+      <p class="rc-cta-text" data-i18n="rc_cta_text">The lineage lives beyond the ceremony.</p>
+      <a href="/courses/" class="rc-cta-btn" data-i18n="rc_cta_btn">Explore the Classes</a>
+    </section>
+
+  </div>
+</div><!-- /#panel-recap -->
 
 <div id="panel-preview">
 <section class="hero">
@@ -713,6 +908,11 @@
   const STRINGS = {
     en: {
       nav_back: '← Home',
+      nav_home: 'Home',
+      nav_stories: 'Stories',
+      nav_courses: 'Courses',
+      nav_cta: 'Subscribe Free',
+      nav_ceremony: 'Ceremony',
       eyebrow: 'A 700-Year Tradition Continues',
       title: 'The <em>Discipleship</em> Ceremony',
       date: 'July 25 · Singapore',
@@ -728,8 +928,21 @@
       cta_p: "Subscribe free and we'll send the ceremony story to your inbox.",
       cta_btn: 'Subscribe Free',
       footer: '太極 · Feng Yanbo — ',
+      tab_recap: 'Ceremony Recap',
       tab_preview: 'The Ceremony',
       tab_invite: 'Invitation',
+      rc_hero_title: 'The Ceremony: A Lineage Continues',
+      rc_hero_sub: 'July 25, 2026 · The Xiang, Singapore — Master Feng Yanbo, direct lineage successor of Chen-style Xin Yi Hun Yuan Tai Chi, formally accepts disciples.',
+      rc_sec1: 'The Rite',
+      rc_step1: 'Offering incense to the ancestors',
+      rc_step2: 'The kowtow',
+      rc_step3: 'Witnessed by the elders',
+      rc_sec1_quote: '"One stick of incense honours Grandmaster Feng Zhiqiang; one word — \'Master\' — outweighs a thousand pieces of gold."',
+      rc_sec2: 'Master and Disciple',
+      rc_sec2_text: '"The master returns the pledge — the bond is sealed, the Way passes on."',
+      rc_sec3: 'Moments',
+      rc_cta_text: '"The lineage lives beyond the ceremony. The door to Hun Yuan Tai Chi stays open to all who seek it."',
+      rc_cta_btn: 'Explore the Classes',
       slogan: 'The Flame of Tai Chi, Carried Across the Seas',
       event: 'Discipleship Ceremony of Master Feng Yanbo',
       meta_time_k: 'Date', meta_time_v: 'July 25, 2026 (Saturday)',
@@ -770,6 +983,11 @@
     },
     zh: {
       nav_back: '← 返回首页',
+      nav_home: '首页',
+      nav_stories: '故事',
+      nav_courses: '课程',
+      nav_cta: '立即订阅',
+      nav_ceremony: '拜师仪式',
       eyebrow: '七百年传承，弦歌不辍',
       title: '<em>拜师</em>仪式',
       date: '7月25日 · 新加坡',
@@ -785,8 +1003,21 @@
       cta_p: '免费订阅，仪式全记录将第一时间发送到你的邮箱。',
       cta_btn: '免费订阅',
       footer: '太極 · 冯彦博 — ',
+      tab_recap: '仪式回顾',
       tab_preview: '仪式预告',
       tab_invite: '邀请函',
+      rc_hero_title: '礼成 · 薪火相传',
+      rc_hero_sub: '2026年7月25日 · 新加坡湘厨，陈式心意混元太极嫡传人冯彦博先生正式收徒。',
+      rc_sec1: '仪式环节',
+      rc_step1: '上香告祖',
+      rc_step2: '行叩拜礼',
+      rc_step3: '长辈见证',
+      rc_sec1_quote: '「一炷香告慰祖师冯志强先生，一声"师父"重逾千金。」',
+      rc_sec2: '师徒之礼',
+      rc_sec2_text: '「师父回赠回徒帖，自此名分既定，道义相承。」',
+      rc_sec3: '现场花絮',
+      rc_cta_text: '「传承不止于仪式。混元太极的大门，始终向有心人敞开。」',
+      rc_cta_btn: '了解课程',
       slogan: '太极传薪火，四海共传承',
       event: '冯彦博老师 收徒拜师仪式',
       meta_time_k: '时间', meta_time_v: '2026年7月25日（星期六）',
@@ -850,14 +1081,22 @@
   }
 
   function switchTab(name) {
-    const isInv = name === 'invitation';
-    document.getElementById('panel-preview').style.display = isInv ? 'none' : '';
-    document.getElementById('panel-invitation').style.display = isInv ? 'block' : 'none';
+    const panels = { recap: 'panel-recap', preview: 'panel-preview', invitation: 'panel-invitation' };
+    if (!panels[name]) name = 'recap';
+    Object.values(panels).forEach(id => { document.getElementById(id).style.display = 'none'; });
+    document.getElementById(panels[name]).style.display = 'block';
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.tab === name);
     });
-    history.replaceState(null, '', isInv ? '#invitation' : location.pathname);
+    const hash = { recap: '#recap', invitation: '#invitation', preview: location.pathname };
+    history.replaceState(null, '', hash[name]);
     window.scrollTo(0, 0);
+  }
+
+  function tabFromHash() {
+    if (location.hash === '#invitation') return 'invitation';
+    if (location.hash === '#preview') return 'preview';
+    return 'recap'; // 其它（含空 hash）→ 默认 recap
   }
 
   async function handleSubmit(e) {
@@ -885,9 +1124,9 @@
   }
 
   render();
-  switchTab(location.hash === '#invitation' ? 'invitation' : 'preview');
+  switchTab(tabFromHash());
   window.addEventListener('hashchange', () => {
-    switchTab(location.hash === '#invitation' ? 'invitation' : 'preview');
+    switchTab(tabFromHash());
   });
 
   // tabbar 紧贴 nav 底边（上移 1px 重叠，避免露出页面背景形成细线）；
@@ -897,8 +1136,9 @@
     const tb = document.querySelector('.tabbar');
     if (!nav || !tb) return;
     tb.style.top = (nav.offsetHeight - 1) + 'px';
-    const inv = document.querySelector('.invitation-scope');
-    if (inv) inv.style.paddingTop = (nav.offsetHeight + tb.offsetHeight) + 'px';
+    document.querySelectorAll('.invitation-scope, .recap-scope').forEach(el => {
+      el.style.paddingTop = (nav.offsetHeight + tb.offsetHeight) + 'px';
+    });
   }
   alignTabbar();
   window.addEventListener('resize', alignTabbar);

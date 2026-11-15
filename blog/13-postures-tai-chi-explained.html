@@ -27,16 +27,33 @@
 </head>
 <body>
   <nav>
-    <a href="../" class="nav-logo">
-      <span class="nav-logo-chinese">冯彦博</span>
-      <span class="nav-logo-divider"></span>
-      <span class="nav-logo-en">Master Feng Yanbo</span>
+    <a href="/" class="nav-logo">
+      <span class="nav-logo-taiji" aria-hidden="true"><svg viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="48" fill="none" stroke="#c9a84c" stroke-width="2"/>
+      <path d="M50 2 A48 48 0 0 1 50 98 A24 24 0 0 1 50 50 A24 24 0 0 0 50 2 Z" fill="#c9a84c"/>
+      <circle cx="50" cy="26" r="7" fill="#c9a84c"/>
+      <circle cx="50" cy="74" r="7" fill="#050a07"/>
+    </svg></span>
+      <span class="nav-logo-chinese">太極</span>
+      <div class="nav-logo-divider"></div>
+      <span class="nav-logo-en">Master Feng Yanbo<br>Chen-Style Xin Yi Hun Yuan Tai Chi</span>
     </a>
     <div class="nav-links">
-      <a href="/blog/" class="active">Stories</a>
-      <a href="../#join" class="nav-cta">Subscribe</a>
+      <a href="/" data-nav="home">Home</a>
+      <a href="/blog/" data-nav="stories" class="active">Stories</a>
+      <a href="/courses/" data-nav="courses">Courses</a>
+      <a href="/ceremony/" data-nav="ceremony">Ceremony</a>
+      <a href="/#subscribe" class="nav-cta" data-nav="cta">Subscribe Free</a>
     </div>
   </nav>
+  <script>
+(function(){
+  if (localStorage.getItem('lang') === 'zh') {
+    var t = {home:'首页',stories:'故事',courses:'课程',ceremony:'拜师仪式',cta:'立即订阅'};
+    document.querySelectorAll('[data-nav]').forEach(function(a){ if(t[a.dataset.nav]) a.textContent = t[a.dataset.nav]; });
+  }
+})();
+</script>
 
   <article class="article-wrapper">
     <span class="article-tag">Technique</span>

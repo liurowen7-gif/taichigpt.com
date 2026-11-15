@@ -1595,7 +1595,7 @@
 <footer>
   <div class="footer-logo">太極 · Feng Yanbo</div>
   <div class="footer-copy" data-i18n="footer_copy">© 2026 Master Feng Yanbo · Singapore China Cultural Centre, 217 Queen St</div>
-  <div class="footer-version" onclick="toggleChangelog()">v1.6.0 · Changelog</div>
+  <div class="footer-version" onclick="toggleChangelog()">v1.6.1 · Changelog</div>
 </footer>
 
 <!-- Changelog Panel -->
@@ -1603,6 +1603,12 @@
   <div class="changelog-header">
     <h3>Changelog · taichigpt.com</h3>
     <button class="changelog-close" onclick="toggleChangelog()">×</button>
+  </div>
+  <div class="changelog-version">
+    <h4>v1.6.1 · 2026-11-15</h4>
+    <ul>
+      <li>?lang=zh / ?lang=en URL param switches language on open — for sharing Chinese links</li>
+    </ul>
   </div>
   <div class="changelog-version">
     <h4>v1.6.0 · 2026-11-15</h4>
@@ -2014,6 +2020,8 @@
     }
   };
 
+  const urlLang = new URLSearchParams(location.search).get('lang');
+  if (urlLang === 'zh' || urlLang === 'en') localStorage.setItem('lang', urlLang);
   let currentLang = localStorage.getItem('lang') || 'en';
 
   function render() {

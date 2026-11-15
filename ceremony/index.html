@@ -1058,6 +1058,8 @@
     }
   };
 
+  const urlLang = new URLSearchParams(location.search).get('lang');
+  if (urlLang === 'zh' || urlLang === 'en') localStorage.setItem('lang', urlLang);
   let currentLang = localStorage.getItem('lang') || 'en';
 
   function render() {
